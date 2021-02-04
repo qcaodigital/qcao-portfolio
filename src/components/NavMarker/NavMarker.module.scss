@@ -1,0 +1,19 @@
+.NavMarker {
+	position: absolute;
+	bottom: 0.5rem;
+	left: 1rem;
+	div {
+		height: 0.75rem;
+		width: 0.75rem;
+		border-radius: 50%;
+		margin-bottom: 0.5rem;
+		background-color: black;
+		border: 0.1rem solid black;
+		&.active {
+			--scale: 1.75;
+			transform: scale(var(--scale));
+			background-color: transparent;
+			margin-bottom: calc(0.5rem * var(--scale));
+		}
+	}
+}

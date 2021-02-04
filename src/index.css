@@ -1,0 +1,52 @@
+:root {
+	--serif: "Ivy Mode", serif;
+	--sans: "Aktiv Grotesk W01", sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+}
+
+p,
+li,
+a,
+span,
+div {
+	font-family: var(--sans);
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+ul,
+ol {
+	list-style: none;
+	padding-left: 0;
+}
+
+button {
+	background-color: unset;
+	outline: none;
+	border: none;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: unset;
+}
