@@ -1,0 +1,20 @@
+@import "../../assets/sass/";
+
+.App {
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	position: relative;
+	.background {
+		@include absoluteFullscreen;
+		z-index: -1;
+		background-color: #f8f8f3;
+		//Seperate Texture Styles
+		&::before {
+			content: "";
+			@include absoluteFullscreen;
+			background-image: url("../../assets/imgs/textures/axiom-pattern.png");
+			opacity: 0.65;
+		}
+	}
+}

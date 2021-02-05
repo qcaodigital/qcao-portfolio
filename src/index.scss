@@ -1,7 +1,4 @@
-:root {
-	--serif: "Ivy Mode", serif;
-	--sans: "Aktiv Grotesk W01", sans-serif;
-}
+@import "./assets/sass/";
 
 * {
 	box-sizing: border-box;
@@ -20,7 +17,7 @@ li,
 a,
 span,
 div {
-	font-family: var(--sans);
+	font-family: $sans;
 	margin: 0;
 }
 

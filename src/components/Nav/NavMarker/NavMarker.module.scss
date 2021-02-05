@@ -1,7 +1,14 @@
+@import "../../../assets/sass/";
 .NavMarker {
 	position: absolute;
 	bottom: 0.5rem;
 	left: 1rem;
+	@include breakpoint(md) {
+		bottom: unset;
+		top: 50%;
+		left: 3rem;
+		transform: translateY(-50%);
+	}
 	div {
 		height: 0.75rem;
 		width: 0.75rem;
