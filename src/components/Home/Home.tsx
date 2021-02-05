@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "./Home.module.scss";
 
 export default function Home() {
@@ -12,12 +11,8 @@ export default function Home() {
 				</h1>
 				<h2>full-stack web developer</h2>
 				<div className={styles.cta}>
-					<button>
-						<Link to='/about'>About Me</Link>
-					</button>
-					<button>
-						<Link to='/work'>My Work</Link>
-					</button>
+					<button>About Me</button>
+					<button>My Work</button>
 				</div>
 			</header>
 			<div className={styles.scrollCta}>
