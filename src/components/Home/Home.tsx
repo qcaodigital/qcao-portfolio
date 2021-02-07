@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./Home.module.scss";
+import Cube from './components/Cube';
+import styles from './Home.module.scss';
 
 export default function Home() {
 	return (
@@ -11,8 +11,12 @@ export default function Home() {
 				</h1>
 				<h2>full-stack web developer</h2>
 				<div className={styles.cta}>
-					<button>About Me</button>
-					<button>My Work</button>
+					<button>
+						<span>About Me</span>
+					</button>
+					<button>
+						<span>My Work</span>
+					</button>
 				</div>
 			</header>
 			<div className={styles.scrollCta}>
@@ -29,16 +33,19 @@ export default function Home() {
 					href='https://github.com/qcaodigital'
 					target='_blank'
 					rel='noopener noreferrer'
-					className={styles.icon}>
+					className={styles.icon}
+				>
 					<i className='fab fa-github'></i>
 				</a>
 				<a
 					href='mailto: qcao.digital@gmail.com'
-					className={styles.icon}>
+					className={styles.icon}
+				>
 					<i className='fas fa-at'></i>
 				</a>
 			</div>
 			<h3>portfolio</h3>
+			<Cube />
 		</section>
 	);
 }

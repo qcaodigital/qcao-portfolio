@@ -25,3 +25,11 @@
 		}
 	}
 }
+
+@mixin onHoverFine() {
+	@media (pointer: fine) {
+		&:hover {
+			@content;
+		}
+	}
+}

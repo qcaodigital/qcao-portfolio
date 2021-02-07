@@ -26,3 +26,16 @@
 	right: 0;
 	bottom: 0;
 }
+
+@mixin buttonAnimation($withShadow) {
+	@media (pointer: fine) {
+		transition: transform 250ms ease, box-shadow 250ms ease,
+			filter 250ms ease;
+		&:hover {
+			transform: translateY(-0.3rem);
+			@if $withShadow == shadow {
+				box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.35);
+			}
+		}
+	}
+}

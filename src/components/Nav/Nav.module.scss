@@ -1,82 +1,144 @@
-@import "../../assets/sass/";
+@import '../../assets/sass/';
 
 .Nav {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: auto 1fr;
 	position: fixed;
 	z-index: 10;
 	--padding: 1rem;
 	left: var(--padding);
 	right: var(--padding);
-	top: var(--padding);
+	top: 1rem;
 	transition: 350ms ease;
 	@include breakpoint(md) {
 		--padding: 2rem;
-	}
-	@include breakpoint(lg) {
-		--padding: 3rem;
 	}
 	.brand {
 		span {
 			cursor: pointer;
 			font-family: $serif;
+			&.digital::before {
+				content: '.';
+				font-family: inherit;
+				font-size: $fs-md;
+				margin-right: 0.5rem;
+			}
 			.firstLetter {
-				font-size: 3rem;
+				margin-right: -0.2rem;
+				font-size: $fs-md;
+				transition: 350ms ease;
 				@include breakpoint(lg) {
-					font-size: 3.5rem;
+					font-size: $fs-lg;
 				}
 			}
 			.rest {
 				display: inline-block;
-				width: 0;
-				// opacity: 0;
+				opacity: 0;
 				letter-spacing: 0.25rem;
-				font-size: 1.25rem;
+				font-size: 0;
 				transition: 350ms ease;
 			}
 		}
-		&:hover {
+		@include onHoverFine {
 			span {
+				.firstLetter {
+					margin-right: 0;
+				}
 				.rest {
-					width: 10px;
+					opacity: 1;
+					font-size: $fs-xs;
+					@include breakpoint(lg) {
+						font-size: $fs-sm;
+					}
 				}
 			}
 		}
 	}
 	.hbm {
+		cursor: pointer;
 		justify-self: right;
 		display: flex;
 		align-items: center;
 		p {
-			font-size: 1.75rem;
+			transition: 250ms ease;
+			cursor: default;
+			font-size: $fs-sm;
 			width: 5rem;
 			margin-right: 1rem;
-			@include breakpoint(lg) {
-				font-size: 2rem;
-				margin-right: 1.5rem;
-			}
 		}
 		.hbmButton {
-			cursor: pointer;
 			display: flex;
 			flex-direction: column;
 			width: 5rem;
-			margin-top: 0.5rem;
+			position: relative;
+			transition: 350ms ease 250ms;
 			@include breakpoint(lg) {
 				width: 6rem;
 			}
 			div {
-				background-color: black;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-100%);
 				width: 100%;
+				&#top {
+					background-color: black;
+					height: 0.7rem;
+					transition: 350ms ease;
+				}
+				&#bottom {
+					display: flex;
+					top: calc(50% + 1rem);
+					height: 0.3rem;
+					transition: 250ms ease;
+					.half {
+						background-color: black;
+						display: inline-block;
+						width: 50%;
+						height: inherit;
+						&#left {
+							left: 0;
+						}
+						&#right {
+							right: 0;
+						}
+					}
+				}
 			}
-			div#top {
-				height: 0.7rem;
+		}
+		&#open {
+			p {
+				opacity: 0;
 			}
-			div#bottom {
-				margin-top: 0.5rem;
-				height: 0.3rem;
-				@include breakpoint(lg) {
-					margin-top: 0.75rem;
+			.hbmButton {
+				transform: rotate(45deg);
+				div {
+					&#top {
+						transform: scaleX(0.5);
+						top: 0;
+						height: 0.3rem;
+					}
+					&#bottom {
+						transform: translate(-0.075rem, -350%) scaleY(0.5)
+							rotate(90deg);
+					}
+				}
+			}
+		}
+		@include onHoverFine() {
+			p {
+				transform: translateX(1rem);
+			}
+			.hbmButton {
+				div {
+					&#top {
+						transform: scaleX(0.5);
+						top: 0;
+						height: 0.3rem;
+					}
+					&#bottom {
+						transform: translate(-0.075rem, -350%) scaleY(calc(0.5))
+							rotate(90deg);
+					}
 				}
 			}
 		}
