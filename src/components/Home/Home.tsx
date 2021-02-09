@@ -1,7 +1,12 @@
 import Cube from './components/Cube';
 import styles from './Home.module.scss';
+import ScrollCTA from './components/ScrollCTA';
 
-export default function Home() {
+interface HomeProps {
+	viewport: any;
+}
+
+export default function Home({ viewport }: HomeProps) {
 	return (
 		<section className={styles.Home}>
 			<header>
@@ -19,15 +24,7 @@ export default function Home() {
 					</button>
 				</div>
 			</header>
-			<div className={styles.scrollCta}>
-				<div className={styles.textBox}>
-					<p>scroll.</p>
-				</div>
-				<button className={styles.circle}>
-					<div className={styles.arrow} />
-				</button>
-				<div className={styles.line}></div>
-			</div>
+			<ScrollCTA viewport={viewport} />
 			<div className={styles.social}>
 				<a
 					href='https://github.com/qcaodigital'
@@ -45,7 +42,7 @@ export default function Home() {
 				</a>
 			</div>
 			<h3>portfolio</h3>
-			<Cube />
+			{/* <Cube /> */}
 		</section>
 	);
 }

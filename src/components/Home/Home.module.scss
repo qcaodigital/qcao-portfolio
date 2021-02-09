@@ -20,7 +20,7 @@
 			line-height: 1;
 			transition: 350ms ease;
 			@include breakpoint(lg) {
-				font-size: $fs-2xl;
+				font-size: $fs-xxl;
 			}
 			span {
 				all: inherit;
@@ -71,80 +71,6 @@
 					position: relative;
 					overflow: hidden;
 				}
-			}
-		}
-	}
-	.scrollCta {
-		@include flexCenterCol;
-		position: absolute;
-		bottom: 0;
-		right: 10%;
-		.textBox {
-			width: 4rem;
-			height: 11rem;
-			background-color: black;
-			position: relative;
-			transition: 350ms ease;
-			@include breakpoint(lg) {
-				width: 5rem;
-				height: 15rem;
-			}
-			p {
-				color: white;
-				position: absolute;
-				font-size: $fs-sm;
-				font-family: $serif;
-				text-transform: capitalize;
-				letter-spacing: 0.2rem;
-				top: -1rem;
-				left: calc(#{$fs-sm}/ 2);
-				transform-origin: left;
-				transform: rotate(90deg);
-				@include breakpoint(lg) {
-					font-size: $fs-md;
-					left: calc(#{$fs-md}/ 2);
-				}
-			}
-		}
-		.circle {
-			height: 4.5rem;
-			width: 4.5rem;
-			border-radius: 50%;
-			border: 0.2rem solid black;
-			position: relative;
-			cursor: pointer;
-			transition: 350ms ease;
-			@include breakpoint(lg) {
-				height: 5.5rem;
-				width: 5.5rem;
-			}
-			.arrow {
-				width: 40%;
-				height: 40%;
-				left: 100%;
-				border-left: 0.1rem solid black;
-				border-top: 0.1rem solid black;
-				position: absolute;
-				top: 75%;
-				left: 50%;
-				transform-origin: top left;
-				transform: rotate(225deg);
-				@include breakpoint(lg) {
-					border-left: 0.2rem solid black;
-					border-top: 0.2rem solid black;
-				}
-			}
-		}
-		.line {
-			height: 6rem;
-			width: 0.4rem;
-			background-color: black;
-			transition: height 350ms ease;
-			@include breakpoint(md) {
-				height: 12rem;
-			}
-			@include breakpoint(lg) {
-				height: 20vh;
 			}
 		}
 	}

@@ -1,35 +1,40 @@
 @mixin breakpoint($label) {
-    @if $label == sm {
-        @media screen and (min-width: 34.375em) {
-            @content;
-        }
-    }
-    @if $label == md {
-        @media screen and (min-width: 45.3125em) {
-            @content;
-        }
-    }
-    @if $label == lg {
-        @media screen and (min-width: 61.875em) {
-            @content;
-        }
-    }
-    @if $label == xl {
-        @media screen and (min-width: 78.125em) {
-            @content;
-        }
-    }
-    @if $label == 2xl {
-        @media screen and (min-width: 101.25em) {
-            @content;
-        }
-    }
+	@if $label == sm {
+		//550px
+		@media screen and (min-width: 550px) {
+			@content;
+		}
+	}
+	@if $label == md {
+		//725px
+		@media screen and (min-width: 775px) {
+			@content;
+		}
+	}
+	@if $label == lg {
+		//990px
+		@media screen and (min-width: 990px) {
+			@content;
+		}
+	}
+	@if $label == xl {
+		//1250px
+		@media screen and (min-width: 1250px) {
+			@content;
+		}
+	}
+	@if $label == xxl {
+		//1620px
+		@media screen and (min-width: 1620px) {
+			@content;
+		}
+	}
 }
 
 @mixin onHoverFine() {
-    @media (pointer: fine), (min-height: 40rem) {
-        &:hover {
-            @content;
-        }
-    }
+	@media (pointer: fine), (min-width: 990px) {
+		&:hover {
+			@content;
+		}
+	}
 }

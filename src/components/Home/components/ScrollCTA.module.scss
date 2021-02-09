@@ -1,0 +1,116 @@
+@import '../../../assets/sass/';
+
+#ScrollCTA {
+	@include flexCenterCol;
+	position: absolute;
+	bottom: 0;
+	right: 10%;
+	.textBox {
+		width: 4rem;
+		height: 11rem;
+		background-color: black;
+		position: relative;
+		transition: 350ms ease;
+		@include breakpoint(lg) {
+			width: 5rem;
+			height: 15rem;
+		}
+		p {
+			color: white;
+			position: absolute;
+			font-size: $fs-sm;
+			font-family: $serif;
+			text-transform: capitalize;
+			letter-spacing: 0.2rem;
+			top: -1rem;
+			left: calc(#{$fs-sm}/ 2);
+			transform-origin: left;
+			transform: rotate(90deg);
+			@include breakpoint(lg) {
+				font-size: $fs-md;
+				left: calc(#{$fs-md}/ 2);
+			}
+		}
+	}
+	.circle {
+		height: 4.5rem;
+		width: 4.5rem;
+		border-radius: 50%;
+		border: 0.2rem solid black;
+		position: relative;
+		cursor: pointer;
+		transition: 350ms ease;
+		@include breakpoint(lg) {
+			height: 5.5rem;
+			width: 5.5rem;
+		}
+		@include onHoverFine() {
+			.arrow {
+				opacity: 0;
+				@keyframes fadeIn {
+					0% {
+						opacity: 1;
+					}
+					50% {
+						opacity: 0.25;
+					}
+					100% {
+						opacity: 1;
+					}
+				}
+				--animation-time: 0.75s;
+				&:nth-of-type(1) {
+					animation: fadeIn var(--animation-time) ease infinite;
+					animation-delay: 0;
+				}
+				&:nth-of-type(2) {
+					animation: fadeIn var(--animation-time) ease infinite;
+					animation-delay: calc(var(--animation-time) / 4);
+				}
+				&:nth-of-type(3) {
+					animation: fadeIn var(--animation-time) ease infinite;
+					animation-delay: calc(var(--animation-time) / 2);
+				}
+			}
+		}
+		.arrow {
+			width: 30%;
+			height: 30%;
+			left: 100%;
+			border-left: 0.1rem solid black;
+			border-top: 0.1rem solid black;
+			position: absolute;
+			left: 50%;
+			transform-origin: top left;
+			transform: rotate(225deg);
+			transition: 350ms ease;
+			@include breakpoint(lg) {
+				border-left: 0.2rem solid black;
+				border-top: 0.2rem solid black;
+			}
+			&:nth-of-type(1) {
+				top: calc(65% - 0.75rem);
+				opacity: 0;
+			}
+			&:nth-of-type(2) {
+				top: calc(65%);
+			}
+			&:nth-of-type(3) {
+				top: calc(65% + 0.75rem);
+				opacity: 0;
+			}
+		}
+	}
+	.line {
+		height: 6rem;
+		width: 0.4rem;
+		background-color: black;
+		transition: 350ms ease;
+		@include breakpoint(md) {
+			height: 12rem;
+		}
+		@include breakpoint(lg) {
+			height: 20vh;
+		}
+	}
+}
