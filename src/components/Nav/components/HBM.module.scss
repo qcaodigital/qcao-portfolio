@@ -1,6 +1,17 @@
-@import '../../../assets/sass/';
+@import "../../../assets/sass/";
 .HBM {
-	@include absoluteFullscreen;
-	z-index: 5;
-	background-color: var(--secondary-color);
+    @include absoluteFullscreen;
+    z-index: 5;
+    ul {
+        width: 100%;
+        height: 100%;
+        background-color: var(--secondary-color);
+        @include flexCenterCol;
+        .link {
+            a {
+                font-family: $serif;
+                font-size: $fs-lg;
+            }
+        }
+    }
 }
