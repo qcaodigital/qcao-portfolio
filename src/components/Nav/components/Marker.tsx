@@ -1,4 +1,4 @@
-import styles from "./NavMarker.module.scss";
+import styles from './Marker.module.scss';
 
 export default function NavMarker() {
 	return (

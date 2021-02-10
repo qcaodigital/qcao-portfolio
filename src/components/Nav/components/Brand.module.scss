@@ -1,0 +1,43 @@
+@import '../../../assets/sass/';
+.brand {
+	span {
+		cursor: pointer;
+		color: var(--main-color);
+		font-family: $serif;
+		&.digital::before {
+			content: '.';
+			font-family: inherit;
+			font-size: $fs-md;
+			margin-right: 0.5rem;
+		}
+		.firstLetter {
+			margin-right: -0.2rem;
+			font-size: $fs-md;
+			transition: 350ms ease;
+			@include breakpoint(lg) {
+				font-size: $fs-lg;
+			}
+		}
+		.rest {
+			display: inline-block;
+			opacity: 0;
+			letter-spacing: 0.25rem;
+			font-size: 0;
+			transition: 350ms ease;
+		}
+	}
+	@include onHoverFine {
+		span {
+			.firstLetter {
+				margin-right: 0;
+			}
+			.rest {
+				opacity: 1;
+				font-size: $fs-xs;
+				@include breakpoint(lg) {
+					font-size: $fs-sm;
+				}
+			}
+		}
+	}
+}

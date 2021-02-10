@@ -1,0 +1,6 @@
+@import '../../../assets/sass/';
+.HBM {
+	@include absoluteFullscreen;
+	z-index: 5;
+	background-color: var(--secondary-color);
+}

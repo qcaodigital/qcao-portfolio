@@ -13,52 +13,12 @@
 	@include breakpoint(md) {
 		--padding: 2rem;
 	}
-	.brand {
-		span {
-			cursor: pointer;
-			font-family: $serif;
-			&.digital::before {
-				content: '.';
-				font-family: inherit;
-				font-size: $fs-md;
-				margin-right: 0.5rem;
-			}
-			.firstLetter {
-				margin-right: -0.2rem;
-				font-size: $fs-md;
-				transition: 350ms ease;
-				@include breakpoint(lg) {
-					font-size: $fs-lg;
-				}
-			}
-			.rest {
-				display: inline-block;
-				opacity: 0;
-				letter-spacing: 0.25rem;
-				font-size: 0;
-				transition: 350ms ease;
-			}
-		}
-		@include onHoverFine {
-			span {
-				.firstLetter {
-					margin-right: 0;
-				}
-				.rest {
-					opacity: 1;
-					font-size: $fs-xs;
-					@include breakpoint(lg) {
-						font-size: $fs-sm;
-					}
-				}
-			}
-		}
-	}
 	.hbm {
 		cursor: pointer;
 		justify-self: right;
 		display: flex;
 		align-items: center;
+		color: var(--main-color);
 		p {
 			transition: 250ms ease;
 			cursor: default;
@@ -81,7 +41,7 @@
 				transform: translateY(-100%);
 				width: 100%;
 				&#top {
-					background-color: black;
+					background-color: var(--main-color);
 					height: 0.7rem;
 					transition: 350ms ease;
 				}
@@ -91,7 +51,7 @@
 					height: 0.3rem;
 					transition: 250ms ease;
 					.half {
-						background-color: black;
+						background-color: var(--main-color);
 						display: inline-block;
 						width: 50%;
 						height: inherit;
