@@ -1,17 +1,45 @@
-@import "../../../assets/sass/";
+@import '../../../assets/sass/';
 .HBM {
-    @include absoluteFullscreen;
-    z-index: 5;
-    ul {
-        width: 100%;
-        height: 100%;
-        background-color: var(--secondary-color);
-        @include flexCenterCol;
-        .link {
-            a {
-                font-family: $serif;
-                font-size: $fs-lg;
-            }
-        }
-    }
+	@include absoluteFullscreen;
+	z-index: 5;
+	ul {
+		width: 100%;
+		height: 100%;
+		// background-color: var(--secondary-color);
+		// background-color: red;
+		@include flexCenterCol;
+		li.link {
+			overflow: hidden;
+			line-height: 1.5;
+			&#active {
+				pointer-events: none;
+				span {
+					opacity: 0.5 !important;
+				}
+			}
+			span {
+				display: block;
+				font-family: $serif;
+				font-size: clamp($fs-md, 8vw, $fs-xl);
+				position: relative;
+				transition: 350ms ease;
+				.underline {
+					position: absolute;
+					display: block;
+					width: 50%;
+					height: clamp($fs-md/4, 2vw, $fs-xl/4);
+					background-color: var(--main-color);
+					opacity: 0.5;
+					top: 65%;
+					transition: 350ms ease;
+				}
+				&:hover {
+					.underline {
+						opacity: 0.25;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
 }

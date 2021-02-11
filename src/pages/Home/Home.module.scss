@@ -1,6 +1,6 @@
 @import '../../assets/sass/';
 
-.Home {
+#Home {
 	height: 100%;
 	position: relative;
 	header {
@@ -52,14 +52,16 @@
 			}
 		}
 		.cta {
+			button + button {
+				margin-left: 2rem;
+			}
 			button {
 				color: var(--main-color);
 				cursor: pointer;
 				padding: 0.75rem 1.5rem;
 				border: 2px solid var(--main-color);
-				margin-right: 2rem;
 				@include buttonAnimation(shadow);
-				span {
+				a {
 					display: inline-block;
 					font-size: $fs-sm;
 					text-transform: lowercase;
@@ -105,6 +107,8 @@
 		text-transform: uppercase;
 		opacity: 12%;
 		z-index: -1;
+		max-width: 100vh;
+		overflow: hidden;
 		@include breakpoint(xl) {
 			font-size: 23rem;
 		}

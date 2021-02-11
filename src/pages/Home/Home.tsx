@@ -2,7 +2,8 @@ import styles from './Home.module.scss';
 import ScrollCTA from './components/ScrollCTA';
 import { viewportType } from './../../components/hooks/useViewport';
 import { motion } from 'framer-motion';
-import transitions from './components/Home.transitions';
+import { transitions } from './Home.transitions';
+import { Link } from 'react-router-dom';
 
 interface HomeProps {
 	viewport: viewportType;
@@ -11,7 +12,7 @@ interface HomeProps {
 export default function Home({ viewport }: HomeProps) {
 	return (
 		<motion.section
-			className={styles.Home}
+			id={styles.Home}
 			animate='animate'
 			initial='initial'
 			exit='exit'
@@ -24,10 +25,10 @@ export default function Home({ viewport }: HomeProps) {
 				<h2>full-stack web developer</h2>
 				<div className={styles.cta}>
 					<button>
-						<span>About Me</span>
+						<Link to='/about'>About Me</Link>
 					</button>
 					<button>
-						<span>My Work</span>
+						<Link to='/about'>My Work</Link>
 					</button>
 				</div>
 			</motion.header>

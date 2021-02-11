@@ -3,7 +3,7 @@ const defaultTranslate: number = window.innerHeight * -1;
 
 type transitionsType = any;
 
-const transitions: transitionsType = {
+export const transitions: transitionsType = {
 	stagger: {
 		exit: {
 			transition: {
@@ -77,5 +77,3 @@ const transitions: transitionsType = {
 		},
 	},
 };
-
-export default transitions;

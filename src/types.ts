@@ -7,7 +7,7 @@ export interface CSSPropertiesWithVariables extends CSSProperties {
 
 export interface navLinkType {
 	label: string;
-	path: string;
+	pathname: string;
 	isActive: boolean;
 }
 

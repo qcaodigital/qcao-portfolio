@@ -19,6 +19,7 @@
 		display: flex;
 		align-items: center;
 		color: var(--main-color);
+		transition: 350ms ease;
 		p {
 			transition: 250ms ease;
 			cursor: default;

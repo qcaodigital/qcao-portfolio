@@ -1,41 +1,49 @@
 @mixin flexCenterCol {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 @mixin flexCenterRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 
 @mixin absoluteCenter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 @mixin absoluteFullscreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 
 @mixin buttonAnimation($withShadow) {
-    @media (pointer: fine), (min-height: 40rem) {
-        transition: transform 250ms ease, box-shadow 250ms ease,
-            filter 250ms ease;
-        &:hover {
-            transform: translateY(-0.3rem);
-            @if $withShadow == shadow {
-                box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.35);
-            }
-        }
-    }
+	@media (pointer: fine), (min-height: 40rem) {
+		transition: transform 250ms ease, box-shadow 250ms ease,
+			filter 250ms ease;
+		&:hover {
+			transform: translateY(-0.3rem);
+			@if $withShadow == shadow {
+				box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.35);
+			}
+		}
+	}
+}
+
+@mixin button {
+	color: var(--main-color);
+	cursor: pointer;
+	padding: 0.75rem 1.5rem;
+	border: 2px solid var(--main-color);
+	@include buttonAnimation(shadow);
 }
