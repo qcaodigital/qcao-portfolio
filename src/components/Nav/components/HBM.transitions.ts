@@ -42,6 +42,7 @@ export const transitions: transitionsType = {
             transition: {
                 duration: 0.5,
                 staggerChildren: 0.05,
+                staggerDirection: -1,
             },
         },
     },

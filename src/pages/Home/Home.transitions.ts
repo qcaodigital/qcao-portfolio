@@ -36,6 +36,7 @@ export const transitions: transitionsType = {
             opacity: 1,
             transition: {
                 duration: defaultDuration,
+                ease: "easeOut",
             },
         },
         downExit: {
@@ -43,6 +44,7 @@ export const transitions: transitionsType = {
             opacity: 0,
             transition: {
                 duration: defaultDuration,
+                ease: "easeIn",
             },
         },
     },
