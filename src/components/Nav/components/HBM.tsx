@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { navLinksType, navLinkType } from '../../../types';
 import styles from './HBM.module.scss';
 import { transitions } from './HBM.transitions';
-import { useEffect, Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 interface HBMProps {
 	navLinks: navLinksType;

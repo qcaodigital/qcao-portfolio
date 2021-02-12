@@ -8,9 +8,11 @@ import { AnimatePresence } from 'framer-motion';
 interface NavProps {
 	isHBMOpen: boolean;
 	setIsHBMOpen: Dispatch<SetStateAction<boolean>>;
+	exitDirection: string;
+	setExitDirection: (direction: string | null) => {};
 }
 
-export default function Nav({ isHBMOpen, setIsHBMOpen }: NavProps) {
+export default function Nav({ isHBMOpen, setIsHBMOpen, exitDirection, setExitDirection }: NavProps) {
 	return (
 		<>
 			<nav className={styles.Nav}>
@@ -20,7 +22,10 @@ export default function Nav({ isHBMOpen, setIsHBMOpen }: NavProps) {
 				<button
 					id={isHBMOpen ? styles.open : ''}
 					className={styles.hbm}
-					onClick={() => setIsHBMOpen((curr) => !curr)}
+					onClick={() => {
+						setExitDirection(null);
+						setTimeout(() => setIsHBMOpen((curr) => !curr), 100);
+					}}
 				>
 					<p>menu</p>
 					<div className={styles.hbmButton}>

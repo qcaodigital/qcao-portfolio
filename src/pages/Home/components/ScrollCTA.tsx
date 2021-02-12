@@ -3,12 +3,14 @@ import { transitions } from './ScrollCTA.transitions';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { viewportType } from './../../../components/hooks/useViewport';
+import Link from '../../../components/common/Link';
 
 interface ScrollCTAProps {
 	viewport: viewportType;
+	setDirection: (direction: string) => {};
 }
 
-export default function ScrollCTA({ viewport }: ScrollCTAProps) {
+export default function ScrollCTA({ viewport, setDirection }: ScrollCTAProps) {
 	const [clicked, setClicked] = useState<boolean>(false);
 
 	return (
@@ -24,15 +26,17 @@ export default function ScrollCTA({ viewport }: ScrollCTAProps) {
 			>
 				<motion.p variants={transitions.text}>scroll.</motion.p>
 			</motion.div>
-			<motion.div
-				variants={transitions.circle}
-				className={styles.circle}
-				onClick={() => setClicked((curr) => !curr)}
-			>
-				<div className={styles.arrow} />
-				<div className={styles.arrow} />
-				<div className={styles.arrow} />
-			</motion.div>
+			<Link to='/about' callBefore={() => setDirection('down')}>
+				<motion.div
+					variants={transitions.circle}
+					className={styles.circle}
+					onClick={() => setClicked((curr) => !curr)}
+				>
+					<div className={styles.arrow} />
+					<div className={styles.arrow} />
+					<div className={styles.arrow} />
+				</motion.div>
+			</Link>
 			<motion.div
 				className={styles.line}
 				custom={viewport.rank}

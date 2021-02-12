@@ -52,17 +52,18 @@
 			}
 		}
 		.cta {
-			button + button {
+			a + a {
 				margin-left: 2rem;
 			}
-			button {
+			a {
+				display: inline-block;
 				color: var(--main-color);
 				cursor: pointer;
 				padding: 0.75rem 1.5rem;
 				border: 2px solid var(--main-color);
 				@include buttonAnimation(shadow);
-				a {
-					display: inline-block;
+				button {
+					cursor: inherit;
 					font-size: $fs-sm;
 					text-transform: lowercase;
 					font-family: $serif;

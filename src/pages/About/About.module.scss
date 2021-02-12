@@ -1,54 +1,54 @@
-@import "../../assets/sass/";
+@import '../../assets/sass/';
 #About {
-    @include absoluteFullscreen;
-    .content {
-        --margin: 4rem;
-        position: absolute;
-        top: calc(var(--margin) * 2);
-        left: var(--margin);
-        width: calc(100vw - (var(--margin) * 2));
-        height: 45vh;
-        background-size: cover;
-        background-position: center;
-        header {
-            position: absolute;
-            top: calc(100% - 2rem);
-            left: 50%;
-            transform: translateX(-50%);
-            height: 40vh;
-            width: 100%;
-            @include flexCenterCol;
-            justify-content: space-between;
-            h1 {
-                width: min-content;
-                margin: 0 auto;
-                white-space: nowrap;
-                font-family: $serif;
-                font-size: $fs-md;
-                padding: 0 2rem;
-                background-color: var(--main-color);
-                color: var(--secondary-color);
-            }
-            p {
-                display: block;
-                font-family: $sans;
-                font-size: $fs-sm;
-                font-weight: 700;
-                text-align: center;
-                margin: -3vh 0;
-            }
-            h2 {
-                font-family: $sans;
-                font-size: $fs-xs;
-                letter-spacing: 2px;
-                line-height: 1.5;
-                font-weight: 300;
-                text-align: center;
-            }
-            button {
-                @include button;
-                font-family: $serif;
-            }
-        }
-    }
+	@include absoluteFullscreen;
+	.content {
+		--margin: 4rem;
+		position: absolute;
+		top: calc(var(--margin) * 2);
+		left: var(--margin);
+		width: calc(100vw - (var(--margin) * 2));
+		height: 45vh;
+		background-size: cover;
+		background-position: center;
+		header {
+			position: absolute;
+			top: calc(100% - 2rem);
+			left: 50%;
+			transform: translateX(-50%);
+			height: 35vh;
+			width: 100%;
+			@include flexCenterCol;
+			justify-content: space-between;
+			h1 {
+				width: min-content;
+				margin: 0 auto;
+				white-space: nowrap;
+				font-family: $serif;
+				font-size: $fs-md;
+				padding: 0 2rem;
+				background-color: var(--main-color);
+				color: var(--secondary-color);
+			}
+			p {
+				display: block;
+				font-family: $sans;
+				font-size: $fs-sm;
+				font-weight: 700;
+				text-align: center;
+				margin: -3vh 0;
+			}
+			h2 {
+				font-family: $sans;
+				font-size: $fs-xs;
+				letter-spacing: 2px;
+				line-height: 1.5;
+				font-weight: 300;
+				text-align: center;
+			}
+			button {
+				@include button;
+				font-family: $serif;
+			}
+		}
+	}
 }
