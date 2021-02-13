@@ -4,20 +4,22 @@ import { viewportType } from './../../components/hooks/useViewport';
 import { motion } from 'framer-motion';
 import { transitions } from './Home.transitions';
 import Link from './../../components/common/Link';
+import { Dispatch, SetStateAction } from 'react';
 
 interface HomeProps {
 	viewport: viewportType;
-	exitDirection: string;
-	setDirection: (direction: string) => {};
+	navDirection: 'up' | 'down';
+	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	setCurrentPath: Dispatch<SetStateAction<number>>;
 }
 
-export default function Home({ viewport, exitDirection, setDirection }: HomeProps) {
+export default function Home({ viewport, navDirection, setDirection, setCurrentPath }: HomeProps) {
 	return (
 		<motion.section
 			id={styles.Home}
-			initial={!exitDirection ? 'hbmInitial' : 'downInitial'}
-			animate={!exitDirection ? 'hbmEnter' : 'downEnter'}
-			exit={!exitDirection ? 'hbmExit' : 'downExit'}
+			initial={navDirection === 'down' ? 'top' : 'bottom'}
+			animate='animate'
+			exit={navDirection === 'down' ? 'bottom' : 'top'}
 		>
 			<motion.header variants={transitions.headerFadeUp}>
 				<h1>
@@ -34,7 +36,7 @@ export default function Home({ viewport, exitDirection, setDirection }: HomeProp
 					</Link>
 				</div>
 			</motion.header>
-			<ScrollCTA viewport={viewport} setDirection={setDirection} />
+			<ScrollCTA setCurrentPath={setCurrentPath} setDirection={setDirection} />
 			<motion.div className={styles.social} variants={transitions.fadeUp}>
 				<a
 					href='https://github.com/qcaodigital'

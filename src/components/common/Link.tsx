@@ -1,8 +1,8 @@
 import { useHistory } from 'react-router-dom';
 interface LinkProps {
 	to: string;
-	callBefore?: () => {};
-	callAfter?: () => {};
+	callBefore?: () => void;
+	callAfter?: () => void;
 	children: React.ReactChild;
 }
 
@@ -12,10 +12,12 @@ export default function Link({ to, callBefore, callAfter, children }: LinkProps)
 		if (callBefore) {
 			callBefore();
 		}
-		setTimeout(() => history.push(to), 0);
-		// if (callAfter) {
-		// 	setTimeout(() => callAfter(), 500);
-		// }
+		setTimeout(() => {
+			history.push(to);
+			if (callAfter) {
+				callAfter();
+			}
+		}, 0);
 	}
 	//eslint-disable-next-line
 	return <a onClick={handleClick}>{children}</a>;

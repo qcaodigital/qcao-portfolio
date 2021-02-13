@@ -1,36 +1,46 @@
 import styles from './About.module.scss';
 import { motion } from 'framer-motion';
 import img from '../../assets/imgs/portrait-desat.jpg';
+import { transitions } from './About.transitions';
+import { Dispatch, SetStateAction } from 'react';
 
 interface AboutProps {
-	pathname: string;
+	navDirection: 'up' | 'down';
+	isSubpathOpen: boolean;
+	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function About({ pathname }: AboutProps) {
+export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }: AboutProps) {
 	return (
 		<motion.section
 			id={styles.About}
-			initial={{ opacity: 0 }}
-			exit={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
+			initial={navDirection === 'down' ? 'top' : 'bottom'}
+			animate='animate'
+			exit={navDirection === 'down' ? 'bottom' : 'top'}
 		>
-			<div
-				className={styles.content}
-				style={{ backgroundImage: `url(${img})` }}
-			>
+			<motion.section id={styles.landing} variants={transitions.landing}>
+				<div
+					className={`${styles.img} ${isSubpathOpen && styles.subpathOpen}`}
+					style={{ backgroundImage: `url(${img})` }}
+				></div>
 				<header>
 					<h1>About Me</h1>
 					{/* eslint-disable-next-line */}
 					<p>//</p>
 					<h2>
-						I'm a full-stack web developer specializing in the MERN
-						stack. One year ago I left my career as an accomplished
-						business manager in the hospitality industry to pursue
-						becoming a developer.
+						I'm a full-stack web developer specializing in the MERN stack. One year ago
+						I left my career as an accomplished business manager in the hospitality
+						industry to pursue becoming a developer.
 					</h2>
-					<button className={styles.CTA}>Read more</button>
+					<button
+						className={styles.CTA}
+						onClick={() => setIsSubpathOpen((curr) => !curr)}
+					>
+						Read more
+					</button>
 				</header>
-			</div>
+			</motion.section>
+			<section></section>
 		</motion.section>
 	);
 }

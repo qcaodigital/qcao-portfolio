@@ -1,16 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction, useCallback } from 'react';
 
-export const useGetVisibleScreenHeight = (): string => {
-	const [screenHeight, setScreenHeight] = useState<number>(
-		window.innerHeight
-	);
-	const handleResize = (): void => {
-		setScreenHeight(window.innerHeight);
-	};
+export const useGetVisibleScreenHeight = (): [
+	number | string,
+	Dispatch<SetStateAction<number | string>>
+] => {
+	const [screenHeight, setScreenHeight] = useState<number | string>(window.innerHeight);
+	const handleResize = useCallback((): void => {
+		if (screenHeight !== '100%') {
+			setScreenHeight(window.innerHeight);
+		}
+	}, [screenHeight]);
 
 	useEffect(() => {
 		window.addEventListener('resize', handleResize);
-	}, []);
+	}, [handleResize]);
 
-	return `${screenHeight}px`;
+	return [screenHeight, setScreenHeight];
 };

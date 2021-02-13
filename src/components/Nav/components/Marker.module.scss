@@ -1,12 +1,12 @@
 @import '../../../assets/sass/';
 .NavMarker {
-	position: absolute;
+	position: fixed;
 	bottom: 0.5rem;
 	left: 1rem;
 	@include breakpoint(md) {
 		bottom: unset;
 		top: 50%;
-		left: 3rem;
+		// left: 3rem;
 		transform: translateY(-50%);
 	}
 	div {
@@ -16,11 +16,12 @@
 		margin-bottom: 0.5rem;
 		background-color: var(--main-color);
 		border: 0.1rem solid var(--main-color);
+		transition: 150ms ease 150ms;
 		&.active {
 			--scale: 1.75;
 			transform: scale(var(--scale));
 			background-color: transparent;
-			margin-bottom: calc(0.5rem * var(--scale));
+			margin: calc(0.5rem * var(--scale)) 0;
 		}
 	}
 }
