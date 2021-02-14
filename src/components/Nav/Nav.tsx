@@ -10,6 +10,7 @@ interface NavProps {
 	setIsHBMOpen: Dispatch<SetStateAction<boolean>>;
 	paths: string[];
 	currentPath: number;
+	isSubpathOpen: boolean;
 	setCurrentPath: Dispatch<SetStateAction<number>>;
 	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
 }
@@ -19,6 +20,7 @@ export default function Nav({
 	setIsHBMOpen,
 	paths,
 	currentPath,
+	isSubpathOpen,
 	setCurrentPath,
 	setDirection,
 }: NavProps) {
@@ -54,7 +56,7 @@ export default function Nav({
 				<div className={styles.markerContainer}></div>
 			</nav>
 			<AnimatePresence>
-				{!isHBMOpen && <Marker currentPath={currentPath} paths={paths} />}
+				{!isHBMOpen && !isSubpathOpen && <Marker currentPath={currentPath} paths={paths} />}
 			</AnimatePresence>
 		</>
 	);

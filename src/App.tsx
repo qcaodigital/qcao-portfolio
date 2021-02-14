@@ -1,5 +1,5 @@
 import styles from './App.module.scss';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, CSSProperties } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import useViewport from './components/hooks/useViewport';
@@ -11,6 +11,10 @@ import HBM from './components/Nav/components/HBM';
 import useNavState from './components/hooks/useNavState';
 import { useGetVisibleScreenHeight } from './components/hooks/useGetVisibleScreenHeight';
 import useWheelSwipe from './components/hooks/useWheelSwipe';
+
+interface customCSS extends CSSProperties {
+	'--trueHeight': string;
+}
 
 export default function App() {
 	const paths: string[] = useMemo(() => ['/', '/about'], []);
@@ -33,10 +37,20 @@ export default function App() {
 		setCurrentPath(paths.indexOf(location.pathname));
 	}, [location.pathname, paths]);
 
+	useEffect(() => {
+		window.scrollTo({ top: 0 });
+	}, []);
+
 	return (
 		<main
 			className={styles.App}
-			style={{ height: screenHeight, overflow: `${isSubpathOpen ? 'unset' : 'hidden'}` }}
+			style={
+				{
+					'--trueHeight': `${screenHeight}px`,
+					height: screenHeight,
+					overflowY: `${isSubpathOpen ? 'unset' : 'hidden'}`,
+				} as customCSS
+			}
 		>
 			<div className={styles.background} />
 			<Nav
@@ -44,6 +58,7 @@ export default function App() {
 				isHBMOpen={isHBMOpen}
 				paths={paths}
 				currentPath={currentPath}
+				isSubpathOpen={isSubpathOpen}
 				setCurrentPath={setCurrentPath}
 				setDirection={setDirection}
 			/>

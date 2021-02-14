@@ -1,6 +1,7 @@
 @import '../../../assets/sass/';
 .HBM {
 	@include absoluteFullscreen;
+	position: fixed;
 	z-index: 5;
 	.background {
 		@include absoluteFullscreen;

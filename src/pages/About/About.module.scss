@@ -6,18 +6,17 @@
 		--prev-margin: 4rem; //keep this value same as above
 		@include flexCenterCol;
 		justify-content: flex-start;
+		height: var(--trueHeight);
+		overflow: hidden;
 		.img {
-			// position: absolute;
 			margin-top: calc(var(--margin) * 2);
 			width: calc(100vw - (var(--margin) * 2));
 			height: 45vh;
-			background-size: cover;
-			background-position: center;
+			object-fit: cover;
 			transition: 350ms ease;
 			&.subpathOpen {
 				--margin: 0rem;
 				height: calc(45vh + var(--prev-margin) * 2);
-				backdrop-filter: invert(100%);
 			}
 		}
 		header {
@@ -55,12 +54,35 @@
 				font-weight: 300;
 				text-align: center;
 			}
-			button.CTA {
-				@include button;
-				font-family: $serif;
+			.ctaContainer {
+				// overflow: hidden;
+				button {
+					@include button;
+					display: block;
+					span {
+						font-family: $serif;
+					}
+				}
 			}
-			button.back {
-				font-size: 3rem;
+		}
+		.scrollCTA {
+			@include flexCenterCol;
+			position: absolute;
+			bottom: 0;
+			left: 1.5rem;
+			p {
+				font-weight: 400;
+				letter-spacing: 0.2rem;
+				font-size: $fs-xs;
+				writing-mode: vertical-lr;
+				transform: rotate(180deg) translateX($fs-xs/10);
+				margin-bottom: 0.5rem;
+				position: relative;
+			}
+			div {
+				width: 0.2rem;
+				height: 5vh;
+				background-color: var(--main-color);
 			}
 		}
 	}
