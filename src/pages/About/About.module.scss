@@ -83,6 +83,18 @@
 				width: 0.2rem;
 				height: 5vh;
 				background-color: var(--main-color);
+				position: relative;
+				&::after {
+					content: '';
+					width: 0.15rem;
+					height: 5vh;
+					background-color: var(--main-color);
+					display: block;
+					position: absolute;
+					top: calc(100% - 0.1rem);
+					transform-origin: top;
+					transform: translateX(0.0625rem) rotate(45deg);
+				}
 			}
 		}
 	}

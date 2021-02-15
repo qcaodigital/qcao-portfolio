@@ -47,8 +47,7 @@ export default function App() {
 			style={
 				{
 					'--trueHeight': `${screenHeight}px`,
-					height: screenHeight,
-					overflowY: `${isSubpathOpen ? 'unset' : 'hidden'}`,
+					overflowY: `${isSubpathOpen ? 'scroll' : 'hidden'}`,
 				} as customCSS
 			}
 		>

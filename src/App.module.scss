@@ -1,9 +1,8 @@
 @import './assets/sass/';
 
 .App {
-	height: 100%;
+	height: var(--trueHeight);
 	width: 100vw;
-	// overflow-x: hidden;
 	position: relative;
 	.background {
 		@include absoluteFullscreen;
