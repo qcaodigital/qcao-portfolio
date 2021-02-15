@@ -1,10 +1,10 @@
 //FONTS//
-$serif: 'Ivy Mode', serif;
-$sans: 'Aktiv Grotesk W01', sans-serif;
+$serif: "Ivy Mode", serif;
+$sans: "Aktiv Grotesk W01", sans-serif;
 
 //FONT-SCALE - 1.618 Golden Ratio/Base 10px/Adjusted 110%//
 $fs-xxs: 0.66rem;
-$fs-xs: 1.1rem;
+$fs-xs: 1.25rem;
 $fs-sm: 1.75rem;
 $fs-md: 2.826rem;
 $fs-lg: 4.62rem;
@@ -15,8 +15,8 @@ $fs-xxxl: 19.7rem;
 
 //CSS Variables//
 :root {
-	--main-color: black;
-	--main-color-flat: #2f2f2f;
-	--secondary-color: #f8f8f3;
-	--highlight-color: #ff4d5a;
+    --main-color: black;
+    --main-color-flat: #2f2f2f;
+    --secondary-color: #f8f8f3;
+    --highlight-color: #ff4d5a;
 }
