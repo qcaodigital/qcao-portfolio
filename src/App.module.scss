@@ -1,8 +1,6 @@
 @import './assets/sass/';
 
 .App {
-	height: var(--trueHeight);
-	width: 100vw;
 	position: relative;
 	.background {
 		@include absoluteFullscreen;
@@ -16,5 +14,8 @@
 			background-image: url('./assets/imgs/textures/axiom-pattern.png');
 			opacity: 0.65;
 		}
+	}
+	> section {
+		min-height: var(--trueHeight);
 	}
 }

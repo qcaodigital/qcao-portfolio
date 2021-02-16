@@ -1,118 +1,117 @@
-@import "../../assets/sass/";
+@import '../../assets/sass/';
 
 #Home {
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    header {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 75%;
-        color: var(--main-color);
-        h1 {
-            font-family: $serif;
-            font-size: $fs-xl;
-            font-weight: 400;
-            line-height: 1;
-            transition: 350ms ease;
-            @include breakpoint(lg) {
-                font-size: $fs-xxl;
-            }
-            span {
-                all: inherit;
-                display: inline-block;
-                @include breakpoint(lg) {
-                    display: block;
-                }
-            }
-        }
-        h2 {
-            font-family: $sans;
-            font-size: $fs-sm;
-            font-weight: 400;
-            letter-spacing: 0.15rem;
-            margin: 1rem 0 1.25rem 0;
-            transition: 350ms ease;
-            &::before {
-                content: "//";
-                letter-spacing: 0.5rem;
-                font-weight: 600;
-                font-size: $fs-md;
-                margin: 0 0.5rem;
-                display: inline-block;
-                transform: translateY(5%);
-            }
-            @include breakpoint(md) {
-                font-size: $fs-md;
-                margin: 0.5rem 0 1.75rem 0;
-                &::before {
-                    font-size: $fs-lg;
-                }
-            }
-        }
-        .cta {
-            a + a {
-                margin-left: 2rem;
-            }
-            a {
-                display: inline-block;
-                color: var(--main-color);
-                cursor: pointer;
-                padding: 0.75rem 1.5rem;
-                border: 2px solid var(--main-color);
-                @include buttonAnimation(shadow);
-                button {
-                    cursor: inherit;
-                    font-size: $fs-sm;
-                    text-transform: lowercase;
-                    font-family: $serif;
-                    font-weight: 500;
-                    letter-spacing: 0.1rem;
-                    position: relative;
-                    overflow: hidden;
-                }
-            }
-        }
-    }
-    .social {
-        display: none;
-        position: absolute;
-        bottom: 1rem;
-        left: 1rem;
-        color: var(--main-color);
-        @include breakpoint(md) {
-            display: inline-block;
-        }
-        .icon + .icon {
-            margin-left: 1rem;
-        }
-        .icon {
-            display: inline-block;
-            font-size: 3rem;
-            @include buttonAnimation(noshadow);
-            @include breakpoint(lg) {
-                font-size: 3.75rem;
-            }
-        }
-    }
-    h3 {
-        font-family: $serif;
-        font-weight: 400;
-        position: absolute;
-        top: 0;
-        left: 100%;
-        transform: translate(-7%, -60%) rotate(90deg) scaleY(1.2);
-        transform-origin: left;
-        font-size: 15rem;
-        text-transform: uppercase;
-        opacity: 12%;
-        z-index: -1;
-        // max-width: var(--trueHeight);
-        overflow: hidden;
-        @include breakpoint(xl) {
-            font-size: 23rem;
-        }
-    }
+	position: relative;
+	overflow: hidden;
+	header {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 75%;
+		color: var(--main-color);
+		h1 {
+			font-family: $serif;
+			font-size: $fs-xl;
+			font-weight: 400;
+			line-height: 1;
+			transition: 350ms ease;
+			@include breakpoint(lg) {
+				font-size: $fs-xxl;
+			}
+			span {
+				all: inherit;
+				display: inline-block;
+				@include breakpoint(lg) {
+					display: block;
+				}
+			}
+		}
+		h2 {
+			font-family: $sans;
+			font-size: $fs-sm;
+			font-weight: 400;
+			letter-spacing: 0.15rem;
+			margin: 1rem 0 1.25rem 0;
+			transition: 350ms ease;
+			&::before {
+				content: '//';
+				letter-spacing: 0.5rem;
+				font-weight: 600;
+				font-size: $fs-md;
+				margin: 0 0.5rem;
+				display: inline-block;
+				transform: translateY(5%);
+			}
+			@include breakpoint(md) {
+				font-size: $fs-md;
+				margin: 0.5rem 0 1.75rem 0;
+				&::before {
+					font-size: $fs-lg;
+				}
+			}
+		}
+		.cta {
+			a + a {
+				margin-left: 2rem;
+			}
+			a {
+				display: inline-block;
+				color: var(--main-color);
+				cursor: pointer;
+				padding: 0.75rem 1.5rem;
+				border: 2px solid var(--main-color);
+				@include buttonAnimation(shadow);
+				button {
+					cursor: inherit;
+					font-size: $fs-sm;
+					text-transform: lowercase;
+					font-family: $serif;
+					font-weight: 500;
+					letter-spacing: 0.1rem;
+					position: relative;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+	.social {
+		display: none;
+		position: absolute;
+		bottom: 1rem;
+		left: 1rem;
+		color: var(--main-color);
+		@include breakpoint(md) {
+			display: inline-block;
+		}
+		.icon + .icon {
+			margin-left: 1rem;
+		}
+		.icon {
+			display: inline-block;
+			font-size: 3rem;
+			@include buttonAnimation(noshadow);
+			@include breakpoint(lg) {
+				font-size: 3.75rem;
+			}
+		}
+	}
+	h3 {
+		font-family: $serif;
+		font-weight: 400;
+		position: absolute;
+		top: 0;
+		left: 100%;
+		transform: translate(-7%, -60%) rotate(90deg) scaleY(1.2);
+		transform-origin: left;
+		font-size: 15rem;
+		text-transform: uppercase;
+		opacity: 12%;
+		z-index: -1;
+		// max-width: var(--trueHeight);
+		overflow: hidden;
+		@include breakpoint(xl) {
+			font-size: 23rem;
+		}
+	}
 }
