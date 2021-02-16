@@ -52,7 +52,7 @@ export default function App() {
                 } as customCSS
             }
         >
-            <div className={styles.background} />
+            <div className={styles.background}>{currentPath}</div>
             <Nav
                 setIsHBMOpen={setIsHBMOpen}
                 isHBMOpen={isHBMOpen}

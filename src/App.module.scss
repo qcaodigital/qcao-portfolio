@@ -1,21 +1,22 @@
-@import './assets/sass/';
+@import "./assets/sass/";
 
 .App {
-	position: relative;
-	.background {
-		@include absoluteFullscreen;
-		position: fixed;
-		z-index: -1;
-		background-color: #f8f8f3;
-		//Seperate Texture Styles
-		&::before {
-			content: '';
-			@include absoluteFullscreen;
-			background-image: url('./assets/imgs/textures/axiom-pattern.png');
-			opacity: 0.65;
-		}
-	}
-	> section {
-		min-height: var(--trueHeight);
-	}
+    position: relative;
+    .background {
+        @include absoluteFullscreen;
+        height: 150%;
+        position: fixed;
+        z-index: -1;
+        background-color: #f8f8f3;
+        //Seperate Texture Styles
+        &::before {
+            content: "";
+            @include absoluteFullscreen;
+            background-image: url("./assets/imgs/textures/axiom-pattern.png");
+            opacity: 0.65;
+        }
+    }
+    > section {
+        min-height: var(--trueHeight);
+    }
 }

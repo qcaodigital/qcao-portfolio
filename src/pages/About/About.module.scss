@@ -1,99 +1,100 @@
-@import '../../assets/sass/';
+@import "../../assets/sass/";
 #About {
-	#landing {
-		--margin: 4rem;
-		--prev-margin: 4rem; //keep this value same as above
-		@include flexCenterCol;
-		justify-content: flex-start;
-		position: relative;
-		min-height: inherit;
-		.img {
-			margin-top: calc(var(--margin) * 2);
-			width: calc(100vw - (var(--margin) * 2));
-			height: 45vh;
-			object-fit: cover;
-			transition: 350ms ease;
-			&.subpathOpen {
-				--margin: 0rem;
-				height: calc(45vh + var(--prev-margin) * 2);
-			}
-		}
-		header {
-			position: relative;
-			top: -2rem;
-			left: 50%;
-			transform: translateX(-50%);
-			height: 40vh;
-			@include flexCenterCol;
-			justify-content: space-between;
-			h1 {
-				width: min-content;
-				margin: 0 auto;
-				white-space: nowrap;
-				font-family: $serif;
-				font-size: $fs-md;
-				padding: 0 2rem;
-				background-color: var(--main-color);
-				color: var(--secondary-color);
-			}
-			p {
-				display: block;
-				font-family: $sans;
-				font-size: $fs-sm;
-				font-weight: 700;
-				text-align: center;
-				margin: -3vh 0;
-			}
-			h2 {
-				padding: 0 var(--prev-margin);
-				font-family: $sans;
-				font-size: $fs-xs;
-				letter-spacing: 2px;
-				line-height: 1.25;
-				font-weight: 300;
-				text-align: center;
-			}
-			.ctaContainer {
-				button {
-					@include button;
-					display: block;
-					span {
-						font-family: $serif;
-					}
-				}
-			}
-		}
-		.scrollCTA {
-			@include flexCenterCol;
-			position: absolute;
-			bottom: 0;
-			left: 1.5rem;
-			p {
-				font-weight: 400;
-				letter-spacing: 0.2rem;
-				font-size: $fs-xs;
-				writing-mode: vertical-lr;
-				transform: rotate(180deg) translateX($fs-xs/10);
-				margin-bottom: 0.5rem;
-				position: relative;
-			}
-			div {
-				width: 0.2rem;
-				height: 5vh;
-				background-color: var(--main-color);
-				position: relative;
-				&::after {
-					content: '';
-					width: 0.15rem;
-					height: 5vh;
-					background-color: var(--main-color);
-					display: block;
-					position: absolute;
-					top: calc(100% - 0.1rem);
-					transform-origin: top;
-					transform: translateX(0.0625rem) rotate(45deg);
-				}
-			}
-		}
-	}
+    #landing {
+        --margin: 4rem;
+        --prev-margin: 4rem; //keep this value same as above
+        @include flexCenterCol;
+        justify-content: flex-start;
+        position: relative;
+        height: inherit;
+        min-height: inherit;
+        .img {
+            margin-top: calc(var(--margin) * 2);
+            width: calc(100vw - (var(--margin) * 2));
+            height: 45vh;
+            object-fit: cover;
+            transition: 350ms ease;
+            &.subpathOpen {
+                --margin: 0rem;
+                height: calc(45vh + var(--prev-margin) * 2);
+            }
+        }
+        header {
+            position: relative;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 35vh;
+            @include flexCenterCol;
+            justify-content: space-between;
+            h1 {
+                width: min-content;
+                margin: 0 auto;
+                white-space: nowrap;
+                font-family: $serif;
+                font-size: $fs-md;
+                padding: 0 2rem;
+                background-color: var(--main-color);
+                color: var(--secondary-color);
+            }
+            p {
+                display: block;
+                font-family: $sans;
+                font-size: $fs-sm;
+                font-weight: 700;
+                text-align: center;
+                margin: -3vh 0;
+            }
+            h2 {
+                padding: 0 var(--prev-margin);
+                font-family: $sans;
+                font-size: $fs-xs;
+                letter-spacing: 2px;
+                line-height: 1.25;
+                font-weight: 300;
+                text-align: center;
+            }
+            .ctaContainer {
+                button {
+                    @include button;
+                    display: block;
+                    span {
+                        font-family: $serif;
+                    }
+                }
+            }
+        }
+        .scrollCTA {
+            @include flexCenterCol;
+            position: absolute;
+            bottom: 0;
+            left: 1.5rem;
+            p {
+                font-weight: 400;
+                letter-spacing: 0.2rem;
+                font-size: $fs-xs;
+                writing-mode: vertical-lr;
+                transform: rotate(180deg) translateX($fs-xs/10);
+                margin-bottom: 0.5rem;
+                position: relative;
+            }
+            div {
+                width: 0.2rem;
+                height: 5vh;
+                background-color: var(--main-color);
+                position: relative;
+                &::after {
+                    content: "";
+                    width: 0.15rem;
+                    height: 5vh;
+                    background-color: var(--main-color);
+                    display: block;
+                    position: absolute;
+                    top: calc(100% - 0.1rem);
+                    transform-origin: top;
+                    transform: translateX(0.0625rem) rotate(45deg);
+                }
+            }
+        }
+    }
 }

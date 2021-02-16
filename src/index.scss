@@ -1,22 +1,22 @@
-@import './assets/sass/';
+@import "./assets/sass/";
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-	font-size: 62.5%;
-	height: 100%;
-	touch-action: pan-down;
+    font-size: 62.5%;
+    height: 100%;
+    touch-action: pan-down;
 }
 
 body {
-	margin: 0;
-	height: 100%;
+    margin: 0;
+    height: 100%;
 }
 
 #root {
-	height: 100%;
+    height: 100%;
 }
 
 p,
@@ -24,8 +24,8 @@ li,
 a,
 span,
 div {
-	font-family: $sans;
-	margin: 0;
+    font-family: $sans;
+    margin: 0;
 }
 
 h1,
@@ -34,24 +34,24 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
+    margin: 0;
 }
 
 ul,
 ol {
-	list-style: none;
-	padding-left: 0;
-	margin: 0;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
 }
 
 button {
-	background-color: unset;
-	outline: none;
-	border: none;
-	padding: 0;
+    background-color: unset;
+    outline: none;
+    border: none;
+    padding: 0;
 }
 
 a {
-	text-decoration: none;
-	color: unset;
+    text-decoration: none;
+    color: unset;
 }
