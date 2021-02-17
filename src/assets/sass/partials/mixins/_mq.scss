@@ -7,7 +7,7 @@
 	}
 	@if $label == md {
 		//725px
-		@media screen and (min-width: 775px) {
+		@media screen and (min-width: 725px) {
 			@content;
 		}
 	}

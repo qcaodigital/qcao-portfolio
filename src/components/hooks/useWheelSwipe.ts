@@ -49,7 +49,7 @@ export default function useWheelSwipe(
 				pointerEnd = e.changedTouches[0].clientY;
 				delta = pointerStart - pointerEnd;
 				window.removeEventListener('touchend', swipeUp);
-				if (Math.abs(delta) > 50) setDirAndPush(delta);
+				if (Math.abs(delta) > 35) setDirAndPush(delta);
 			}
 			window.addEventListener('touchend', swipeUp);
 		},

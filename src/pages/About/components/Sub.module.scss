@@ -1,63 +1,78 @@
-@import "../../../assets/sass/";
+@import '../../../assets/sass/';
 
 .Sub {
-    padding: 5vh 0 0 0;
-    header {
-        color: var(--main-color);
-        position: relative;
-        --line-length: 3rem;
-        h3 {
-            margin-left: calc(var(--line-length) + 1.75ch);
-            text-transform: capitalize;
-            font-family: $serif;
-            font-size: $fs-lg;
-            white-space: nowrap;
-            span {
-                display: flex;
-                align-items: center;
-                position: absolute;
-                letter-spacing: -0.125ch;
-                color: var(--highlight-color);
-                margin: 0 0.5ch 0 0;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                &::before {
-                    content: "";
-                    width: var(--line-length);
-                    margin-top: 0.5rem;
-                    height: 0.1rem;
-                    margin-right: 0.5rem;
-                    display: inline-block;
-                    background-color: var(--main-color);
-                }
-            }
-        }
-    }
-    &#1 .content {
-        padding: 0 2rem;
-        margin: 2rem 0 0 0;
-        h4 {
-            &::before {
-                content: "My name is:";
-                font-size: $fs-xs;
-                display: block;
-                opacity: 0.5;
-                font-weight: 200;
-                letter-spacing: 0.2rem;
-            }
-            font-size: $fs-sm;
-            font-weight: 400;
-        }
-        p {
-            font-size: $fs-xs;
-            line-height: 1.75;
-            margin: 2rem 0;
-            opacity: 0.5;
-        }
-        img {
-            width: 100%;
-            object-fit: cover;
-        }
-    }
+	padding: 5vh 0 0 0;
+	@include breakpoint(md) {
+		padding: 10vh 0 0 0;
+	}
+	header {
+		color: var(--main-color);
+		position: relative;
+		text-align: center;
+		width: 100%;
+		transition: 350ms ease-in;
+		@include breakpoint(lg) {
+			width: 60%;
+		}
+		h3 {
+			text-transform: capitalize;
+			font-family: $serif;
+			font-size: $fs-xl;
+			white-space: nowrap;
+			position: relative;
+			display: inline-block;
+			@include breakpoint(lg) {
+				font-size: $fs-xxl;
+			}
+			span {
+				display: flex;
+				align-items: center;
+				position: absolute;
+				letter-spacing: -0.125ch;
+				color: var(--highlight-color);
+				margin: 0 0.25ch 0 0;
+				right: calc(100% + 0.5ch);
+				top: 50%;
+				transform: translateY(-50%);
+				@include breakpoint(lg) {
+					right: 110%;
+				}
+				&::before {
+					content: '';
+					width: 50vw;
+					margin-top: 0.5rem;
+					height: 0.1rem;
+					margin-right: 0.5rem;
+					display: inline-block;
+					background-color: var(--main-color);
+				}
+			}
+		}
+	}
+	&#1 .content {
+		padding: 0 10%;
+		margin: 2rem 0 0 0;
+		h4 {
+			&::before {
+				content: 'My name is:';
+				font-size: $fs-sm;
+				display: block;
+				opacity: 0.5;
+				font-weight: 300;
+				letter-spacing: 0.2rem;
+			}
+			font-size: $fs-md;
+			font-weight: 400;
+		}
+		p {
+			font-size: $fs-sm;
+			margin: 2rem 0 4rem 0;
+			// opacity: 0.5;
+			font-weight: 300;
+		}
+		img {
+			width: 100%;
+			object-fit: cover;
+		}
+	}
 }

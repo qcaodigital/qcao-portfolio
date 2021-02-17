@@ -12,12 +12,15 @@
 		color: var(--main-color);
 		h1 {
 			font-family: $serif;
-			font-size: $fs-xl;
+			font-size: $fs-xxl;
 			font-weight: 400;
 			line-height: 1;
 			transition: 350ms ease;
+			@include breakpoint(md) {
+				font-size: $fs-xxxl;
+			}
 			@include breakpoint(lg) {
-				font-size: $fs-xxl;
+				font-size: $fs-xxxxl;
 			}
 			span {
 				all: inherit;
@@ -44,7 +47,7 @@
 				transform: translateY(5%);
 			}
 			@include breakpoint(md) {
-				font-size: $fs-md;
+				font-size: $fs-lg;
 				margin: 0.5rem 0 1.75rem 0;
 				&::before {
 					font-size: $fs-lg;
