@@ -1,9 +1,13 @@
 @import '../../../assets/sass/';
 .brand {
+	@include breakpoint(lg) {
+		font-size: 200%;
+	}
 	span {
 		cursor: pointer;
 		color: var(--main-color);
 		font-family: $serif;
+		text-shadow: $text-shadow-sm;
 		&.digital::before {
 			content: '.';
 			font-family: inherit;
@@ -16,6 +20,9 @@
 			transition: 350ms ease;
 			@include breakpoint(lg) {
 				font-size: $fs-lg;
+			}
+			@include breakpoint(xl) {
+				font-size: $fs-xl;
 			}
 		}
 		.rest {

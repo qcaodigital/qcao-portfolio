@@ -6,10 +6,10 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface ScrollCTAProps {
 	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
-	setCurrentPath: Dispatch<SetStateAction<number>>;
+	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
 }
 
-export default function ScrollCTA({ setDirection, setCurrentPath }: ScrollCTAProps) {
+export default function ScrollCTA({ setDirection, setCurrentPathIdx }: ScrollCTAProps) {
 	return (
 		<motion.div id={styles.ScrollCTA} initial='initial' animate='animate' exit='exit'>
 			<motion.div variants={transitions.textbox} className={styles.textBox}>
@@ -18,7 +18,7 @@ export default function ScrollCTA({ setDirection, setCurrentPath }: ScrollCTAPro
 			<Link
 				to='/about'
 				callBefore={() => setDirection('down')}
-				callAfter={() => setCurrentPath(1)}
+				callAfter={() => setCurrentPathIdx(1)}
 			>
 				<motion.div variants={transitions.circle} className={styles.circle}>
 					<div className={styles.arrow} />

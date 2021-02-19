@@ -3,7 +3,7 @@ interface LinkProps {
 	to: string;
 	callBefore?: () => void;
 	callAfter?: () => void;
-	children: React.ReactChild;
+	children?: React.ReactChild;
 }
 
 export default function Link({ to, callBefore, callAfter, children }: LinkProps) {

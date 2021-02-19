@@ -1,3 +1,6 @@
+@import './mq';
+@import '../../variables/';
+
 @mixin flexCenterCol {
 	display: flex;
 	flex-direction: column;
@@ -29,8 +32,7 @@
 
 @mixin buttonAnimation($withShadow) {
 	@media (pointer: fine), (min-height: 40rem) {
-		transition: transform 250ms ease, box-shadow 250ms ease,
-			filter 250ms ease;
+		transition: transform 250ms ease, box-shadow 250ms ease, filter 250ms ease;
 		&:hover {
 			transform: translateY(-0.3rem);
 			@if $withShadow == shadow {
@@ -45,5 +47,14 @@
 	cursor: pointer;
 	padding: 0.75rem 1.5rem;
 	border: 2px solid var(--main-color);
+	font-size: $fs-sm;
+	font-family: $serif !important;
+	text-transform: lowercase;
+	* {
+		font-family: $serif !important;
+	}
 	@include buttonAnimation(shadow);
+	@include breakpoint(xl) {
+		font-size: $fs-md;
+	}
 }

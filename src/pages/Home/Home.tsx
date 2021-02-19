@@ -10,10 +10,15 @@ interface HomeProps {
 	viewport: viewportType;
 	navDirection: 'up' | 'down';
 	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
-	setCurrentPath: Dispatch<SetStateAction<number>>;
+	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
 }
 
-export default function Home({ viewport, navDirection, setDirection, setCurrentPath }: HomeProps) {
+export default function Home({
+	viewport,
+	navDirection,
+	setDirection,
+	setCurrentPathIdx,
+}: HomeProps) {
 	return (
 		<motion.section
 			id={styles.Home}
@@ -29,14 +34,14 @@ export default function Home({ viewport, navDirection, setDirection, setCurrentP
 				<h2>full-stack web developer</h2>
 				<div className={styles.cta}>
 					<Link to='/about' callBefore={() => setDirection('down')}>
-						<button>About Me</button>
+						About Me
 					</Link>
 					<Link to='/about' callBefore={() => setDirection('down')}>
-						<button>My Work</button>
+						My Work
 					</Link>
 				</div>
 			</motion.header>
-			<ScrollCTA setCurrentPath={setCurrentPath} setDirection={setDirection} />
+			<ScrollCTA setCurrentPathIdx={setCurrentPathIdx} setDirection={setDirection} />
 			<motion.div className={styles.social} variants={transitions.fadeUp}>
 				<a
 					href='https://github.com/qcaodigital'

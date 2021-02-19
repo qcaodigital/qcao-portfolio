@@ -15,6 +15,7 @@
 			font-size: $fs-xxl;
 			font-weight: 400;
 			line-height: 1;
+			text-shadow: $text-shadow-lg;
 			transition: 350ms ease;
 			@include breakpoint(md) {
 				font-size: $fs-xxxl;
@@ -36,6 +37,7 @@
 			font-weight: 400;
 			letter-spacing: 0.15rem;
 			margin: 1rem 0 1.25rem 0;
+			text-shadow: $text-shadow-sm;
 			transition: 350ms ease;
 			&::before {
 				content: '//';
@@ -48,10 +50,12 @@
 			}
 			@include breakpoint(md) {
 				font-size: $fs-lg;
-				margin: 0.5rem 0 1.75rem 0;
+				margin: 1.5rem 0 2rem 0;
 				&::before {
 					font-size: $fs-lg;
 				}
+			}
+			@include breakpoint(lg) {
 			}
 		}
 		.cta {
@@ -60,21 +64,8 @@
 			}
 			a {
 				display: inline-block;
-				color: var(--main-color);
-				cursor: pointer;
-				padding: 0.75rem 1.5rem;
-				border: 2px solid var(--main-color);
-				@include buttonAnimation(shadow);
-				button {
-					cursor: inherit;
-					font-size: $fs-sm;
-					text-transform: lowercase;
-					font-family: $serif;
-					font-weight: 500;
-					letter-spacing: 0.1rem;
-					position: relative;
-					overflow: hidden;
-				}
+				@include button;
+				text-transform: lowercase;
 			}
 		}
 	}
@@ -111,7 +102,7 @@
 		text-transform: uppercase;
 		opacity: 12%;
 		z-index: -1;
-		// max-width: var(--trueHeight);
+		text-shadow: 0.5rem 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
 		overflow: hidden;
 		@include breakpoint(xl) {
 			font-size: 23rem;

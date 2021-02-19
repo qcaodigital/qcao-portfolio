@@ -9,6 +9,7 @@ export interface navLinkType {
 	label: string;
 	pathname: string;
 	isActive: boolean;
+	desc: string;
 }
 
 export type navLinksType = navLinkType[];

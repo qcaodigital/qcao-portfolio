@@ -22,22 +22,22 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 			exit={navDirection === 'down' ? 'bottom' : 'top'}
 			variants={transitions.transUp}
 			style={{
-				overflow: isSubpathOpen ? 'scroll' : 'hidden',
+				overflowY: isSubpathOpen ? 'scroll' : 'hidden',
 			}}
 		>
-			<motion.section id={styles.landing}>
-				<motion.img
-					src={img}
-					alt='Sihouette of Quan Cao'
-					className={`${styles.img} ${isSubpathOpen && styles.subpathOpen}`}
-				/>
-				<motion.header>
-					<motion.h1>About Me</motion.h1>
-					<motion.h2>
+			<section id={styles.landing}>
+				<div className={`${styles.img} ${isSubpathOpen && styles.subpathOpen}`}>
+					<div id={styles.top} className={styles.bracket} />
+					<img src={img} alt='Sihouette of Quan Cao' />
+					<div id={styles.bottom} className={styles.bracket} />
+				</div>
+				<header>
+					<h1>About Me</h1>
+					<h2>
 						I'm a full-stack web developer specializing in the MERN stack. One year ago
 						I left my career as an accomplished business manager in the hospitality
 						industry to pursue becoming a developer.
-					</motion.h2>
+					</h2>
 					<div className={styles.ctaContainer}>
 						<AnimatePresence exitBeforeEnter>
 							{isSubpathOpen ? (
@@ -72,7 +72,7 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 							)}
 						</AnimatePresence>
 					</div>
-				</motion.header>
+				</header>
 				<AnimatePresence exitBeforeEnter>
 					{isSubpathOpen && (
 						<motion.div
@@ -87,19 +87,29 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 						</motion.div>
 					)}
 				</AnimatePresence>
-			</motion.section>
+			</section>
 			{isSubpathOpen && (
 				<>
 					<Sub id='1' heading='Who I Am'>
-						<h4>Quan Cao</h4>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius
-							quod sapiente, molestias vitae voluptate minus doloribus suscipit atque
-							maiores dolorem laboriosam, mollitia repellendus libero officiis
-							cupiditate eveniet quisquam. Ea blanditiis non unde molestias et.
-							Debitis dolorum similique, mollitia delectus quidem iusto ea laborum,
-							quasi sapiente error eius? Maxime, voluptate?
-						</p>
+						<div>
+							<h4>Quan Cao</h4>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+								eius quod sapiente, molestias vitae voluptate minus doloribus
+								suscipit atque maiores dolorem laboriosam, mollitia repellendus
+								libero officiis cupiditate eveniet quisquam. Ea blanditiis non unde
+								molestias et. Debitis dolorum similique, mollitia delectus quidem
+								iusto ea laborum, quasi sapiente error eius? Maxime, voluptate?
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+								eius quod sapiente, molestias vitae voluptate minus doloribus
+								suscipit atque maiores dolorem laboriosam, mollitia repellendus
+								libero officiis cupiditate eveniet quisquam. Ea blanditiis non unde
+								molestias et. Debitis dolorum similique, mollitia delectus quidem
+								iusto ea laborum, quasi sapiente error eius? Maxime, voluptate?
+							</p>
+						</div>
 						<img src={img} alt='' />
 					</Sub>
 					<Sub id='2' heading='Skillset'>

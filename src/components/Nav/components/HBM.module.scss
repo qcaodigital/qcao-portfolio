@@ -26,6 +26,7 @@
 			cursor: pointer;
 			overflow: hidden;
 			line-height: 1.5;
+			text-shadow: $text-shadow-sm;
 			&#active {
 				pointer-events: none;
 				span {

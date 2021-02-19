@@ -1,9 +1,9 @@
 @import '../../../assets/sass';
 
 .Skillset {
-	padding: 3.5rem 10%;
+	padding: 0 10%;
 	@include breakpoint(md) {
-		padding: 3.5rem 2rem;
+		padding: 0 2rem;
 	}
 	.listLabel {
 		font-size: $fs-md;
@@ -11,10 +11,10 @@
 		font-family: $serif;
 		font-weight: 500;
 		text-decoration: underline;
-		margin: -1rem 0rem 4rem 0rem;
+		margin-bottom: 5vh;
 		@include breakpoint(md) {
+			margin-bottom: 5vh;
 			text-align: center;
-			margin: 0 2rem 5rem 2rem;
 			font-size: $fs-md;
 		}
 		@include breakpoint(xl) {
@@ -33,23 +33,16 @@
 			grid-template-columns: 1fr 1fr;
 		}
 		@include breakpoint(xl) {
-			max-width: 100rem;
-			column-gap: 8rem;
-		}
-		@include breakpoint(xl) {
 			max-width: 110rem;
-			row-gap: 3rem;
+			column-gap: 8rem;
 		}
 		.tech {
 			cursor: pointer;
 			display: flex;
 			align-items: center;
-			// justify-content: center;
-			@include breakpoint(md) {
-				&:not(:last-of-type) {
-					border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-					padding-bottom: 2rem;
-				}
+			&:not(:last-of-type) {
+				border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+				padding-bottom: 2rem;
 			}
 			img {
 				min-width: 4rem;
@@ -104,8 +97,4 @@
 			}
 		}
 	}
-}
-
-#express img {
-	border: 1px solid rgba(0, 0, 0, 0.35);
 }

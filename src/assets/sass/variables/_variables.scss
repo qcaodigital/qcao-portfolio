@@ -17,6 +17,10 @@ $fs-xxxl: $fs-xxl * $fs-scale;
 $fs-xxxxl: $fs-xxxl * $fs-scale;
 //-----//
 
+//Shadows
+$text-shadow-sm: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.15);
+$text-shadow-lg: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
 //CSS Variables//
 :root {
 	--main-color: black;

@@ -4,48 +4,38 @@ import Marker from './components/Marker';
 import Brand from './components/Brand';
 import { AnimatePresence } from 'framer-motion';
 import Link from './../common/Link';
-import { CSSProperties } from 'react';
-
-interface customCSS extends CSSProperties {
-	'--main-color': string;
-}
+import { navLinksType } from '../../types';
 
 interface NavProps {
 	isHBMOpen: boolean;
 	setIsHBMOpen: Dispatch<SetStateAction<boolean>>;
-	paths: string[];
-	currentPath: number;
+	// paths: string[];
+	currentPathIdx: number;
 	isSubpathOpen: boolean;
-	setCurrentPath: Dispatch<SetStateAction<number>>;
+	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
 	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	navLinks: navLinksType;
 }
 
 export default function Nav({
 	isHBMOpen,
 	setIsHBMOpen,
-	paths,
-	currentPath,
+	// paths,
+	currentPathIdx,
 	isSubpathOpen,
-	setCurrentPath,
+	setCurrentPathIdx,
 	setDirection,
+	navLinks,
 }: NavProps) {
 	return (
 		<>
-			<nav
-				className={styles.Nav}
-				// style={
-				// 	{
-				// 		'--main-color':
-				// 			isSubpathOpen && currentPath === 1 && !isHBMOpen ? 'white' : 'black',
-				// 	} as customCSS
-				// }
-			>
+			<nav className={styles.Nav}>
 				<Link
 					to='/'
 					callBefore={() => setDirection('up')}
 					callAfter={() => {
 						if (isHBMOpen) setIsHBMOpen(false);
-						setCurrentPath(0);
+						setCurrentPathIdx(0);
 					}}
 				>
 					<Brand text={['quan', 'cao', 'digital']} />
@@ -69,7 +59,13 @@ export default function Nav({
 				<div className={styles.markerContainer}></div>
 			</nav>
 			<AnimatePresence>
-				{!isHBMOpen && !isSubpathOpen && <Marker currentPath={currentPath} paths={paths} />}
+				{!isHBMOpen && !isSubpathOpen && (
+					<Marker
+						currentPathIdx={currentPathIdx}
+						navLinks={navLinks}
+						setDirection={setDirection}
+					/>
+				)}
 			</AnimatePresence>
 		</>
 	);
