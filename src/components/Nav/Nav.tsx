@@ -9,7 +9,6 @@ import { navLinksType } from '../../types';
 interface NavProps {
 	isHBMOpen: boolean;
 	setIsHBMOpen: Dispatch<SetStateAction<boolean>>;
-	// paths: string[];
 	currentPathIdx: number;
 	isSubpathOpen: boolean;
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
@@ -20,7 +19,6 @@ interface NavProps {
 export default function Nav({
 	isHBMOpen,
 	setIsHBMOpen,
-	// paths,
 	currentPathIdx,
 	isSubpathOpen,
 	setCurrentPathIdx,

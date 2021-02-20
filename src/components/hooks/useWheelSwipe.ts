@@ -2,11 +2,10 @@ import { useCallback, useEffect, useState, Dispatch, SetStateAction } from 'reac
 import { useHistory } from 'react-router-dom';
 import { navLinksType } from '../../types';
 
-export type directionType = 'down' | 'up';
+type directionType = 'down' | 'up';
 type setDirectionType = [directionType, Dispatch<SetStateAction<directionType>>];
 
 export default function useWheelSwipe(
-	// paths: string[],
 	navLinks: navLinksType,
 	currentPathIdx: number,
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>,

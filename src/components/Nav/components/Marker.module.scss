@@ -28,7 +28,6 @@
 		}
 		&.active {
 			background-color: transparent;
-			pointer-events: none;
 			height: calc(var(--size) * 1.5);
 			width: calc(var(--size) * 1.5);
 		}
@@ -61,7 +60,7 @@
 				border-color: transparent var(--main-color) transparent transparent;
 			}
 		}
-		&:hover {
+		@include onHoverFine {
 			p {
 				opacity: 1;
 				transform: translateY(-50%) scaleX(1);

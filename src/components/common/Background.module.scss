@@ -1,0 +1,25 @@
+@import '../../assets/sass/';
+.background {
+	@include absoluteFullscreen;
+	height: 100%;
+	position: fixed;
+	z-index: -1;
+	background-color: #f8f8f3;
+	//Seperate Texture Styles
+	&::before {
+		content: '';
+		@include absoluteFullscreen;
+		background-image: url('../../assets/imgs/textures/axiom-pattern.png');
+		opacity: 0.6;
+	}
+	.particlesContainer {
+		height: 100%;
+		width: 100%;
+		transition: 1500ms ease;
+	}
+	&.hideParticles {
+		.particlesContainer {
+			opacity: 0;
+		}
+	}
+}

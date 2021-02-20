@@ -3,12 +3,11 @@ import { motion } from 'framer-motion';
 import Link from './../../common/Link';
 import { navLinksType, navLinkType } from '../../../types';
 import { Dispatch, SetStateAction } from 'react';
-import { directionType } from '../../hooks/useWheelSwipe';
 
 interface MarkerProps {
 	currentPathIdx: number;
 	navLinks: navLinksType;
-	setDirection: Dispatch<SetStateAction<directionType>>;
+	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
 }
 
 export default function Marker({ currentPathIdx, navLinks, setDirection }: MarkerProps) {
@@ -36,7 +35,9 @@ export default function Marker({ currentPathIdx, navLinks, setDirection }: Marke
 								}
 							}}
 						/>
-						<p>to: {link.desc}</p>
+						<p>
+							{idx === currentPathIdx ? 'Currently at' : 'Go to'} : {link.desc}
+						</p>
 					</div>
 				)
 			)}
