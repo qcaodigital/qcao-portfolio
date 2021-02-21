@@ -111,7 +111,7 @@ export default function Skillset() {
 			<ul className={styles.technologies}>
 				{technologies.map(
 					(tech: technology): JSX.Element => (
-						<li className={styles.tech} id={styles[tech.filename]}>
+						<li key={tech.label} className={styles.tech} id={styles[tech.filename]}>
 							<img
 								src={`/imgs/tech_logos/${tech.filename}.png`}
 								alt={`${tech.label} logo`}

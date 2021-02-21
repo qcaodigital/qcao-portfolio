@@ -9,7 +9,6 @@
 	&::before {
 		content: '';
 		@include absoluteFullscreen;
-		background-image: url('../../assets/imgs/textures/axiom-pattern.png');
 		opacity: 0.6;
 	}
 	.particlesContainer {

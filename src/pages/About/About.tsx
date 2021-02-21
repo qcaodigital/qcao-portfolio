@@ -1,11 +1,12 @@
 import styles from './About.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
-import img from '../../assets/imgs/portrait-desat.jpg';
 import { transitions } from './About.transitions';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useRef, useState, useEffect } from 'react';
+import CTAContainer from './components/CTAContainer';
 import Sub from './components/Sub';
-import { scrollToCallback } from '../../helpers/scrollToCallback';
 import Skillset from './components/Skillset';
+import Who from './components/Who';
+import Resume from './components/Resume';
 
 interface AboutProps {
 	navDirection: 'up' | 'down';
@@ -14,8 +15,26 @@ interface AboutProps {
 }
 
 export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }: AboutProps) {
+	const sectionRef = useRef<HTMLElement | null>(null);
+	const [hasPhysicalScrollbar, setHasPhysicalScrollbar] = useState<boolean>(
+		window.outerWidth > window.innerWidth
+	);
+
+	useEffect(() => {
+		function handleResize(): void {
+			if (window.outerWidth > window.innerWidth) {
+				setHasPhysicalScrollbar(true);
+			} else {
+				setHasPhysicalScrollbar(false);
+			}
+		}
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
 	return (
 		<motion.section
+			ref={sectionRef}
 			id={styles.About}
 			initial={navDirection === 'down' ? 'top' : 'bottom'}
 			animate='animate'
@@ -26,9 +45,13 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 			}}
 		>
 			<section id={styles.landing}>
-				<div className={`${styles.img} ${isSubpathOpen && styles.subpathOpen}`}>
+				<div
+					className={`${styles.img} ${isSubpathOpen && styles.subpathOpen} ${
+						hasPhysicalScrollbar && styles.hasPhysicalScrollbar
+					}`}
+				>
 					<div id={styles.top} className={styles.bracket} />
-					<img src={img} alt='Sihouette of Quan Cao' />
+					<img src='/imgs/portrait-desat.jpg' alt='Sihouette of Quan Cao' />
 					<div id={styles.bottom} className={styles.bracket} />
 				</div>
 				<header>
@@ -38,40 +61,12 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 						I left my career as an accomplished business manager in the hospitality
 						industry to pursue becoming a developer.
 					</h2>
-					<div className={styles.ctaContainer}>
-						<AnimatePresence exitBeforeEnter>
-							{isSubpathOpen ? (
-								<motion.button
-									key='back'
-									animate='animate'
-									initial='initial'
-									exit='exit'
-									variants={transitions.buttons}
-									onClick={() => {
-										scrollToCallback(
-											{ top: 0, behavior: 'smooth' },
-											setIsSubpathOpen.bind(null, false)
-										);
-									}}
-								>
-									<span>Back</span>
-								</motion.button>
-							) : (
-								<motion.button
-									key='open subpath'
-									animate='animate'
-									initial='initial'
-									exit='exit'
-									variants={transitions.buttons}
-									onClick={() => {
-										setIsSubpathOpen(true);
-									}}
-								>
-									<span>Read more</span>
-								</motion.button>
-							)}
-						</AnimatePresence>
-					</div>
+					<CTAContainer
+						isSubpathOpen={isSubpathOpen}
+						setIsSubpathOpen={setIsSubpathOpen}
+						transitions={transitions}
+						sectionRef={sectionRef}
+					/>
 				</header>
 				<AnimatePresence exitBeforeEnter>
 					{isSubpathOpen && (
@@ -88,35 +83,15 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 					)}
 				</AnimatePresence>
 			</section>
-			{isSubpathOpen && (
-				<>
-					<Sub id='1' heading='Who I Am'>
-						<div>
-							<h4>Quan Cao</h4>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-								eius quod sapiente, molestias vitae voluptate minus doloribus
-								suscipit atque maiores dolorem laboriosam, mollitia repellendus
-								libero officiis cupiditate eveniet quisquam. Ea blanditiis non unde
-								molestias et. Debitis dolorum similique, mollitia delectus quidem
-								iusto ea laborum, quasi sapiente error eius? Maxime, voluptate?
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-								eius quod sapiente, molestias vitae voluptate minus doloribus
-								suscipit atque maiores dolorem laboriosam, mollitia repellendus
-								libero officiis cupiditate eveniet quisquam. Ea blanditiis non unde
-								molestias et. Debitis dolorum similique, mollitia delectus quidem
-								iusto ea laborum, quasi sapiente error eius? Maxime, voluptate?
-							</p>
-						</div>
-						<img src={img} alt='' />
-					</Sub>
-					<Sub id='2' heading='Skillset'>
-						<Skillset />
-					</Sub>
-				</>
-			)}
+			<Sub id='1' heading='Who I Am'>
+				<Who />
+			</Sub>
+			<Sub id='2' heading='Skillset'>
+				<Skillset />
+			</Sub>
+			<Sub id='3' heading='Resume'>
+				<Resume />
+			</Sub>
 		</motion.section>
 	);
 }

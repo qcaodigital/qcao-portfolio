@@ -10,7 +10,10 @@ interface BackgroundProps {
 
 export default function Background({ viewport, isSubpathOpen, currentPathIdx }: BackgroundProps) {
 	return (
-		<div className={`${styles.background} ${isSubpathOpen ? styles.hideParticles : ''}`}>
+		<div
+			style={{ backgroundImage: `url(${'/imgs/textures/axiom-pattern.png'})` }}
+			className={`${styles.background} ${isSubpathOpen ? styles.hideParticles : ''}`}
+		>
 			<Particles
 				className={styles.particlesContainer}
 				params={{

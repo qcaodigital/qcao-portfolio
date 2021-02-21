@@ -15,7 +15,7 @@ interface stdVariants {
 	[key: string]: {};
 }
 
-interface transitionsType {
+export interface transitionsType {
 	stagger: variants;
 	transUp: variants;
 	buttons: stdVariants;

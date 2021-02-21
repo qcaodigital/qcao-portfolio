@@ -1,0 +1,7 @@
+@import '../../../assets/sass/';
+.ctaContainer {
+	button {
+		@include button;
+		display: block;
+	}
+}

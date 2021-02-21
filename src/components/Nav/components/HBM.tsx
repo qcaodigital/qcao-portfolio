@@ -12,7 +12,11 @@ interface HBMProps {
 export default function HBM({ navLinks, closeHBM }: HBMProps) {
 	return (
 		<motion.div className={styles.HBM} initial='initial' animate='animate' exit='exit'>
-			<motion.div className={styles.background} variants={transitions.background} />
+			<motion.div
+				className={styles.background}
+				variants={transitions.background}
+				style={{ backgroundImage: `url(${'/imgs/textures/axiom-pattern.png'})` }}
+			/>
 			<motion.ul variants={transitions.container}>
 				{navLinks.map(
 					(link: navLinkType): JSX.Element => (

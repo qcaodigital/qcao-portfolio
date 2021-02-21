@@ -1,6 +1,7 @@
 @import '../../assets/sass/';
 #About {
 	height: var(--trueHeight);
+	overflow-x: hidden;
 	#landing {
 		@include flexCenterCol;
 		justify-content: flex-start;
@@ -27,6 +28,10 @@
 				object-fit: cover;
 			}
 			&.subpathOpen {
+				&.hasPhysicalScrollbar {
+					position: relative;
+					left: 7.5px;
+				}
 				margin-top: 0rem;
 				width: 100vw;
 				height: calc(45vh + var(--margin-top));
@@ -38,13 +43,9 @@
 				width: calc(100% - 10vh);
 				height: calc(100% - 20vh);
 				&.subpathOpen {
-					width: 100%;
+					width: calc(100%);
 					height: 100%;
 				}
-			}
-			@include breakpoint(xl) {
-				width: calc(100% - 15vh);
-				height: calc(100% - 30vh);
 			}
 			@include breakpoint(lg) {
 				.bracket {
@@ -52,7 +53,6 @@
 					height: 7.5rem;
 					width: 7.5rem;
 					transition: 350ms ease;
-					transition-delay: 350ms;
 					opacity: 0.75;
 					&#top {
 						border-top: 0.5rem solid var(--main-color);
@@ -70,7 +70,19 @@
 				&.subpathOpen .bracket {
 					opacity: 0;
 					transition-delay: 0;
+					&#top {
+						top: 0;
+						left: 0;
+					}
+					&#bottom {
+						left: 0;
+						bottom: 0;
+					}
 				}
+			}
+			@include breakpoint(xl) {
+				width: calc(100% - 15vh);
+				height: calc(100% - 30vh);
 			}
 		}
 		header {
@@ -152,12 +164,6 @@
 					@include breakpoint(md) {
 						font-size: $fs-lg;
 					}
-				}
-			}
-			.ctaContainer {
-				button {
-					@include button;
-					display: block;
 				}
 			}
 		}
