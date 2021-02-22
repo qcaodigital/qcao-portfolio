@@ -1,0 +1,145 @@
+@import '../../../assets/sass';
+
+#resume {
+	padding: 0 5%;
+	@include breakpoint(lg) {
+		max-width: 100rem;
+		margin: 0 auto;
+	}
+	@include breakpoint(xl) {
+		padding: 0 2rem;
+		max-width: 120rem;
+	}
+	section {
+		h5.sectionLabel {
+			font-size: $fs-lg;
+			font-family: $serif;
+			margin-bottom: 2.5vh;
+			text-decoration: underline;
+			@include breakpoint(lg) {
+				margin-bottom: 5vh;
+			}
+		}
+		&#experience {
+			.job {
+				+ .job {
+					margin-top: 5vh;
+					@include breakpoint(lg) {
+						margin-top: 7.5vh;
+					}
+				}
+				@include breakpoint(lg) {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					column-gap: 3.5%;
+				}
+				@include breakpoint(xl) {
+					column-gap: 5%;
+				}
+				.basicInfo {
+					.timeframe {
+						font-size: $fs-xs;
+						opacity: 0.5;
+					}
+					.employer {
+						font-family: $serif;
+						font-size: $fs-sm;
+						font-weight: 700;
+						line-height: 1.1;
+						@include breakpoint(lg) {
+							font-size: $fs-md;
+						}
+					}
+					.title {
+						font-family: $serif;
+						font-size: $fs-sm;
+						font-weight: 500;
+						letter-spacing: 0.1rem;
+						@include breakpoint(lg) {
+							font-size: $fs-md;
+						}
+					}
+					.location {
+						font-size: $fs-xs;
+						font-style: italic;
+						opacity: 0.5;
+					}
+					.copy {
+						margin: 2.5vh 0;
+						font-size: $fs-sm;
+						line-height: 1.25;
+					}
+				}
+				.infoList {
+					list-style-type: square;
+					list-style-position: inside;
+					@include breakpoint(lg) {
+						border-left: 0.2rem solid var(--main-color);
+						padding: 0.5rem 0 0.5rem 2rem;
+						align-self: center;
+						position: relative;
+						&::before {
+							content: '';
+							position: absolute;
+							top: 50%;
+							right: 100%;
+							transform: translateY(-50%);
+							width: 0;
+							height: 0;
+							border-style: solid;
+							border-width: 0.2rem 2.5rem 0.2rem 0;
+							border-color: transparent #000000 transparent transparent;
+						}
+					}
+					.info {
+						+ .info {
+							margin-top: 1rem;
+						}
+						font-size: $fs-sm;
+						line-height: 1.25;
+						letter-spacing: 0.1rem;
+						font-weight: 300;
+					}
+				}
+			}
+		}
+		&#education {
+			margin-top: 2.5vh;
+			h5 {
+				margin-bottom: 2.5vh;
+			}
+			.itemContainer {
+				display: grid;
+				row-gap: 1.5rem;
+				.item {
+					h6 {
+						font-size: $fs-xs;
+						line-height: 1.1;
+						opacity: 0.55;
+						max-width: 30ch;
+						@include breakpoint(lg) {
+							font-size: $fs-sm;
+						}
+					}
+					p {
+						font-size: $fs-sm;
+						line-height: 1.1;
+						margin: 0.5rem 0 0 0;
+						+ p {
+							margin: 0 0 0.5rem 0;
+						}
+						@include breakpoint(lg) {
+							font-weight: 500;
+						}
+					}
+					em {
+						font-size: $fs-xs;
+						@include breakpoint(lg) {
+							font-size: $fs-sm;
+						}
+					}
+				}
+			}
+		}
+	}
+}

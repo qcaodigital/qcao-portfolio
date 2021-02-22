@@ -90,7 +90,7 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 				<Skillset />
 			</Sub>
 			<Sub id='3' heading='Resume'>
-				<Resume />
+				<Resume sectionRef={sectionRef} />
 			</Sub>
 		</motion.section>
 	);

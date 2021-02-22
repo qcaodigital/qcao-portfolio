@@ -67,34 +67,18 @@
 					font-size: $fs-md;
 				}
 				.name {
+					font-family: $sans;
 					font-size: $fs-sm;
 					letter-spacing: 0.2rem;
 					font-weight: 500;
 					white-space: nowrap;
 					position: relative;
 					display: inline-block;
-					@include breakpoint(xl) {
-						font-weight: 500;
+					@include breakpoint(xxl) {
+						font-weight: 400;
 						font-size: $fs-md;
+						line-height: 1;
 					}
-					// &::before {
-					// 	content: '';
-					// 	position: absolute;
-					// 	left: 0;
-					// 	right: 0;
-					// 	height: 0.2rem;
-					// 	top: calc(100% - 0.25rem);
-					// 	background-color: var(--main-color);
-					// 	transition: 350ms ease;
-					// 	transform: scaleX(0);
-					// 	transform-origin: left;
-					// }
-					// @include onHoverFine {
-					// 	&::before {
-					// 		transform: scaleX(1);
-					// 		// transform-origin: left;
-					// 	}
-					// }
 				}
 				.proficiency {
 					display: block;

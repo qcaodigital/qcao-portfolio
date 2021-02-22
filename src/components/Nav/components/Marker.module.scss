@@ -11,14 +11,14 @@
 		transform: translateY(-50%);
 	}
 	div {
-		--size: 0.75rem;
+		--size: 1.125rem;
 		cursor: pointer;
 		height: var(--size);
 		width: var(--size);
 		border-radius: 50%;
 		margin-bottom: 0.5rem;
 		background-color: var(--main-color);
-		border: 0.1rem solid var(--main-color);
+		border: 0.2rem solid var(--main-color);
 		position: relative;
 		transition: 150ms ease 150ms;
 		a {
@@ -28,8 +28,8 @@
 		}
 		&.active {
 			background-color: transparent;
-			height: calc(var(--size) * 1.5);
-			width: calc(var(--size) * 1.5);
+			// height: calc(var(--size) * 1.5);
+			// width: calc(var(--size) * 1.5);
 		}
 		@include breakpoint(xl) {
 			--size: 1rem;

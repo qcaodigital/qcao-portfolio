@@ -146,6 +146,9 @@
 					text-align: left;
 				}
 				@include breakpoint(xl) {
+					font-size: $fs-sm;
+				}
+				@include breakpoint(xxl) {
 					font-size: $fs-md;
 				}
 				&::before {
@@ -161,7 +164,7 @@
 						display: inline-block;
 						margin-right: 0.5rem;
 					}
-					@include breakpoint(md) {
+					@include breakpoint(xxl) {
 						font-size: $fs-lg;
 					}
 				}

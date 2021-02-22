@@ -1,6 +1,7 @@
 export interface job {
 	id: string;
 	title: string;
+	employer: string;
 	yearStart: string | number;
 	yearEnd: string | number;
 	location: string;
@@ -11,8 +12,9 @@ export interface job {
 export const jobs: job[] = [
 	{
 		id: 'dec',
-		title: 'General Manager, Declaration',
-		yearStart: '2018',
+		title: 'General Manager',
+		employer: 'Declaration',
+		yearStart: '2017',
 		yearEnd: '2020',
 		location: 'Washington, DC',
 		copy:
@@ -25,8 +27,9 @@ export const jobs: job[] = [
 	},
 	{
 		id: 'lincoln',
-		title: 'Restaurant Manager, LINCOLN Restaurant',
-		yearStart: '2017',
+		title: 'Restaurant Manager',
+		employer: 'LINCOLN Restaurant',
+		yearStart: '2016',
 		yearEnd: '2020',
 		location: 'Washington, DC',
 		copy:
@@ -39,7 +42,8 @@ export const jobs: job[] = [
 	},
 	{
 		id: 'p&g',
-		title: 'Company Restaurant Manager, Pho & Grill LLC',
+		title: 'Company Restaurant Manager',
+		employer: 'Pho & Grill LLC',
 		yearStart: '2010',
 		yearEnd: '2016',
 		location: 'Olney, MD',
@@ -49,5 +53,45 @@ export const jobs: job[] = [
 			'Employed and maintained an outstanding front of the house team of an average 25 member size with a turnover rate of 12% over the duration of 5 years in a new location (2011-2016).',
 			'Instrumental in the improvement of gross sales by ~40% within 5 years following the opening of the restaurant’s second location through proper team management and supervision while establishing the development of interpersonal relationships with customers.',
 		],
+	},
+];
+
+export interface educationType {
+	title: string;
+	school: string;
+	location?: string;
+	yearCompleted: string | number;
+}
+
+export const education: educationType[] = [
+	{
+		title: 'Associates of Arts: STEM Core',
+		school: 'Montgomery College',
+		location: 'Rockville, MD',
+		yearCompleted: 2012,
+	},
+	{
+		title: 'Javascript Algorithms and Data Structures Masterclass',
+		school: 'by Colt Steele',
+		location: 'Udemy',
+		yearCompleted: 2020,
+	},
+	{
+		title: 'The Modern React Bootcamp',
+		school: 'by Colt Steele',
+		location: 'Udemy',
+		yearCompleted: 2020,
+	},
+	{
+		title: 'The Advanced Web Developer Bootcamp',
+		school: 'by Colt Steele',
+		location: 'Udemy',
+		yearCompleted: 2019,
+	},
+	{
+		title: 'The Web Developer Bootcamp',
+		school: 'by Colt Steele',
+		location: 'Udemy',
+		yearCompleted: 2019,
 	},
 ];
