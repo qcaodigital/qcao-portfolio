@@ -6,9 +6,10 @@
 	z-index: -1;
 	background-color: #f8f8f3;
 	//Seperate Texture Styles
-	&::before {
+	.texture {
 		content: '';
 		@include absoluteFullscreen;
+		background-image: inherit;
 		opacity: 0.6;
 	}
 	.particlesContainer {
@@ -17,6 +18,9 @@
 		transition: 1500ms ease;
 	}
 	&.hideParticles {
+		.texture {
+			opacity: 0.5;
+		}
 		.particlesContainer {
 			opacity: 0;
 		}

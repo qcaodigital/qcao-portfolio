@@ -7,7 +7,7 @@ export const transitions: transitionsType = {
 	headerFadeUp: {
 		top: {
 			x: '-50%',
-			y: defaultTranslate,
+			y: -1 * defaultTranslate,
 			opacity: 0.5,
 			transition: {
 				duration: defaultDuration,

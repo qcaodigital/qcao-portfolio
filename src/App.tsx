@@ -75,6 +75,7 @@ export default function App() {
 								navDirection={direction}
 								isSubpathOpen={isSubpathOpen}
 								setIsSubpathOpen={setIsSubpathOpen}
+								setDirection={setDirection}
 							/>
 						)}
 					/>

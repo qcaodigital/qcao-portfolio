@@ -1,0 +1,115 @@
+@import '../../../assets/sass/';
+.job {
+	// transition: 500ms ease;
+	+ .job {
+		margin-top: 5vh;
+		@include breakpoint(lg) {
+			margin-top: 7.5vh;
+		}
+	}
+	&[data-inView='true'] {
+		opacity: 0.35;
+	}
+	@include breakpoint(lg) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 3.5%;
+	}
+	@include breakpoint(xl) {
+		column-gap: 5%;
+	}
+	.basicInfo {
+		.timeframe {
+			font-size: $fs-xs;
+			opacity: 0.5;
+		}
+		.employer {
+			font-family: $serif;
+			font-size: $fs-sm;
+			font-weight: 700;
+			line-height: 1.1;
+			@include breakpoint(lg) {
+				font-size: $fs-md;
+			}
+		}
+		.title {
+			font-family: $serif;
+			font-size: $fs-sm;
+			font-weight: 500;
+			letter-spacing: 0.1rem;
+			@include breakpoint(lg) {
+				font-size: $fs-md;
+			}
+		}
+		.location {
+			font-size: $fs-xs;
+			font-style: italic;
+			opacity: 0.5;
+		}
+		.copy {
+			margin: 2.5vh 0;
+			font-size: $fs-sm;
+			line-height: 1.25;
+		}
+	}
+	.infoList {
+		list-style-type: square;
+		list-style-position: inside;
+		@include breakpoint(lg) {
+			border-left: 0.2rem solid var(--main-color);
+			padding: 0.5rem 0 0.5rem 2rem;
+			align-self: center;
+			position: relative;
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: 100%;
+				transform: translateY(-50%);
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0.2rem 2.5rem 0.2rem 0;
+				border-color: transparent #000000 transparent transparent;
+			}
+		}
+		.info {
+			+ .info {
+				margin-top: 1rem;
+			}
+			font-size: $fs-sm;
+			line-height: 1.25;
+			letter-spacing: 0.1rem;
+			font-weight: 300;
+		}
+	}
+	// DIVIDER //
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		height: 0.2rem;
+		width: 12ch;
+		background-color: var(--main-color);
+		position: relative;
+		top: -0.25rem;
+		opacity: 0.75;
+		@include breakpoint(lg) {
+			background-color: transparent;
+			height: 3rem;
+			width: 3rem;
+			border-top: 0.4rem solid var(--main-color);
+			border-left: 0.4rem solid var(--main-color);
+			position: absolute;
+			top: -1.5rem;
+			left: -1.5rem;
+		}
+	}
+	&:first-of-type::before {
+		visibility: hidden;
+		@include breakpoint(lg) {
+			visibility: visible;
+		}
+	}
+	// ------- //
+}

@@ -7,14 +7,22 @@ import Sub from './components/Sub';
 import Skillset from './components/Skillset';
 import Who from './components/Who';
 import Resume from './components/Resume';
+import ToTop from './../../components/common/ToTop';
+import Next from '../../components/common/Next';
 
 interface AboutProps {
 	navDirection: 'up' | 'down';
 	isSubpathOpen: boolean;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
+	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
 }
 
-export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }: AboutProps) {
+export default function About({
+	navDirection,
+	isSubpathOpen,
+	setIsSubpathOpen,
+	setDirection,
+}: AboutProps) {
 	const sectionRef = useRef<HTMLElement | null>(null);
 	const [hasPhysicalScrollbar, setHasPhysicalScrollbar] = useState<boolean>(
 		window.outerWidth > window.innerWidth
@@ -92,6 +100,18 @@ export default function About({ navDirection, isSubpathOpen, setIsSubpathOpen }:
 			<Sub id='3' heading='Resume'>
 				<Resume sectionRef={sectionRef} />
 			</Sub>
+			<ToTop
+				sectionRef={sectionRef}
+				setIsSubpathOpen={setIsSubpathOpen}
+				isSubpathOpen={isSubpathOpen}
+			/>
+			<Next
+				sectionRef={sectionRef}
+				pushTo='/'
+				buttonText='See my work'
+				setDirection={setDirection}
+				setIsSubpathOpen={setIsSubpathOpen}
+			/>
 		</motion.section>
 	);
 }

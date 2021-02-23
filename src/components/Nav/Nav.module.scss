@@ -1,17 +1,18 @@
 @import '../../assets/sass/';
 
 .Nav {
+	padding: 0 2rem;
+	margin: 0 auto;
 	display: grid;
 	grid-template-columns: auto 1fr;
 	position: fixed;
 	z-index: 10;
-	--padding: 1rem;
-	left: var(--padding);
-	right: var(--padding);
+	left: 0;
+	right: 0;
 	top: 1rem;
 	transition: 350ms ease;
-	@include breakpoint(md) {
-		--padding: 2rem;
+	@include breakpoint(lg) {
+		padding: 0 3rem;
 	}
 	.hbm {
 		cursor: pointer;
@@ -79,8 +80,7 @@
 						height: 0.3rem;
 					}
 					&#bottom {
-						transform: translate(-0.075rem, -350%) scaleY(0.5)
-							rotate(90deg);
+						transform: translate(-0.075rem, -350%) scaleY(0.5) rotate(90deg);
 					}
 				}
 			}
@@ -97,8 +97,7 @@
 						height: 0.3rem;
 					}
 					&#bottom {
-						transform: translate(-0.075rem, -350%) scaleY(calc(0.5))
-							rotate(90deg);
+						transform: translate(-0.075rem, -350%) scaleY(calc(0.5)) rotate(90deg);
 					}
 				}
 			}
