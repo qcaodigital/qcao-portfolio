@@ -4,6 +4,7 @@ import { scrollToCallback } from './../../helpers/scrollToCallback';
 import { Dispatch, SetStateAction } from 'react';
 
 interface NextProps {
+	className: string;
 	buttonText: string;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
 	pushTo: string;
@@ -12,6 +13,7 @@ interface NextProps {
 }
 
 export default function Next({
+	className,
 	sectionRef: ref,
 	buttonText,
 	pushTo,
@@ -23,7 +25,9 @@ export default function Next({
 	function handleClick(): void {
 		scrollToCallback(ref.current, { top: 0, behavior: 'smooth' }, () => {
 			setDirection('down');
-			setIsSubpathOpen(false);
+			setTimeout(() => {
+				setIsSubpathOpen(false);
+			}, 100);
 			setTimeout(() => {
 				history.push(pushTo);
 			}, 1000);
@@ -31,7 +35,7 @@ export default function Next({
 	}
 
 	return (
-		<button className={styles.Next} onClick={handleClick}>
+		<button className={`${styles.Next} ${className}`} onClick={handleClick}>
 			{buttonText}
 		</button>
 	);

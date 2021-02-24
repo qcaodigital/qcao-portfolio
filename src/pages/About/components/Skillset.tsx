@@ -1,10 +1,8 @@
 import styles from './Skillset.module.scss';
 
-interface technology {
-	filename: string;
-	label: string;
-	proficiency: string;
-}
+type technology = {
+	[P in 'filename' | 'label' | 'proficiency']: string;
+};
 
 const technologies: technology[] = [
 	{
@@ -106,7 +104,7 @@ const technologies: technology[] = [
 
 export default function Skillset() {
 	return (
-		<div className={styles.Skillset}>
+		<div className={styles.skillset}>
 			<p className={styles.listLabel}>Technologies</p>
 			<ul className={styles.technologies}>
 				{technologies.map(

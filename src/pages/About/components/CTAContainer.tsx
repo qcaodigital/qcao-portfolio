@@ -9,6 +9,7 @@ interface CTAContainerProps {
 	transitions: transitionsType;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
+	passedVariant: any;
 }
 
 export default function CTAContainer({
@@ -16,9 +17,10 @@ export default function CTAContainer({
 	setIsSubpathOpen,
 	transitions,
 	sectionRef,
+	passedVariant,
 }: CTAContainerProps) {
 	return (
-		<div className={styles.ctaContainer}>
+		<motion.div className={styles.ctaContainer} variants={passedVariant}>
 			<AnimatePresence exitBeforeEnter>
 				{isSubpathOpen ? (
 					<motion.button
@@ -52,6 +54,6 @@ export default function CTAContainer({
 					</motion.button>
 				)}
 			</AnimatePresence>
-		</div>
+		</motion.div>
 	);
 }

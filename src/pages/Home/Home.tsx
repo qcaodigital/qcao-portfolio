@@ -1,30 +1,23 @@
 import styles from './Home.module.scss';
 import ScrollCTA from './components/ScrollCTA';
-import { viewportType } from './../../components/hooks/useViewport';
 import { motion } from 'framer-motion';
 import { transitions } from './Home.transitions';
 import Link from './../../components/common/Link';
 import { Dispatch, SetStateAction } from 'react';
 
 interface HomeProps {
-	viewport: viewportType;
-	navDirection: 'up' | 'down';
+	direction: 'up' | 'down';
 	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
 }
 
-export default function Home({
-	viewport,
-	navDirection,
-	setDirection,
-	setCurrentPathIdx,
-}: HomeProps) {
+export default function Home({ direction, setDirection, setCurrentPathIdx }: HomeProps) {
 	return (
 		<motion.section
 			id={styles.Home}
-			initial={navDirection === 'down' ? 'top' : 'bottom'}
+			initial={direction === 'down' ? 'top' : 'bottom'}
 			animate='animate'
-			exit={navDirection === 'down' ? 'bottom' : 'top'}
+			exit={direction === 'down' ? 'bottom' : 'top'}
 		>
 			<motion.header variants={transitions.headerFadeUp}>
 				<h1>
@@ -42,7 +35,7 @@ export default function Home({
 				</div>
 			</motion.header>
 			<ScrollCTA setCurrentPathIdx={setCurrentPathIdx} setDirection={setDirection} />
-			<motion.div className={styles.social} variants={transitions.fadeUp}>
+			<motion.div className={styles.social} variants={transitions.socialList}>
 				<a
 					href='https://github.com/qcaodigital'
 					target='_blank'

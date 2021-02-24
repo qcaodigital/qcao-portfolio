@@ -1,9 +1,9 @@
 @import '../../../assets/sass';
 
-.Skillset {
-	padding: 0 5%;
+.skillset {
+	// padding: 0 5%;
 	@include breakpoint(md) {
-		padding: 0 2rem;
+		// padding: 0 2rem;
 	}
 	.listLabel {
 		font-size: $fs-md;
@@ -29,11 +29,11 @@
 		column-gap: 5rem;
 		letter-spacing: 0.1rem;
 		@include breakpoint(md) {
-			max-width: 80rem;
+			// max-width: 80rem;
 			grid-template-columns: 1fr 1fr;
 		}
 		@include breakpoint(xl) {
-			max-width: 110rem;
+			// max-width: 110rem;
 			column-gap: 8rem;
 			row-gap: 2rem;
 		}

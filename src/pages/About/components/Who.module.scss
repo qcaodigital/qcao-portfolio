@@ -1,0 +1,56 @@
+@import '../../../assets/sass/';
+
+.who {
+	// padding: 0 5% 0;
+	margin: 0 auto;
+	// max-width: 150rem;
+	@include breakpoint(lg) {
+		// padding: 5vh 10%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 4%;
+	}
+	.text {
+		@include breakpoint(lg) {
+			grid-column: 1/2;
+		}
+		h4 {
+			&::before {
+				content: 'My name is:';
+				font-size: $fs-sm;
+				display: block;
+				opacity: 0.5;
+				font-weight: 300;
+				letter-spacing: 0.2rem;
+			}
+			font-size: $fs-md;
+			font-weight: 400;
+			text-shadow: $text-shadow-sm;
+		}
+		p {
+			font-size: $fs-sm;
+			margin: 2rem 0;
+			font-weight: 300;
+			line-height: 1.75;
+			& + p {
+				margin-bottom: 4rem;
+			}
+			@include breakpoint(lg) {
+				margin: 2rem 0 0 0;
+				& + p {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	img {
+		width: 100%;
+		object-fit: cover;
+		box-shadow: 0.5rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
+		@include breakpoint(lg) {
+			grid-column: 2/3;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}

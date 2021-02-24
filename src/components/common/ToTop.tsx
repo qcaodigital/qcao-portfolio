@@ -29,7 +29,7 @@ export default function ToTop({ sectionRef, setIsSubpathOpen, isSubpathOpen }: T
 
 	return (
 		<div
-			data-isVisible={isSubpathOpen && scrolled ? 'true' : 'false'}
+			data-is-visible={isSubpathOpen && scrolled ? 'true' : 'false'}
 			className={styles.ToTop}
 			onClick={handleClick}
 		>

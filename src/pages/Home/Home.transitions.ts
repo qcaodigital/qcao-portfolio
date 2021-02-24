@@ -1,7 +1,9 @@
 const defaultDuration: number = 0.75;
 const defaultTranslate: number = window.innerHeight * -1;
 
-type transitionsType = any;
+interface transitionsType {
+	[key: string]: {};
+}
 
 export const transitions: transitionsType = {
 	headerFadeUp: {
@@ -33,29 +35,6 @@ export const transitions: transitionsType = {
 			},
 		},
 	},
-	fadeUp: {
-		top: {
-			y: defaultTranslate / 2,
-			opacity: 0,
-			transition: {
-				duration: defaultDuration,
-			},
-		},
-		animate: {
-			y: 0,
-			opacity: 1,
-			transition: {
-				duration: defaultDuration,
-			},
-		},
-		bottom: {
-			y: defaultTranslate / 2,
-			opacity: 0,
-			transition: {
-				duration: defaultDuration,
-			},
-		},
-	},
 	fadeOut: {
 		top: {
 			opacity: 0,
@@ -74,6 +53,23 @@ export const transitions: transitionsType = {
 			transitions: {
 				duration: defaultDuration,
 			},
+		},
+	},
+	socialList: {
+		top: {
+			x: '-125%',
+			transition: {
+				duration: 0.35,
+			},
+		},
+		bottom: {
+			x: '-125%',
+			transition: {
+				duration: 0.35,
+			},
+		},
+		animate: {
+			x: 0,
 		},
 	},
 };

@@ -8,7 +8,7 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import HBM from './components/Nav/components/HBM';
 import Background from './components/common/Background';
-// import Cube from './pages/Home/components/Cube';
+import SectionWrapper from './components/common/SectionWrapper';
 
 interface customCSS extends CSSProperties {
 	'--trueHeight': string;
@@ -60,8 +60,7 @@ export default function App() {
 						path='/'
 						render={() => (
 							<Home
-								viewport={viewport}
-								navDirection={direction}
+								direction={direction}
 								setDirection={setDirection}
 								setCurrentPathIdx={setCurrentPathIdx}
 							/>
@@ -71,12 +70,26 @@ export default function App() {
 						exact
 						path='/about'
 						render={() => (
-							<About
-								navDirection={direction}
-								isSubpathOpen={isSubpathOpen}
-								setIsSubpathOpen={setIsSubpathOpen}
-								setDirection={setDirection}
-							/>
+							<SectionWrapper direction={direction}>
+								<About
+									isSubpathOpen={isSubpathOpen}
+									setIsSubpathOpen={setIsSubpathOpen}
+									setDirection={setDirection}
+								/>
+							</SectionWrapper>
+						)}
+					/>
+					<Route
+						exact
+						path='/work'
+						render={() => (
+							<SectionWrapper direction={direction}>
+								<About
+									isSubpathOpen={isSubpathOpen}
+									setIsSubpathOpen={setIsSubpathOpen}
+									setDirection={setDirection}
+								/>
+							</SectionWrapper>
 						)}
 					/>
 					{/* <Route exact path='/work' render={() => <About />} /> */}

@@ -3,6 +3,7 @@
 #Home {
 	position: relative;
 	overflow: hidden;
+	height: var(--trueHeight);
 	header {
 		position: absolute;
 		top: 50%;

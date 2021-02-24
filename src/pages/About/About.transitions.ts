@@ -1,73 +1,15 @@
-const defaultTranslate: number = window.innerHeight * 0.75;
-const defaultDuration: number = 0.75;
-
 interface variants {
-	top: {};
-	animate: {};
-	bottom: {};
-	[key: string]: {};
-}
-
-interface stdVariants {
-	animate: {};
-	exit: {};
-	initial: {};
-	[key: string]: {};
+	animate?: any;
+	exit?: any;
+	initial?: any;
+	[key: string]: any;
 }
 
 export interface transitionsType {
-	stagger: variants;
-	transUp: variants;
-	buttons: stdVariants;
-	scrollCTA: stdVariants;
+	[key: string]: variants;
 }
 
 export const transitions: transitionsType = {
-	stagger: {
-		top: {
-			transition: {
-				staggerChildren: 0.05,
-				staggerDirection: -1,
-			},
-		},
-		animate: {
-			transition: {
-				staggerChildren: 0.05,
-			},
-		},
-		bottom: {
-			transition: {
-				staggerChildren: 0.05,
-				staggerDirection: 1,
-			},
-		},
-	},
-	transUp: {
-		top: {
-			y: defaultTranslate,
-			opacity: 0,
-			transition: {
-				duration: defaultDuration,
-				ease: 'easeIn',
-			},
-		},
-		animate: {
-			y: 0,
-			opacity: 1,
-			transition: {
-				duration: defaultDuration,
-				ease: 'circOut',
-			},
-		},
-		bottom: {
-			y: defaultTranslate * -1,
-			opacity: 0,
-			transition: {
-				duration: defaultDuration,
-				ease: 'easeIn',
-			},
-		},
-	},
 	buttons: {
 		initial: {
 			opacity: 0,
@@ -81,9 +23,6 @@ export const transitions: transitionsType = {
 		},
 		exit: {
 			opacity: 0,
-			// transition: {
-			// 	duration: 0.35,
-			// },
 		},
 	},
 	scrollCTA: {
@@ -104,6 +43,67 @@ export const transitions: transitionsType = {
 			opacity: 0,
 			transition: {
 				duration: 0.35,
+			},
+		},
+	},
+	bar: {
+		initial: {
+			x: '100%',
+		},
+		animate: {
+			x: '650%',
+			scaleX: [0.5, 1, 2, 1.5],
+			originX: 'left',
+			transition: {
+				x: {
+					duration: 1.5,
+					ease: [0.745, 0.015, 0.0, 1],
+				},
+			},
+		},
+	},
+	img: {
+		animate: {
+			overflow: 'visible',
+			transition: {
+				delay: 1.25,
+			},
+		},
+	},
+	bracket: {
+		initial: {
+			// x: '-100%',
+			opacity: 0,
+		},
+		animate: {
+			// x: 0,
+			opacity: 1,
+			transition: {
+				delay: 1.25,
+				ease: 'easeOut',
+			},
+		},
+		exit: {
+			opacity: 0,
+		},
+	},
+	stagger: {
+		animate: {
+			transition: {
+				staggerChildren: 0.1,
+				// delayChildren: 0.35,
+			},
+		},
+	},
+	headerChildren: {
+		initial: {
+			x: -window.innerWidth,
+		},
+		animate: {
+			x: 0,
+			transition: {
+				duration: 1.2,
+				ease: [0.93, 0.23, 0.655, 0.99],
 			},
 		},
 	},

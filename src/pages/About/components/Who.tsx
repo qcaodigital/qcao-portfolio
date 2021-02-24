@@ -1,7 +1,9 @@
+import styles from './Who.module.scss';
+
 export default function Who() {
 	return (
-		<>
-			<div>
+		<div className={styles.who}>
+			<div className={styles.text}>
 				<h4>Quan Cao</h4>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
@@ -21,6 +23,6 @@ export default function Who() {
 				</p>
 			</div>
 			<img src='/imgs/portrait-desat.jpg' alt='' />
-		</>
+		</div>
 	);
 }
