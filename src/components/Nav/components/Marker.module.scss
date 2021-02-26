@@ -1,4 +1,13 @@
 @import '../../../assets/sass/';
+.pageNumber {
+	position: absolute;
+	opacity: 0.15;
+	font-size: $fs-xxxl !important;
+	bottom: 0;
+	left: 0;
+	letter-spacing: -0.5rem;
+}
+
 .NavMarker {
 	position: fixed;
 	z-index: 10;
@@ -10,7 +19,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 	}
-	div {
+	.marker {
 		--size: 1.125rem;
 		cursor: pointer;
 		height: var(--size);

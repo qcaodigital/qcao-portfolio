@@ -1,16 +1,21 @@
 @import '../../../assets/sass/';
 
 .who {
-	// padding: 0 5% 0;
 	margin: 0 auto;
-	// max-width: 150rem;
+	transition: transform 1.25s ease;
 	@include breakpoint(lg) {
-		// padding: 5vh 10%;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		column-gap: 4%;
 	}
+	&[data-in-view='false'] {
+		// transform: matrix(0.935, 0.35, 0, 1, 0, 500);
+	}
+	&[data-in-view='true'] {
+		// transform: matrix(1, 0, 0, 1, 0, 0);
+	}
 	.text {
+		transition: 1.25s ease;
 		@include breakpoint(lg) {
 			grid-column: 1/2;
 		}

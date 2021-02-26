@@ -53,7 +53,7 @@ export default function App() {
 				setDirection={setDirection}
 				navLinks={navLinks}
 			/>
-			<AnimatePresence exitBeforeEnter>
+			<AnimatePresence exitBeforeEnter initial={false}>
 				<Switch location={location} key={location.pathname}>
 					<Route
 						exact
@@ -75,6 +75,7 @@ export default function App() {
 									isSubpathOpen={isSubpathOpen}
 									setIsSubpathOpen={setIsSubpathOpen}
 									setDirection={setDirection}
+									currentPathIdx={currentPathIdx}
 								/>
 							</SectionWrapper>
 						)}
@@ -88,6 +89,7 @@ export default function App() {
 									isSubpathOpen={isSubpathOpen}
 									setIsSubpathOpen={setIsSubpathOpen}
 									setDirection={setDirection}
+									currentPathIdx={currentPathIdx}
 								/>
 							</SectionWrapper>
 						)}

@@ -31,6 +31,12 @@
 	}
 }
 
+@mixin landscape {
+	@media screen and (orientation: landscape) {
+		@content;
+	}
+}
+
 @mixin onHoverFine() {
 	@media (pointer: fine), (min-width: 990px) {
 		&:hover {

@@ -14,13 +14,13 @@ export const transitions: transitionsType = {
 		initial: {
 			opacity: 0,
 		},
-		animate: {
+		animate: (duration: number): any => ({
 			opacity: 1,
 			transition: {
-				duration: 0.35,
+				duration: duration ?? 0.35,
 				delay: 0.5,
 			},
-		},
+		}),
 		exit: {
 			opacity: 0,
 		},
@@ -53,7 +53,6 @@ export const transitions: transitionsType = {
 		animate: {
 			x: '650%',
 			scaleX: [0.5, 1, 2, 1.5],
-			originX: 'left',
 			transition: {
 				x: {
 					duration: 1.5,
@@ -72,11 +71,9 @@ export const transitions: transitionsType = {
 	},
 	bracket: {
 		initial: {
-			// x: '-100%',
 			opacity: 0,
 		},
 		animate: {
-			// x: 0,
 			opacity: 1,
 			transition: {
 				delay: 1.25,
@@ -91,19 +88,20 @@ export const transitions: transitionsType = {
 		animate: {
 			transition: {
 				staggerChildren: 0.1,
-				// delayChildren: 0.35,
 			},
 		},
 	},
 	headerChildren: {
 		initial: {
-			x: -window.innerWidth,
+			x: -window.innerWidth * 1,
 		},
 		animate: {
 			x: 0,
 			transition: {
-				duration: 1.2,
-				ease: [0.93, 0.23, 0.655, 0.99],
+				x: {
+					duration: 0.75,
+					ease: 'easeOut',
+				},
 			},
 		},
 	},

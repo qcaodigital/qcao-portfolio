@@ -14,9 +14,15 @@ interface AboutProps {
 	isSubpathOpen: boolean;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	currentPathIdx: number;
 }
 
-export default function About({ isSubpathOpen, setIsSubpathOpen, setDirection }: AboutProps) {
+export default function About({
+	isSubpathOpen,
+	setIsSubpathOpen,
+	setDirection,
+	currentPathIdx,
+}: AboutProps) {
 	const sectionRef = useRef<HTMLElement | null>(null);
 	const [hasPhysicalScrollbar, setHasPhysicalScrollbar] = useState<boolean>(
 		window.outerWidth > window.innerWidth
@@ -38,7 +44,6 @@ export default function About({ isSubpathOpen, setIsSubpathOpen, setDirection }:
 		<motion.section
 			animate='animate'
 			initial='initial'
-			exit='exit'
 			ref={sectionRef}
 			id={styles.About}
 			style={{
@@ -64,6 +69,7 @@ export default function About({ isSubpathOpen, setIsSubpathOpen, setDirection }:
 						id={styles.bottom}
 						className={styles.bracket}
 					/>
+					{/* <PageNumber currentPathIdx={currentPathIdx} /> */}
 				</motion.div>
 				<motion.header variants={transitions.stagger}>
 					<motion.h1 variants={transitions.headerChildren}>About Me</motion.h1>
@@ -77,7 +83,6 @@ export default function About({ isSubpathOpen, setIsSubpathOpen, setDirection }:
 						setIsSubpathOpen={setIsSubpathOpen}
 						transitions={transitions}
 						sectionRef={sectionRef}
-						passedVariant={transitions.headerChildren}
 					/>
 				</motion.header>
 				<AnimatePresence exitBeforeEnter>

@@ -28,7 +28,7 @@ export default function useWheelSwipe(
 					setCurrentPathIdx((curr: number) => curr + 1);
 				}
 				setOnCoolDown(true);
-				setTimeout(() => setOnCoolDown(false), 1000);
+				setTimeout(() => setOnCoolDown(false), 1500);
 			}
 		},
 		[navLinks, history, currentPathIdx, onCoolDown, setCurrentPathIdx, isSubpathOpen]
@@ -36,7 +36,9 @@ export default function useWheelSwipe(
 
 	const handleWheel = useCallback(
 		(e: WheelEvent): void => {
-			setDirAndPush(e.deltaY);
+			if (!e.ctrlKey) {
+				setDirAndPush(e.deltaY);
+			}
 		},
 		[setDirAndPush]
 	);

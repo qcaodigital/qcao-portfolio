@@ -1,21 +1,13 @@
 @import '../../../assets/sass';
 
 #resume {
-	// padding: 0 5%;
-	@include breakpoint(lg) {
-		// max-width: 100rem;
-		margin: 0 auto;
-	}
-	@include breakpoint(xl) {
-		// padding: 0 10%;
-		// max-width: 120rem;
-	}
 	section {
 		h5.sectionLabel {
 			font-size: $fs-lg;
 			font-family: $serif;
 			margin-bottom: 5vh;
 			text-decoration: underline;
+			text-shadow: $text-shadow-sm;
 			@include breakpoint(lg) {
 				margin-bottom: 7.5vh;
 			}

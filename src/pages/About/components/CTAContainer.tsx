@@ -1,15 +1,15 @@
 import styles from './CTAContainer.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useRef } from 'react';
 import { scrollToCallback } from '../../../helpers/scrollToCallback';
 import { transitionsType } from './../About.transitions';
+import { useEffect } from 'react';
 
 interface CTAContainerProps {
 	isSubpathOpen: boolean;
 	transitions: transitionsType;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
-	passedVariant: any;
 }
 
 export default function CTAContainer({
@@ -17,10 +17,18 @@ export default function CTAContainer({
 	setIsSubpathOpen,
 	transitions,
 	sectionRef,
-	passedVariant,
 }: CTAContainerProps) {
+	const buttonRef = useRef<HTMLButtonElement | null>(null);
+	useEffect(() => console.log(buttonRef), [buttonRef]);
 	return (
-		<motion.div className={styles.ctaContainer} variants={passedVariant}>
+		<motion.div className={styles.ctaContainer} custom={1.5} variants={transitions.buttons}>
+			<svg width='146px' height='58px'>
+				<polyline
+					fill='none'
+					stroke='black'
+					points='145,1 145,57 1,57 1,1 145,1'
+				></polyline>
+			</svg>
 			<AnimatePresence exitBeforeEnter>
 				{isSubpathOpen ? (
 					<motion.button
@@ -29,6 +37,7 @@ export default function CTAContainer({
 						initial='initial'
 						exit='exit'
 						variants={transitions.buttons}
+						ref={buttonRef}
 						onClick={() => {
 							scrollToCallback(
 								sectionRef.current,
@@ -46,6 +55,7 @@ export default function CTAContainer({
 						initial='initial'
 						exit='exit'
 						variants={transitions.buttons}
+						ref={buttonRef}
 						onClick={() => {
 							setIsSubpathOpen(true);
 						}}

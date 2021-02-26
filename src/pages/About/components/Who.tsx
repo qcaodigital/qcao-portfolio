@@ -1,8 +1,18 @@
 import styles from './Who.module.scss';
+import { InView } from 'react-intersection-observer';
+import { useState } from 'react';
 
 export default function Who() {
+	const [contentInView, setContentInView] = useState<boolean>(false);
+
 	return (
-		<div className={styles.who}>
+		<InView
+			as='div'
+			onChange={(inView: boolean): void => setContentInView(inView)}
+			triggerOnce={true}
+			className={styles.who}
+			data-in-view={contentInView ? true : false}
+		>
 			<div className={styles.text}>
 				<h4>Quan Cao</h4>
 				<p>
@@ -23,6 +33,6 @@ export default function Who() {
 				</p>
 			</div>
 			<img src='/imgs/portrait-desat.jpg' alt='' />
-		</div>
+		</InView>
 	);
 }

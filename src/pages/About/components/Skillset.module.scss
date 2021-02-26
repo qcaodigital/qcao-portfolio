@@ -6,19 +6,16 @@
 		// padding: 0 2rem;
 	}
 	.listLabel {
-		font-size: $fs-md;
+		font-size: $fs-lg;
 		letter-spacing: 0.2rem;
 		font-family: $serif;
 		font-weight: 500;
 		text-decoration: underline;
 		margin-bottom: 5vh;
+		text-shadow: $text-shadow-sm;
 		@include breakpoint(md) {
 			margin-bottom: 5vh;
 			text-align: center;
-			font-size: $fs-md;
-		}
-		@include breakpoint(xl) {
-			font-size: $fs-lg;
 		}
 	}
 	.technologies {
@@ -29,11 +26,9 @@
 		column-gap: 5rem;
 		letter-spacing: 0.1rem;
 		@include breakpoint(md) {
-			// max-width: 80rem;
 			grid-template-columns: 1fr 1fr;
 		}
 		@include breakpoint(xl) {
-			// max-width: 110rem;
 			column-gap: 8rem;
 			row-gap: 2rem;
 		}
@@ -44,8 +39,25 @@
 			&:not(:last-of-type) {
 				border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 				padding-bottom: 1.5rem;
-				@include breakpoint(xl) {
-					padding-bottom: 2rem;
+			}
+			@include breakpoint(md) {
+				&:last-of-type {
+					border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+					padding-bottom: 1.5rem;
+				}
+			}
+			@include breakpoint(xl) {
+				padding-bottom: 2rem !important;
+			}
+			&:hover {
+				img {
+					// transform: scale(1.1);
+				}
+				.info {
+					.name::before {
+						transition: 350ms ease;
+						transform: scaleX(1);
+					}
 				}
 			}
 			img {
@@ -56,6 +68,7 @@
 				max-width: 5rem;
 				max-height: 5rem;
 				object-fit: contain;
+				transition: 250ms ease;
 			}
 			.info {
 				margin-left: 5vw;
@@ -74,6 +87,21 @@
 					white-space: nowrap;
 					position: relative;
 					display: inline-block;
+					&::before {
+						content: '';
+						display: block;
+						position: absolute;
+						height: 0.2rem;
+						background-color: var(--main-color);
+						width: 100%;
+						top: calc(100% - 0.25ch);
+						transition: 150ms ease;
+						transform-origin: left;
+						transform: scaleX(0);
+						@include breakpoint(xl) {
+							top: 100%;
+						}
+					}
 					@include breakpoint(xxl) {
 						font-weight: 400;
 						font-size: $fs-md;
@@ -97,6 +125,7 @@
 				}
 			}
 			.icon {
+				cursor: pointer;
 				margin-left: clamp(3rem, 7.5vw, 10rem);
 				font-size: $fs-xs;
 				@include breakpoint(xl) {
