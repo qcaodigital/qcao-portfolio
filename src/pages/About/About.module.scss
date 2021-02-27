@@ -2,6 +2,10 @@
 #About {
 	height: var(--trueHeight);
 	overflow-x: hidden;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 	#landing {
 		@include flexCenterCol;
 		justify-content: flex-start;
@@ -47,10 +51,6 @@
 				}
 			}
 			&.subpathOpen {
-				&.hasPhysicalScrollbar {
-					position: relative;
-					left: 7.5px;
-				}
 				margin-top: 0rem;
 				width: 100vw;
 				height: calc(45vh + var(--margin-top));
@@ -119,6 +119,7 @@
 			max-height: 31rem;
 			justify-content: space-between;
 			overflow: hidden;
+			padding-bottom: 1rem;
 			@include breakpoint(md) {
 				@include landscape {
 					grid-column: 1/2;
@@ -128,6 +129,7 @@
 					align-items: flex-start;
 					position: absolute;
 					margin: 1rem 2.5vw 1rem 5vw;
+					padding-left: 1rem;
 					max-height: unset;
 					height: 100%;
 					> * + * {
@@ -194,9 +196,6 @@
 						line-height: 0;
 						display: inline-block;
 						margin-right: 0.5rem;
-					}
-					@include breakpoint(xxl) {
-						font-size: $fs-lg;
 					}
 				}
 			}

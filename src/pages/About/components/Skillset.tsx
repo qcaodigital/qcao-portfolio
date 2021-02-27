@@ -1,34 +1,76 @@
 import styles from './Skillset.module.scss';
 import { technologies, technology } from './Skillset.data';
+import { AnimateSharedLayout, motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
-export default function Skillset() {
+interface SkillsetProps {
+	sectionRef: React.MutableRefObject<HTMLElement | null>;
+}
+
+export default function Skillset({ sectionRef }: SkillsetProps) {
+	const [activeTech, setActiveTech] = useState<string | null>(null);
+	useEffect(() => {
+		function handleScroll() {
+			if (activeTech) {
+				setActiveTech(null);
+			}
+		}
+
+		if (sectionRef.current) {
+			sectionRef.current.addEventListener('scroll', handleScroll);
+		}
+	}, [sectionRef]);
+
 	return (
-		<div className={styles.skillset}>
-			<p className={styles.listLabel}>Technologies</p>
-			<ul className={styles.technologies}>
-				{technologies.map(
-					(tech: technology): JSX.Element => (
-						<li key={tech.label} className={styles.tech} id={styles[tech.filename]}>
-							<img
-								src={`/imgs/tech_logos/${tech.filename}.png`}
-								alt={`${tech.label} logo`}
-							/>
-							<div className={styles.info}>
-								<p className={styles.name}>{tech.label}</p>
-								<p className={styles.proficiency}>
-									Proficiency:{' '}
-									<span className={styles.proficiencyValue}>
-										{tech.proficiency}
-									</span>
-								</p>
-							</div>
-							<button className={styles.icon}>
-								<i className='fas fa-chevron-right'></i>
-							</button>
-						</li>
-					)
-				)}
-			</ul>
-		</div>
+		<AnimateSharedLayout>
+			<motion.div layout className={styles.skillset}>
+				<p className={styles.listLabel}>Technologies</p>
+				<motion.ul layout className={styles.technologies}>
+					{technologies.map(
+						(tech: technology): JSX.Element => (
+							<motion.li
+								layout
+								key={tech.label}
+								className={styles.tech}
+								id={styles[tech.filename]}
+								onClick={() => {
+									if ([tech.label].includes(activeTech!)) {
+										setActiveTech(null);
+									} else {
+										setActiveTech(tech.label);
+									}
+								}}
+								data-is-active={activeTech === tech.label ? 'true' : 'false'}
+								data-faded={
+									activeTech !== tech.label && activeTech !== null
+										? 'true'
+										: 'false'
+								}
+							>
+								<motion.img
+									layout
+									src={`/imgs/tech_logos/${tech.filename}.png`}
+									alt={`${tech.label} logo`}
+								/>
+								<motion.div layout className={styles.info}>
+									<motion.p layout className={styles.name}>
+										{tech.label}
+									</motion.p>
+									<motion.p layout className={styles.proficiency}>
+										Proficiency:
+										<motion.span layout className={styles.proficiencyValue}>
+											{tech.proficiency}
+										</motion.span>
+									</motion.p>
+								</motion.div>
+								<motion.button layout className={styles.icon}>
+									<motion.i layout className='fas fa-caret-right'></motion.i>
+								</motion.button>
+							</motion.li>
+						)
+					)}
+				</motion.ul>
+			</motion.div>
+		</AnimateSharedLayout>
 	);
 }

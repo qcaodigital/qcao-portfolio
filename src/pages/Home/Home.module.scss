@@ -67,6 +67,9 @@
 				display: inline-block;
 				@include button;
 				text-transform: lowercase;
+				@include breakpoint(xl) {
+					font-size: $fs-md;
+				}
 			}
 		}
 	}

@@ -50,11 +50,8 @@
 	font-size: $fs-sm;
 	font-family: $serif !important;
 	text-transform: lowercase;
-	* {
+	> * {
 		font-family: $serif !important;
 	}
 	@include buttonAnimation(shadow);
-	@include breakpoint(xl) {
-		font-size: $fs-md;
-	}
 }

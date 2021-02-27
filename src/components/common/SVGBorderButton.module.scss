@@ -1,0 +1,23 @@
+@import '../../assets/sass/';
+
+.SVGBorderButton {
+	@include button;
+	position: relative;
+	transition: 350ms ease;
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: -1;
+		fill: transparent;
+		stroke-dasharray: var(--pathWidth) 1500;
+		stroke-dashoffset: var(--pathWidth);
+		animation: pathRun 3.75s ease infinite 2s;
+		@keyframes pathRun {
+			to {
+				stroke-dashoffset: -1500;
+			}
+		}
+	}
+}

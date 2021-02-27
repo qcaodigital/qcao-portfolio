@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
-import styles from './Next.module.scss';
 import { scrollToCallback } from './../../helpers/scrollToCallback';
 import { Dispatch, SetStateAction } from 'react';
+import SVGBorderButton from './SVGBorderButton';
 
 interface NextProps {
 	className: string;
@@ -35,8 +35,8 @@ export default function Next({
 	}
 
 	return (
-		<button className={`${styles.Next} ${className}`} onClick={handleClick}>
-			{buttonText}
-		</button>
+		<div style={{ textAlign: 'center' }} className={className} onClick={handleClick}>
+			<SVGBorderButton text={buttonText} />
+		</div>
 	);
 }

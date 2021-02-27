@@ -1,0 +1,12 @@
+@import '../../assets/sass/';
+
+.scrollProgress {
+	@include desktop {
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: var(--trueHeight);
+		z-index: 5;
+		transform-origin: top;
+	}
+}

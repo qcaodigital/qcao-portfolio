@@ -1,9 +1,9 @@
 import styles from './CTAContainer.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { scrollToCallback } from '../../../helpers/scrollToCallback';
 import { transitionsType } from './../About.transitions';
-import { useEffect } from 'react';
+import SVGBorderButton from './../../../components/common/SVGBorderButton';
 
 interface CTAContainerProps {
 	isSubpathOpen: boolean;
@@ -18,26 +18,16 @@ export default function CTAContainer({
 	transitions,
 	sectionRef,
 }: CTAContainerProps) {
-	const buttonRef = useRef<HTMLButtonElement | null>(null);
-	useEffect(() => console.log(buttonRef), [buttonRef]);
 	return (
-		<motion.div className={styles.ctaContainer} custom={1.5} variants={transitions.buttons}>
-			<svg width='146px' height='58px'>
-				<polyline
-					fill='none'
-					stroke='black'
-					points='145,1 145,57 1,57 1,1 145,1'
-				></polyline>
-			</svg>
+		<motion.div className={styles.ctaContainer} custom={1} variants={transitions.buttons}>
 			<AnimatePresence exitBeforeEnter>
 				{isSubpathOpen ? (
-					<motion.button
+					<motion.div
 						key='back'
 						animate='animate'
 						initial='initial'
 						exit='exit'
 						variants={transitions.buttons}
-						ref={buttonRef}
 						onClick={() => {
 							scrollToCallback(
 								sectionRef.current,
@@ -46,22 +36,21 @@ export default function CTAContainer({
 							);
 						}}
 					>
-						<span>Back</span>
-					</motion.button>
+						<SVGBorderButton text='back' animate={false} />
+					</motion.div>
 				) : (
-					<motion.button
+					<motion.div
 						key='open subpath'
 						animate='animate'
 						initial='initial'
 						exit='exit'
 						variants={transitions.buttons}
-						ref={buttonRef}
 						onClick={() => {
 							setIsSubpathOpen(true);
 						}}
 					>
-						<span>Read more</span>
-					</motion.button>
+						<SVGBorderButton text='read more' />
+					</motion.div>
 				)}
 			</AnimatePresence>
 		</motion.div>

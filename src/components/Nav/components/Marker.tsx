@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Link from './../../common/Link';
 import { navLinksType, navLinkType } from '../../../types';
 import { Dispatch, SetStateAction } from 'react';
-import PageNumber from './../../common/PageNumber';
 
 interface MarkerProps {
 	currentPathIdx: number;

@@ -1,7 +1,7 @@
 import styles from './About.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 import { transitions } from './About.transitions';
-import { Dispatch, SetStateAction, useRef, useState, useEffect } from 'react';
+import { Dispatch, SetStateAction, useRef } from 'react';
 import CTAContainer from './components/CTAContainer';
 import Sub from './components/Sub';
 import Skillset from './components/Skillset';
@@ -9,6 +9,7 @@ import Who from './components/Who';
 import Resume from './components/Resume';
 import ToTop from './../../components/common/ToTop';
 import Next from '../../components/common/Next';
+import ScrollProgress from '../../components/common/ScrollProgress';
 
 interface AboutProps {
 	isSubpathOpen: boolean;
@@ -17,28 +18,8 @@ interface AboutProps {
 	currentPathIdx: number;
 }
 
-export default function About({
-	isSubpathOpen,
-	setIsSubpathOpen,
-	setDirection,
-	currentPathIdx,
-}: AboutProps) {
+export default function About({ isSubpathOpen, setIsSubpathOpen, setDirection }: AboutProps) {
 	const sectionRef = useRef<HTMLElement | null>(null);
-	const [hasPhysicalScrollbar, setHasPhysicalScrollbar] = useState<boolean>(
-		window.outerWidth > window.innerWidth
-	);
-
-	useEffect(() => {
-		function handleResize(): void {
-			if (window.outerWidth > window.innerWidth) {
-				setHasPhysicalScrollbar(true);
-			} else {
-				setHasPhysicalScrollbar(false);
-			}
-		}
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
 
 	return (
 		<motion.section
@@ -52,9 +33,7 @@ export default function About({
 		>
 			<section id={styles.landing}>
 				<motion.div
-					className={`${styles.imgContainer} ${isSubpathOpen && styles.subpathOpen} ${
-						hasPhysicalScrollbar && styles.hasPhysicalScrollbar
-					}`}
+					className={`${styles.imgContainer} ${isSubpathOpen && styles.subpathOpen}`}
 					variants={transitions.img}
 				>
 					<motion.div
@@ -69,7 +48,6 @@ export default function About({
 						id={styles.bottom}
 						className={styles.bracket}
 					/>
-					{/* <PageNumber currentPathIdx={currentPathIdx} /> */}
 				</motion.div>
 				<motion.header variants={transitions.stagger}>
 					<motion.h1 variants={transitions.headerChildren}>About Me</motion.h1>
@@ -104,7 +82,7 @@ export default function About({
 				<Who />
 			</Sub>
 			<Sub id='2' heading='Skillset'>
-				<Skillset />
+				<Skillset sectionRef={sectionRef} />
 			</Sub>
 			<Sub id='3' heading='Resume'>
 				<Resume sectionRef={sectionRef} />
@@ -117,11 +95,18 @@ export default function About({
 			<Next
 				className={styles.next}
 				sectionRef={sectionRef}
-				pushTo='/'
+				pushTo='/work'
 				buttonText='See my work'
 				setDirection={setDirection}
 				setIsSubpathOpen={setIsSubpathOpen}
 			/>
+			{isSubpathOpen && (
+				<ScrollProgress
+					scrollContainerRef={sectionRef}
+					color='var(--highlight-color)'
+					width='.5rem'
+				/>
+			)}
 		</motion.section>
 	);
 }
