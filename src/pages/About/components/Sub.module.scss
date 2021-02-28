@@ -17,7 +17,6 @@
 		}
 		.subSectionHeader {
 			text-transform: capitalize;
-			font-family: $serif;
 			font-size: $fs-xl;
 			position: relative;
 			display: inline-block;
@@ -25,12 +24,19 @@
 			-webkit-text-stroke: 0.1rem var(--main-color-fade);
 			text-shadow: 0rem 0rem 0 var(--main-color), $text-shadow-sm;
 			transition: 400ms cubic-bezier(0.17, 0.04, 0.58, 1.26);
-			&[data-in-view='false'] {
-			}
-			&[data-in-view='true'] {
-			}
 			@include breakpoint(md) {
 				font-size: $fs-xxl;
+			}
+			.mainText span {
+				font-family: $serif;
+				display: inline-block;
+				transform: translate3d(0, 0, 0);
+				backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
+				-webkit-font-smoothing: antialiased !important;
+				&.empty {
+					margin-right: 0.5ch;
+				}
 			}
 			.numberMarker {
 				text-shadow: $text-shadow-sm;
@@ -57,18 +63,6 @@
 					background-color: var(--main-color);
 				}
 			}
-			// .link {
-			// 	@include button;
-			// 	position: absolute;
-			// 	white-space: nowrap;
-			// 	top: calc(50% + 0.5rem);
-			// 	left: 100%;
-			// 	transform: translateY(-50%);
-			// 	font-size: $fs-sm !important;
-			// 	&:hover {
-			// 		transform: translateY(-50%);
-			// 	}
-			// }
 		}
 	}
 }

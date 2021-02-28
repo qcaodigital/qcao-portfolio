@@ -19,7 +19,7 @@
 		margin: 0 auto;
 		display: grid;
 		grid-auto-columns: 1fr;
-		grid-auto-rows: 1fr;
+		grid-auto-rows: min-content;
 		row-gap: 1.5rem;
 		column-gap: 5rem;
 		letter-spacing: 0.1rem;
@@ -32,20 +32,20 @@
 		}
 		.tech {
 			cursor: pointer;
-			display: flex;
+			position: relative;
+			display: grid;
+			grid-template-columns: min-content 1fr;
 			align-items: center;
+			padding-bottom: 1.5rem;
 			transition: border-bottom 350ms ease;
 			&:not(:last-of-type) {
 				border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-				padding-bottom: 1.5rem;
 			}
 			@include breakpoint(md) {
 				&:last-of-type {
 					border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 					padding-bottom: 1.5rem;
 				}
-			}
-			@include breakpoint(xl) {
 			}
 			img {
 				min-width: 4rem;
@@ -56,7 +56,7 @@
 				max-height: 5rem;
 				object-fit: contain;
 			}
-			.info {
+			> .info {
 				margin-left: 5vw;
 				width: 100%;
 				@include breakpoint(md) {
@@ -89,11 +89,6 @@
 							top: 100%;
 						}
 					}
-					@include breakpoint(xxl) {
-						font-weight: 400;
-						font-size: $fs-md;
-						line-height: 1;
-					}
 				}
 				.proficiency {
 					font-size: $fs-xs;
@@ -113,9 +108,38 @@
 					}
 				}
 			}
+			.additionalInfo {
+				grid-row: 2/3;
+				grid-column: 1/-1;
+				padding-right: 10%;
+				margin-top: 1.5rem;
+				cursor: text;
+				.label {
+					font-size: $fs-xs;
+					font-weight: 600;
+					text-decoration: underline;
+					@include breakpoint(md) {
+						font-size: $fs-sm;
+						font-weight: 500;
+					}
+				}
+				.info {
+					margin-top: 0.5rem;
+					font-size: $fs-xs;
+					font-weight: 400;
+					@include breakpoint(md) {
+						max-width: 75%;
+						font-size: $fs-sm;
+						font-weight: 300;
+					}
+				}
+			}
 			.icon {
+				position: absolute;
+				right: 0;
 				cursor: pointer;
-				margin-left: clamp(3rem, 7.5vw, 10rem);
+				height: 100%;
+				padding-bottom: 1rem;
 				i {
 					font-size: $fs-sm;
 				}
@@ -141,31 +165,34 @@
 			}
 			&[data-is-active='true'] {
 				grid-row: span 2;
-				border-top: 0.2rem solid rgba(0, 0, 0, 0.75);
-				border-bottom: 0.2rem solid rgba(0, 0, 0, 0.75);
-				align-items: flex-start;
-				padding: 2rem 0;
+				border-bottom: 0.1rem solid rgba(0, 0, 0, 0.75);
 				@include breakpoint(md) {
+					border-top: 0.1rem solid rgba(0, 0, 0, 0.75);
+					padding: 2rem 0;
 					grid-column: span 2;
 					align-items: center;
-				}
-				.info {
-					.name {
-						font-size: $fs-md;
+					.info {
+						.name {
+							font-size: $fs-md;
+						}
 					}
 				}
-				.icon {
-					transform-origin: center;
-					transform: rotate(90deg);
+				.name:hover::before {
+					transform: scaleX(1);
 				}
 			}
+			&[data-is-active='false'] {
+				border-top: 0.1rem solid transparent;
+			}
 			&[data-faded='true'] {
-				opacity: 0.25;
-				border-top: 0.2rem solid transparent;
-				border-bottom: 0.2rem solid transparent;
+				opacity: 0.5 !important;
+				@include breakpoint(md) {
+					border-bottom: 0.1rem solid transparent;
+					opacity: 0.25;
+				}
 				&:hover {
 					transition: 350ms ease;
-					opacity: 1;
+					opacity: 1 !important;
 				}
 			}
 		}

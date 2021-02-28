@@ -76,7 +76,7 @@ export const technologies: technology[] = [
 	{
 		filename: 'threejs',
 		label: 'WebGL/ThreeJS',
-		proficiency: 'beginner',
+		proficiency: 'basic',
 	},
 	{
 		filename: 'postman',
