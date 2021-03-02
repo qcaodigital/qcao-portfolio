@@ -19,7 +19,7 @@ export default function Sub({ id, heading, children }: SubProps) {
 					<span className={styles.numberMarker}>
 						0
 						<SlideUp trigger={headerInView}>
-							<span>{id}</span>
+							<span className='number'>{id}</span>
 						</SlideUp>
 					</span>
 					<p className={styles.mainText}>{heading}</p>

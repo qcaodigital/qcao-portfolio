@@ -1,14 +1,10 @@
 @import '../../../assets/sass/';
 .job {
-	// transition: 500ms ease;
 	+ .job {
 		margin-top: 5vh;
 		@include breakpoint(lg) {
 			margin-top: 7.5vh;
 		}
-	}
-	&[data-inView='true'] {
-		opacity: 0.35;
 	}
 	@include breakpoint(lg) {
 		display: grid;
@@ -82,6 +78,13 @@
 			letter-spacing: 0.1rem;
 			font-weight: 300;
 		}
+	}
+	transition: 1.1s ease;
+	&[data-inView='true'] {
+		opacity: 1;
+	}
+	&[data-inView='false'] {
+		opacity: 0;
 	}
 	// DIVIDER //
 	position: relative;

@@ -1,28 +1,16 @@
 import { job } from './Resume.data';
 import styles from './Job.module.scss';
-import { useRef } from 'react';
-// import useCheckThreshold from './../../../components/hooks/useCheckThreshold';
+import { useInView } from 'react-intersection-observer';
 
 interface JobProps {
 	job: job;
-	idx: number;
-	sectionRef: React.MutableRefObject<HTMLElement | null>;
 }
 
-export default function Job({ job, sectionRef, idx }: JobProps) {
-	const ref = useRef<HTMLDivElement | null>(null);
-	// const posThres = useCheckThreshold(sectionRef.current, ref.current, {
-	// 	topIsBelow: idx === 0 ? null : 0.7,
-	// 	bottomIsAbove: 0.3,
-	// });
+export default function Job({ job }: JobProps) {
+	const [ref, inView] = useInView();
 
 	return (
-		<div
-			ref={ref}
-			id={job.id}
-			className={styles.job}
-			// data-inView={`${posThres ? 'true' : 'false'}`}
-		>
+		<div ref={ref} id={job.id} className={styles.job} data-inView={inView ? 'true' : 'false'}>
 			<div className={styles.basicInfo}>
 				<p className={styles.timeframe}>
 					{job.yearStart} - {job.yearEnd}
