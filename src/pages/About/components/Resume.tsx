@@ -11,7 +11,7 @@ export default function Resume({ sectionRef }: ResumeProps) {
 	return (
 		<div id={styles.resume}>
 			<section id={styles.experience}>
-				<TypeWriter trigger='inView'>
+				<TypeWriter trigger='inView' color='var(--main-color)'>
 					<h5 className={styles.sectionLabel}>Work Experience</h5>
 				</TypeWriter>
 				{jobs.map(
