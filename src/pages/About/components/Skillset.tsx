@@ -4,6 +4,7 @@ import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import InViewState from '../../../components/utils/InViewState';
 import { transitions } from '../About.transitions';
+import TypeWriter from './../../../components/animation/TypeWriter';
 
 interface SkillsetProps {
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
@@ -58,7 +59,9 @@ export default function Skillset({ sectionRef }: SkillsetProps) {
 			threshold={0.1}
 			triggerOnce={true}
 		>
-			<p className={styles.listLabel}>Technologies</p>
+			<TypeWriter trigger='inView' color='red'>
+				<p className={styles.listLabel}>Technologies</p>
+			</TypeWriter>
 			<AnimateSharedLayout>
 				<motion.ul
 					layout

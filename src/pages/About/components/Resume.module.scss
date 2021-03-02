@@ -2,13 +2,13 @@
 
 #resume {
 	section {
-		h5.sectionLabel {
+		.sectionLabel {
 			font-size: $fs-lg;
 			font-family: $serif;
 			margin-bottom: 5vh;
 			text-decoration: underline;
 			text-shadow: $text-shadow-sm;
-			@include breakpoint(lg) {
+			@include breakpoint(md) {
 				margin-bottom: 7.5vh;
 			}
 		}

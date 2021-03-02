@@ -1,6 +1,7 @@
 import styles from './Who.module.scss';
 import { InView } from 'react-intersection-observer';
 import { useState } from 'react';
+import SymbolGen from '../../../components/animation/SymbolGen';
 
 export default function Who() {
 	const [contentInView, setContentInView] = useState<boolean>(false);
@@ -14,8 +15,10 @@ export default function Who() {
 			data-in-view={contentInView ? true : false}
 		>
 			<div className={styles.text}>
-				<h4>Quan Cao</h4>
-				<p>
+				<SymbolGen trigger='inView'>
+					<h4>Quan Cao</h4>
+				</SymbolGen>
+				<p data-in-view={contentInView ? 'true' : 'false'}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
 					sapiente, molestias vitae voluptate minus doloribus suscipit atque maiores
 					dolorem laboriosam, mollitia repellendus libero officiis cupiditate eveniet
@@ -23,7 +26,7 @@ export default function Who() {
 					mollitia delectus quidem iusto ea laborum, quasi sapiente error eius? Maxime,
 					voluptate?
 				</p>
-				<p>
+				<p data-in-view={contentInView ? 'true' : 'false'}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
 					sapiente, molestias vitae voluptate minus doloribus suscipit atque maiores
 					dolorem laboriosam, mollitia repellendus libero officiis cupiditate eveniet

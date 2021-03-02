@@ -1,6 +1,7 @@
 import styles from './Resume.module.scss';
 import { jobs, job, education, educationType } from './Resume.data';
 import Job from './Job';
+import TypeWriter from '../../../components/animation/TypeWriter';
 
 interface ResumeProps {
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
@@ -10,7 +11,9 @@ export default function Resume({ sectionRef }: ResumeProps) {
 	return (
 		<div id={styles.resume}>
 			<section id={styles.experience}>
-				<h5 className={styles.sectionLabel}>Work Experience</h5>
+				<TypeWriter trigger='inView'>
+					<h5 className={styles.sectionLabel}>Work Experience</h5>
+				</TypeWriter>
 				{jobs.map(
 					(job: job, idx: number): JSX.Element => (
 						<Job key={job.id} job={job} sectionRef={sectionRef} idx={idx} />

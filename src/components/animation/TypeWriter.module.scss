@@ -1,0 +1,24 @@
+.typeWriterAnimation {
+	&::after {
+		content: '';
+		display: inline-block;
+		height: 2ex;
+		width: 1rem;
+		background-color: var(--color);
+		position: relative;
+		left: 0.5rem;
+		transform: translateY(0.33ex);
+		animation: blink 500ms step-end infinite;
+		@keyframes blink {
+			0% {
+				background-color: transparent;
+			}
+			50% {
+				background-color: var(--color);
+			}
+			100% {
+				background-color: transparent;
+			}
+		}
+	}
+}
