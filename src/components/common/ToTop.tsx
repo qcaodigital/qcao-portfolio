@@ -24,7 +24,12 @@ export default function ToTop({ sectionRef, setIsSubpathOpen, isSubpathOpen }: T
 				setScrolled(false);
 			}
 		}
-		sectionRef.current!.addEventListener('scroll', handleScroll);
+
+		const ref = sectionRef.current;
+		if (ref) {
+			ref.addEventListener('scroll', handleScroll);
+			return () => ref!.removeEventListener('scroll', handleScroll);
+		}
 	}, [sectionRef]);
 
 	return (

@@ -80,10 +80,10 @@
 		}
 	}
 	transition: 1.1s ease;
-	&[data-inView='true'] {
+	&[data-in-view='true'] {
 		opacity: 1;
 	}
-	&[data-inView='false'] {
+	&[data-in-view='false'] {
 		opacity: 0;
 	}
 	// DIVIDER //

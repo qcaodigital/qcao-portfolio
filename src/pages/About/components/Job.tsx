@@ -10,7 +10,7 @@ export default function Job({ job }: JobProps) {
 	const [ref, inView] = useInView();
 
 	return (
-		<div ref={ref} id={job.id} className={styles.job} data-inView={inView ? 'true' : 'false'}>
+		<div ref={ref} id={job.id} className={styles.job} data-in-view={inView ? 'true' : 'false'}>
 			<div className={styles.basicInfo}>
 				<p className={styles.timeframe}>
 					{job.yearStart} - {job.yearEnd}

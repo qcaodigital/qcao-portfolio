@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import ScrollProgress from './ScrollProgress';
 interface SectionWrapperProps {
 	direction: string;
 	children: JSX.Element;
+	isSubpathOpen: boolean;
+	sectionRef: React.MutableRefObject<HTMLElement | null>;
 }
 
 const defaultTranslate: number = window.innerHeight * 0.75;
@@ -34,7 +38,12 @@ const transUp = {
 	},
 };
 
-export default function SectionWrapper({ direction, children }: SectionWrapperProps) {
+export default function SectionWrapper({
+	direction,
+	isSubpathOpen,
+	sectionRef,
+	children,
+}: SectionWrapperProps) {
 	return (
 		<motion.div
 			initial={direction === 'down' ? 'top' : 'bottom'}
@@ -42,7 +51,26 @@ export default function SectionWrapper({ direction, children }: SectionWrapperPr
 			exit={direction === 'down' ? 'bottom' : 'top'}
 			variants={transUp}
 		>
-			{children}
+			<motion.section
+				animate='animate'
+				initial='initial'
+				ref={sectionRef}
+				style={{
+					overflowY: isSubpathOpen ? 'scroll' : 'hidden',
+					height: 'var(--trueHeight)',
+					overflowX: 'hidden',
+					scrollbarWidth: 'none',
+				}}
+			>
+				{children}
+				{isSubpathOpen && (
+					<ScrollProgress
+						scrollContainerRef={sectionRef}
+						color='var(--highlight-color)'
+						width='.5rem'
+					/>
+				)}
+			</motion.section>
 		</motion.div>
 	);
 }

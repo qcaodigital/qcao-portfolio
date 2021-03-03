@@ -1,69 +1,64 @@
-import styles from "./About.module.scss";
-import { motion } from "framer-motion";
-import { Dispatch, SetStateAction, useRef } from "react";
-import Sub from "./components/Sub";
-import Skillset from "./components/Skillset";
-import Who from "./components/Who";
-import Resume from "./components/Resume";
-import ToTop from "./../../components/common/ToTop";
-import Next from "../../components/common/Next";
-import ScrollProgress from "../../components/common/ScrollProgress";
-import Landing from "./../../components/common/Landing";
-import SectionContent from "./../../components/common/SectionContent";
+import styles from './About.module.scss';
+import { Dispatch, SetStateAction, useRef } from 'react';
+import Sub from './components/Sub';
+import Skillset from './components/Skillset';
+import Who from './components/Who';
+import Resume from './components/Resume';
+import ToTop from './../../components/common/ToTop';
+import Next from '../../components/common/Next';
+import Landing from './../../components/common/Landing';
 
 interface AboutProps {
-    isSubpathOpen: boolean;
-    setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
-    setDirection: Dispatch<SetStateAction<"up" | "down">>;
-    currentPathIdx: number;
+	isSubpathOpen: boolean;
+	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
+	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	sectionRef: React.MutableRefObject<HTMLElement | null>;
 }
 
 export default function About({
-    isSubpathOpen,
-    setIsSubpathOpen,
-    setDirection,
+	isSubpathOpen,
+	setIsSubpathOpen,
+	setDirection,
+	sectionRef,
 }: AboutProps) {
-    const sectionRef = useRef<HTMLElement | null>(null);
-
-    return (
-        <SectionContent isSubpathOpen={isSubpathOpen} sectionRef={sectionRef}>
-            <>
-                <Landing
-                    isSubpathOpen={isSubpathOpen}
-                    setIsSubpathOpen={setIsSubpathOpen}
-                    sectionRef={sectionRef}
-                    headerText="About Me"
-                    subheaderText="Im a full-stack web developer specializing in the MERN stack. One year ago
+	console.log(sectionRef);
+	return (
+		<>
+			<Landing
+				isSubpathOpen={isSubpathOpen}
+				setIsSubpathOpen={setIsSubpathOpen}
+				sectionRef={sectionRef}
+				headerText='About Me'
+				subheaderText='Im a full-stack web developer specializing in the MERN stack. One year ago
                 I left my career as an accomplished business manager in the hospitality
-						industry to pursue becoming a developer."
-                    img={{
-                        src: "/imgs/portrait-desat.jpg",
-                        alt: "Silhouette of Quan Cao",
-                    }}
-                />
-                <Sub id="1" heading="Who I Am">
-                    <Who />
-                </Sub>
-                <Sub id="2" heading="Skillset">
-                    <Skillset sectionRef={sectionRef} />
-                </Sub>
-                <Sub id="3" heading="Resume">
-                    <Resume sectionRef={sectionRef} />
-                </Sub>
-                <ToTop
-                    sectionRef={sectionRef}
-                    setIsSubpathOpen={setIsSubpathOpen}
-                    isSubpathOpen={isSubpathOpen}
-                />
-                <Next
-                    className={styles.next}
-                    sectionRef={sectionRef}
-                    pushTo="/work"
-                    buttonText="See my work"
-                    setDirection={setDirection}
-                    setIsSubpathOpen={setIsSubpathOpen}
-                />
-            </>
-        </SectionContent>
-    );
+						industry to pursue becoming a developer.'
+				img={{
+					src: '/imgs/portrait-desat.jpg',
+					alt: 'Silhouette of Quan Cao',
+				}}
+			/>
+			<Sub id='1' heading='Who I Am'>
+				<Who />
+			</Sub>
+			<Sub id='2' heading='Skillset'>
+				<Skillset sectionRef={sectionRef} />
+			</Sub>
+			<Sub id='3' heading='Resume'>
+				<Resume sectionRef={sectionRef} />
+			</Sub>
+			<ToTop
+				sectionRef={sectionRef}
+				setIsSubpathOpen={setIsSubpathOpen}
+				isSubpathOpen={isSubpathOpen}
+			/>
+			<Next
+				className={styles.next}
+				sectionRef={sectionRef}
+				pushTo='/work'
+				buttonText='See my work'
+				setDirection={setDirection}
+				setIsSubpathOpen={setIsSubpathOpen}
+			/>
+		</>
+	);
 }

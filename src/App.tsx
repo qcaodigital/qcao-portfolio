@@ -1,6 +1,6 @@
 import styles from './App.module.scss';
 import { useManageState } from './components/hooks/useManageState';
-import { CSSProperties } from 'react';
+import { CSSProperties, useRef } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Nav from './components/Nav/Nav';
@@ -29,6 +29,8 @@ export default function App() {
 		setIsSubpathOpen,
 		navLinks,
 	} = useManageState();
+
+	const currentSectionRef = useRef<HTMLElement | null>(null);
 
 	return (
 		<main
@@ -70,30 +72,33 @@ export default function App() {
 						exact
 						path='/about'
 						render={() => (
-							<SectionWrapper direction={direction}>
+							<SectionWrapper
+								direction={direction}
+								isSubpathOpen={isSubpathOpen}
+								sectionRef={currentSectionRef}
+							>
 								<About
 									isSubpathOpen={isSubpathOpen}
 									setIsSubpathOpen={setIsSubpathOpen}
 									setDirection={setDirection}
-									currentPathIdx={currentPathIdx}
+									sectionRef={currentSectionRef}
 								/>
 							</SectionWrapper>
 						)}
 					/>
-					<Route
+					{/* <Route
 						exact
 						path='/work'
 						render={() => (
-							<SectionWrapper direction={direction}>
+							<SectionWrapper direction={direction} isSubpathOpen={isSubpathOpen}>
 								<About
 									isSubpathOpen={isSubpathOpen}
 									setIsSubpathOpen={setIsSubpathOpen}
 									setDirection={setDirection}
-									currentPathIdx={currentPathIdx}
 								/>
 							</SectionWrapper>
 						)}
-					/>
+					/> */}
 					{/* <Route exact path='/work' render={() => <About />} /> */}
 				</Switch>
 			</AnimatePresence>
