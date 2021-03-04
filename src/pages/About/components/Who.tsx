@@ -12,13 +12,13 @@ export default function Who() {
 			onChange={(inView: boolean): void => setContentInView(inView)}
 			triggerOnce={true}
 			className={styles.who}
-			data-in-view={contentInView ? true : false}
+			data-in-view={contentInView}
 		>
 			<div className={styles.text}>
 				<SymbolGen trigger='inView'>
 					<h4>Quan Cao</h4>
 				</SymbolGen>
-				<p data-in-view={contentInView ? 'true' : 'false'}>
+				<p data-in-view={contentInView}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
 					sapiente, molestias vitae voluptate minus doloribus suscipit atque maiores
 					dolorem laboriosam, mollitia repellendus libero officiis cupiditate eveniet
@@ -26,7 +26,7 @@ export default function Who() {
 					mollitia delectus quidem iusto ea laborum, quasi sapiente error eius? Maxime,
 					voluptate?
 				</p>
-				<p data-in-view={contentInView ? 'true' : 'false'}>
+				<p data-in-view={contentInView}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
 					sapiente, molestias vitae voluptate minus doloribus suscipit atque maiores
 					dolorem laboriosam, mollitia repellendus libero officiis cupiditate eveniet

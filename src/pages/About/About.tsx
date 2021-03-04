@@ -1,5 +1,5 @@
 import styles from './About.module.scss';
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Sub from './components/Sub';
 import Skillset from './components/Skillset';
 import Who from './components/Who';

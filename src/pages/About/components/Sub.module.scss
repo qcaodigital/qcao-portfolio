@@ -11,9 +11,11 @@
 		position: relative;
 		text-align: center;
 		width: 100%;
-		transition: 350ms ease-in;
+		transition: transform 350ms ease-in;
 		@include breakpoint(lg) {
-			width: 60%;
+			text-align: left;
+			position: relative;
+			left: 10%;
 		}
 		.subSectionHeader {
 			text-transform: capitalize;
@@ -28,11 +30,16 @@
 				font-size: $fs-xxl;
 			}
 			.mainText {
+				white-space: nowrap;
 				font-family: $serif;
 				transform: translate3d(0, 0, 0);
 				backface-visibility: hidden;
 				-webkit-backface-visibility: hidden;
 				-webkit-font-smoothing: antialiased !important;
+				span {
+					display: block;
+					line-height: 1;
+				}
 				&.empty {
 					margin-right: 0.25ch;
 				}
@@ -43,15 +50,12 @@
 				display: flex;
 				align-items: center;
 				position: absolute;
-				// letter-spacing: -0.125ch;
 				color: var(--highlight-color);
 				margin: 0 0.25ch 0 0;
 				right: calc(100% + 0.5ch);
 				top: 50%;
 				transform: translateY(-50%);
-				@include breakpoint(lg) {
-					right: 105%;
-				}
+
 				&::before {
 					content: '';
 					width: 50vw;
@@ -60,6 +64,19 @@
 					margin-right: 0.5rem;
 					display: inline-block;
 					background-color: var(--main-color);
+				}
+			}
+		}
+	}
+	&[data-reduce-font='true'] {
+		header {
+			.subSectionHeader {
+				font-size: $fs-lg;
+				@include breakpoint(md) {
+					font-size: $fs-xl;
+				}
+				@include breakpoint(lg) {
+					font-size: $fs-xxl;
 				}
 			}
 		}

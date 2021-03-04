@@ -3,9 +3,10 @@ import { useManageState } from './components/hooks/useManageState';
 import { CSSProperties, useRef } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Nav from './components/Nav/Nav';
-import Home from './pages/Home/Home';
-import About from './pages/About/About';
+import Nav from './components/Nav/';
+import Home from './pages/Home/';
+import About from './pages/About/';
+import Work from './pages/Work/';
 import HBM from './components/Nav/components/HBM';
 import Background from './components/common/Background';
 import SectionWrapper from './components/common/SectionWrapper';
@@ -86,20 +87,25 @@ export default function App() {
 							</SectionWrapper>
 						)}
 					/>
-					{/* <Route
+					<Route
 						exact
 						path='/work'
 						render={() => (
-							<SectionWrapper direction={direction} isSubpathOpen={isSubpathOpen}>
-								<About
+							<SectionWrapper
+								direction={direction}
+								isSubpathOpen={isSubpathOpen}
+								sectionRef={currentSectionRef}
+							>
+								<Work
 									isSubpathOpen={isSubpathOpen}
 									setIsSubpathOpen={setIsSubpathOpen}
 									setDirection={setDirection}
+									sectionRef={currentSectionRef}
+									viewport={viewport}
 								/>
 							</SectionWrapper>
 						)}
-					/> */}
-					{/* <Route exact path='/work' render={() => <About />} /> */}
+					/>
 				</Switch>
 			</AnimatePresence>
 			<AnimatePresence>

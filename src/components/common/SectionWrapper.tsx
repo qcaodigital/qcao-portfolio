@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import React, { useRef } from 'react';
 import ScrollProgress from './ScrollProgress';
 interface SectionWrapperProps {
 	direction: string;
