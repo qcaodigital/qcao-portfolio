@@ -1,0 +1,186 @@
+@import '../../../assets/sass/';
+
+.project {
+	.info {
+		display: grid;
+		gap: 2.5rem;
+		@include breakpoint(lg) {
+			grid-template-columns: 5fr 4fr;
+			column-gap: 5rem;
+			margin-bottom: 2.5vh;
+		}
+		.group {
+			> .label {
+				font-size: $fs-sm;
+				text-transform: uppercase;
+				font-weight: 500;
+				letter-spacing: 0.2rem;
+				text-shadow: $text-shadow-sm;
+				@include breakpoint(lg) {
+					font-size: $fs-md;
+				}
+				&::before {
+					content: '//';
+					margin-right: 0.5ch;
+				}
+			}
+			.text {
+				opacity: 0.55;
+				font-size: $fs-xs;
+				max-width: 75ch;
+				@include breakpoint(lg) {
+					font-size: $fs-sm;
+					max-width: unset;
+				}
+			}
+			.icons {
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 0.25rem;
+				.tech {
+					cursor: pointer;
+					width: 7.5%;
+					max-width: 4rem;
+					position: relative;
+					img {
+						width: 100%;
+					}
+					.label {
+						opacity: 0;
+						position: absolute;
+						bottom: calc(100% + 1rem);
+						left: 50%;
+						transform: translateX(-50%);
+						white-space: nowrap;
+						font-size: $fs-xs;
+						background-color: var(--main-color);
+						color: var(--secondary-color);
+						padding: 0.25rem 0.5rem;
+						&::after {
+							content: '';
+							position: absolute;
+							top: 100%;
+							left: 50%;
+							transform: translateX(-50%);
+							width: 0;
+							height: 0;
+							border-style: solid;
+							border-width: 0.5rem 0.5rem 0 0.5rem;
+							border-color: var(--main-color) transparent transparent transparent;
+						}
+					}
+					& + .tech {
+						margin-left: 1rem;
+					}
+					&:hover {
+						.label {
+							transition: 250ms ease;
+							opacity: 1;
+						}
+					}
+				}
+			}
+			&:is(#tech, #time) {
+				.text {
+					@include breakpoint(lg) {
+						max-width: 32ch;
+					}
+				}
+			}
+			&:is(#challenges) {
+				display: none;
+				@include breakpoint(lg) {
+					display: block;
+					grid-column: 1/2;
+					grid-row: 2/3;
+				}
+			}
+		}
+	}
+	.imgContainer {
+		position: relative;
+		.mockupImg {
+			width: 100%;
+			height: 100%;
+			margin: 5vh 0;
+			box-shadow: 0 2.5rem 5rem -5rem rgba(0, 0, 0, 0.5);
+		}
+		.links {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			position: relative;
+			@include breakpoint(lg) {
+				align-items: center;
+				position: absolute;
+				top: 33%;
+				left: 0%;
+				&::before,
+				&::after {
+					z-index: -1;
+					content: '';
+					display: block;
+					position: absolute;
+					--width: 1vw;
+					--gap: 2rem;
+					--borderWidth: 0.2rem;
+					opacity: 0.75;
+				}
+				&::before {
+					border: var(--borderWidth) solid var(--main-color);
+					border-left: none;
+					height: 60%;
+					width: var(--width);
+					left: calc(100% + var(--gap));
+					top: 50%;
+					transform: translate(0, -50%);
+				}
+				&::after {
+					content: '';
+					display: block;
+					height: var(--borderWidth);
+					width: 9vw;
+					background-color: var(--main-color);
+					position: absolute;
+					left: calc(100% + var(--gap) + var(--width) + calc(var(--borderWidth) / 2));
+				}
+			}
+			@include breakpoint(xl) {
+				left: 7%;
+			}
+			a + a {
+				margin-top: 0.5rem;
+			}
+			a {
+				&::before {
+					content: '▪';
+					font-size: $fs-xs;
+					margin-right: 0.5ch;
+					@include breakpoint(lg) {
+						content: unset;
+					}
+				}
+				span {
+					font-size: $fs-sm;
+					font-weight: 500;
+					text-decoration: underline;
+					transition: 200ms ease;
+					&:hover {
+						color: var(--highlight-color);
+					}
+					@include breakpoint(lg) {
+						text-shadow: $text-shadow-sm;
+						letter-spacing: -0.1rem;
+						font-size: $fs-md;
+					}
+				}
+				&.live {
+					color: var(--highlight-color);
+					&::before {
+						color: inherit;
+					}
+				}
+			}
+		}
+	}
+}
