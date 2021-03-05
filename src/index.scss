@@ -7,7 +7,6 @@
 html {
 	font-size: 62.5%;
 	height: 100%;
-	touch-action: pan-down;
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -15,6 +14,7 @@ body {
 	margin: 0;
 	height: 100%;
 	overscroll-behavior-y: contain;
+	// touch-action: pan-down;
 }
 
 #root {
@@ -58,7 +58,8 @@ a {
 	color: unset;
 }
 
-p {
+p,
+a {
 	line-height: 1.4;
 	letter-spacing: 0.1rem;
 }

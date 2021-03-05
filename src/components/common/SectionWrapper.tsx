@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
+import { Dispatch, SetStateAction } from 'react';
 import ScrollProgress from './ScrollProgress';
+import ToTop from './ToTop';
+
 interface SectionWrapperProps {
 	direction: string;
 	children: JSX.Element;
 	isSubpathOpen: boolean;
+	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
 }
 
@@ -40,6 +44,7 @@ const transUp = {
 export default function SectionWrapper({
 	direction,
 	isSubpathOpen,
+	setIsSubpathOpen,
 	sectionRef,
 	children,
 }: SectionWrapperProps) {
@@ -69,6 +74,11 @@ export default function SectionWrapper({
 						width='.5rem'
 					/>
 				)}
+				<ToTop
+					sectionRef={sectionRef}
+					setIsSubpathOpen={setIsSubpathOpen}
+					isSubpathOpen={isSubpathOpen}
+				/>
 			</motion.section>
 		</motion.div>
 	);

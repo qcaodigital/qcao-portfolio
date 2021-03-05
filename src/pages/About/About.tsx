@@ -4,7 +4,6 @@ import Sub from './components/Sub';
 import Skillset from './components/Skillset';
 import Who from './components/Who';
 import Resume from './components/Resume';
-import ToTop from './../../components/common/ToTop';
 import Next from '../../components/common/Next';
 import Landing from './../../components/common/Landing';
 
@@ -46,11 +45,6 @@ export default function About({
 			<Sub id='3' heading='Resume'>
 				<Resume sectionRef={sectionRef} />
 			</Sub>
-			<ToTop
-				sectionRef={sectionRef}
-				setIsSubpathOpen={setIsSubpathOpen}
-				isSubpathOpen={isSubpathOpen}
-			/>
 			<Next
 				className={styles.next}
 				sectionRef={sectionRef}

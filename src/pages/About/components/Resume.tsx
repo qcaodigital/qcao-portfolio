@@ -1,5 +1,5 @@
 import styles from './Resume.module.scss';
-import { jobs, job, education, educationType } from './Resume.data';
+import { jobs, job, education, educationType } from '../../../data/Resume.data';
 import Job from './Job';
 import TypeWriter from '../../../components/animation/TypeWriter';
 

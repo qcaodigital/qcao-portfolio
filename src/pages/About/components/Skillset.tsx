@@ -1,5 +1,5 @@
 import styles from './Skillset.module.scss';
-import { technologies, technology } from './Skillset.data';
+import { technologies, technology } from '../../../data/Skillset.data';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import InViewState from '../../../components/utils/InViewState';

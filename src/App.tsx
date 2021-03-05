@@ -10,12 +10,14 @@ import Work from './pages/Work/';
 import HBM from './components/Nav/components/HBM';
 import Background from './components/common/Background';
 import SectionWrapper from './components/common/SectionWrapper';
+import { useEffect } from 'react';
 
 interface customCSS extends CSSProperties {
 	'--trueHeight': string;
 }
 
 export default function App() {
+	const currentSectionRef = useRef<HTMLElement | null>(null);
 	const location = useLocation();
 	const {
 		isHBMOpen,
@@ -31,7 +33,14 @@ export default function App() {
 		navLinks,
 	} = useManageState();
 
-	const currentSectionRef = useRef<HTMLElement | null>(null);
+	//disable touch screen zooming on non-subpath pages
+	useEffect(() => {
+		if (isSubpathOpen) {
+			document.body.style.touchAction = 'unset';
+		} else {
+			document.body.style.touchAction = 'pan-down';
+		}
+	}, [isSubpathOpen]);
 
 	return (
 		<main
@@ -76,6 +85,7 @@ export default function App() {
 							<SectionWrapper
 								direction={direction}
 								isSubpathOpen={isSubpathOpen}
+								setIsSubpathOpen={setIsSubpathOpen}
 								sectionRef={currentSectionRef}
 							>
 								<About
@@ -95,6 +105,7 @@ export default function App() {
 								direction={direction}
 								isSubpathOpen={isSubpathOpen}
 								sectionRef={currentSectionRef}
+								setIsSubpathOpen={setIsSubpathOpen}
 							>
 								<Work
 									isSubpathOpen={isSubpathOpen}

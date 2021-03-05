@@ -1,4 +1,4 @@
-import { job } from './Resume.data';
+import { job } from '../../../data/Resume.data';
 import styles from './Job.module.scss';
 import { useInView } from 'react-intersection-observer';
 

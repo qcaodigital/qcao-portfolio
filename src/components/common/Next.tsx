@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from 'react';
 import SVGBorderButton from './SVGBorderButton';
 
 interface NextProps {
-	className: string;
+	className?: string;
 	buttonText: string;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
 	pushTo: string;

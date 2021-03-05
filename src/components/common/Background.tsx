@@ -76,7 +76,7 @@ export default function Background({ viewport, isSubpathOpen, currentPathIdx }: 
 					},
 				}}
 			/>
-			<p
+			{/* <p
 				style={{
 					color: 'white',
 					backgroundColor: 'black',
@@ -89,7 +89,7 @@ export default function Background({ viewport, isSubpathOpen, currentPathIdx }: 
 				}}
 			>
 				page: {currentPathIdx} | viewport: {viewport.label} (min-width: {viewport.minWidth})
-			</p>
+			</p> */}
 		</div>
 	);
 }

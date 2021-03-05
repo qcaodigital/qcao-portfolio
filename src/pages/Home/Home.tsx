@@ -29,7 +29,7 @@ export default function Home({ direction, setDirection, setCurrentPathIdx }: Hom
 					<Link to='/about' callBefore={() => setDirection('down')}>
 						About Me
 					</Link>
-					<Link to='/about' callBefore={() => setDirection('down')}>
+					<Link to='/work' callBefore={() => setDirection('down')}>
 						My Work
 					</Link>
 				</div>

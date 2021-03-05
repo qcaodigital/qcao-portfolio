@@ -4,6 +4,8 @@ import Sub from '../About/components/Sub';
 import styles from './Work.module.scss';
 import { viewportType } from './../../components/hooks/useViewport';
 import ReactImageMagnify from 'react-image-magnify';
+import Project from './components/Project';
+import Next from '../../components/common/Next';
 
 interface WorkProps {
 	isSubpathOpen: boolean;
@@ -34,48 +36,81 @@ export default function Work({
 				<div className={styles.bannerContainer}>
 					<img src='/imgs/work_banner.jpg' alt='qcaodigital portfolio work' />
 				</div>
-				{/* <Sub heading='Intro' id='0' reduceFont>
-					<h3>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quos
-						debitis recusandae aut iure eveniet atque cupiditate, non sequi commodi
-						quidem quasi, adipisci delectus, eius quisquam similique possimus odit
-						error. Delectus, placeat, nihil sunt quam hic itaque, officiis animi a sint
-						velit adipisci. Non dolor accusamus ad qui sunt! Saepe!
-					</h3>
-				</Sub> */}
 				<Sub heading='Cocktail Curations' id='1' reduceFont break={viewport.rank < 2}>
-					<ReactImageMagnify
-						imageClassName={styles.mockupImg}
-						enlargedImageContainerStyle={{
-							position: 'absolute',
-							left: '50%',
-							top: '50%',
-							transform: 'translate(-50%, -50%)',
-						}}
-						{...{
-							smallImage: {
-								alt: '',
-								isFluidWidth: true,
-								src: '/imgs/mockups/cocktail_curations-transparent-min.png',
-							},
-							largeImage: {
-								alt: '',
-								isFluidWidth: true,
-								src: '/imgs/mockups/cocktail_curations-transparent-min-lens.png',
-							},
-						}}
+					<Project
+						mockupImg='/imgs/mockups/cc_mockup.png'
+						liveLink='https://cocktailcurations.vercel.app'
+						githubLink='https://github.com/qcaodigital/cocktail_curations'
+						techs={[
+							'reactjs',
+							'nextjs',
+							'framer',
+							'javascript',
+							'sass',
+							'css',
+							'html',
+							'prismic',
+						]}
 					/>
 				</Sub>
 				<Sub heading='Charred Food' id='2' reduceFont>
-					test
+					<Project
+						mockupImg='/imgs/mockups/charred_mockup.png'
+						liveLink='https://charred.netlify.app/'
+						githubLink='https://github.com/qcaodigital/CharredFood'
+						techs={[
+							'reactjs',
+							'reactrouter',
+							'express',
+							'nodejs',
+							'javascript',
+							'css',
+							'html',
+						]}
+					/>
 				</Sub>
 				<Sub heading='Staxx' id='3' reduceFont>
-					test
+					<Project
+						mockupImg='/imgs/mockups/staxx_mockup.png'
+						liveLink='https://staxxz.herokuapp.com/'
+						githubLink='https://github.com/qcaodigital/staxx'
+						techs={[
+							'jquery',
+							'express',
+							'nodejs',
+							'mongodb',
+							'javascript',
+							'sass',
+							'css',
+							'html',
+						]}
+					/>
 				</Sub>
 				<Sub heading='Portfolio' id='4' reduceFont>
-					test
+					<Project
+						mockupImg='/imgs/mockups/portfolio_mockup.png'
+						liveLink='https://cocktailcurations.vercel.app'
+						githubLink='https://github.com/qcaodigital/cocktail_curations'
+						techs={[
+							'reactjs',
+							'reactrouter',
+							'framer',
+							'typescript',
+							'javascript',
+							'sass',
+							'css',
+							'html',
+						]}
+					/>
 				</Sub>
 			</section>
+			<Next
+				pushTo='/contact'
+				sectionRef={sectionRef}
+				buttonText="Let's Chat"
+				setDirection={setDirection}
+				setIsSubpathOpen={setIsSubpathOpen}
+			/>
 		</>
 	);
 }
