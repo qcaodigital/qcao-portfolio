@@ -38,7 +38,6 @@
 				flex-wrap: wrap;
 				margin-top: 0.25rem;
 				.tech {
-					cursor: pointer;
 					width: 7.5%;
 					max-width: 4rem;
 					position: relative;
@@ -87,10 +86,14 @@
 					}
 				}
 			}
-			&:is(#challenges) {
+			&:is(#challenges, #time) {
 				display: none;
 				@include breakpoint(lg) {
 					display: block;
+				}
+			}
+			&:is(#challenges) {
+				@include breakpoint(lg) {
 					grid-column: 1/2;
 					grid-row: 2/3;
 				}
@@ -107,14 +110,14 @@
 		}
 		.links {
 			display: flex;
-			justify-content: center;
 			flex-direction: column;
+			align-items: flex-start;
 			position: relative;
 			@include breakpoint(lg) {
 				align-items: center;
 				position: absolute;
 				top: 33%;
-				left: 0%;
+				left: 3.5%;
 				&::before,
 				&::after {
 					z-index: -1;
@@ -136,13 +139,12 @@
 					transform: translate(0, -50%);
 				}
 				&::after {
-					content: '';
-					display: block;
 					height: var(--borderWidth);
 					width: 9vw;
 					background-color: var(--main-color);
-					position: absolute;
 					left: calc(100% + var(--gap) + var(--width) + calc(var(--borderWidth) / 2));
+					top: 50%;
+					transform: translateY(-50%);
 				}
 			}
 			@include breakpoint(xl) {

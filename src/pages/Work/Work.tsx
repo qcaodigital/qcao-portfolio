@@ -50,6 +50,7 @@ export default function Work({
 							'css',
 							'html',
 							'prismic',
+							'mailgun',
 						]}
 					/>
 				</Sub>

@@ -20,7 +20,6 @@ export default function About({
 	setDirection,
 	sectionRef,
 }: AboutProps) {
-	console.log(sectionRef);
 	return (
 		<>
 			<Landing

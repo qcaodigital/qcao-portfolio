@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, Dispatch, SetStateAction } from 'react';
+import { useCallback, useEffect, useState, Dispatch, SetStateAction, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { navLinksType } from '../../types';
 
@@ -12,12 +12,12 @@ export default function useWheelSwipe(
 	isSubpathOpen: boolean
 ): setDirectionType {
 	const [direction, setDirection] = useState<directionType>('down');
-	const [onCoolDown, setOnCoolDown] = useState<boolean>(false);
+	const onCoolDown = useRef<boolean | null>(false);
 	const history = useHistory();
 
 	const setDirAndPush = useCallback(
 		(delta: number): void => {
-			if (!onCoolDown && !isSubpathOpen) {
+			if (!onCoolDown!.current && !isSubpathOpen) {
 				if (delta < 0 && currentPathIdx > 0) {
 					setDirection('up');
 					history.push(navLinks[currentPathIdx - 1].pathname);
@@ -27,8 +27,8 @@ export default function useWheelSwipe(
 					history.push(navLinks[currentPathIdx + 1].pathname);
 					setCurrentPathIdx((curr: number) => curr + 1);
 				}
-				setOnCoolDown(true);
-				setTimeout(() => setOnCoolDown(false), 1500);
+				onCoolDown!.current = true;
+				setTimeout(() => (onCoolDown!.current = false), 1500);
 			}
 		},
 		[navLinks, history, currentPathIdx, onCoolDown, setCurrentPathIdx, isSubpathOpen]

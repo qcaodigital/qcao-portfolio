@@ -26,7 +26,7 @@ export default function Project({ mockupImg, githubLink, liveLink, techs }: Proj
 					<ul className={styles.icons}>
 						{techs?.map((tech) => (
 							<li key={tech} className={styles.tech}>
-								<img src={`/imgs/skill_logos/${tech}.png`} alt={`${tech} icon`} />
+								<img src={`/imgs/tech_logos/${tech}.png`} alt={`${tech} icon`} />
 								<p className={styles.label}>
 									{technologies.filter((j) => j.filename === tech)[0].label}
 								</p>
@@ -61,7 +61,12 @@ export default function Project({ mockupImg, githubLink, liveLink, techs }: Proj
 					>
 						<span>Live Link</span>
 					</a>
-					<a href={githubLink} target='_blank' rel='noopener noreferrer'>
+					<a
+						className={styles.github}
+						href={githubLink}
+						target='_blank'
+						rel='noopener noreferrer'
+					>
 						<span>GitHub Repository</span>
 					</a>
 				</div>

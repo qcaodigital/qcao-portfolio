@@ -84,6 +84,11 @@ export const technologies: technology[] = [
 		proficiency: 'intermediate',
 	},
 	{
+		filename: 'mailgun',
+		label: 'Mailgun',
+		proficiency: 'intermediate',
+	},
+	{
 		filename: 'photoshop',
 		label: 'Adobe Photoshop',
 		proficiency: 'expert',
