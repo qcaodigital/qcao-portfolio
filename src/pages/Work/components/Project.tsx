@@ -1,5 +1,6 @@
 import styles from './Project.module.scss';
 import { technologies } from '../../../data/Skillset.data';
+import { useState } from 'react';
 
 interface ProjectProps {
 	mockupImg: string;
@@ -9,6 +10,8 @@ interface ProjectProps {
 }
 
 export default function Project({ mockupImg, githubLink, liveLink, techs }: ProjectProps) {
+	const [openLive, setOpenLive] = useState<boolean>(false);
+
 	return (
 		<div className={styles.project}>
 			<div className={styles.info}>
@@ -55,7 +58,8 @@ export default function Project({ mockupImg, githubLink, liveLink, techs }: Proj
 				<div className={styles.links}>
 					<a
 						className={styles.live}
-						href={liveLink}
+						// href={liveLink}
+						onClick={() => setOpenLive(true)}
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -71,6 +75,11 @@ export default function Project({ mockupImg, githubLink, liveLink, techs }: Proj
 					</a>
 				</div>
 			</div>
+			{openLive && (
+				<div className={styles.iframe}>
+					<object type='text/html' data={liveLink} width='100%' height='100%'></object>
+				</div>
+			)}
 		</div>
 	);
 }
