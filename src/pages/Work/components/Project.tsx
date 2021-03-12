@@ -1,17 +1,29 @@
 import styles from './Project.module.scss';
 import { technologies } from '../../../data/Skillset.data';
-import { useState } from 'react';
+import ExternalSite from './ExternalSite';
+import { AnimatePresence } from 'framer-motion';
 
 interface ProjectProps {
 	mockupImg: string;
 	githubLink: string;
 	liveLink: string;
+	openPreview: () => void;
+	closePreview: () => void;
+	previewOpen: boolean;
+	disableLive: boolean;
 	techs?: string[];
 }
 
-export default function Project({ mockupImg, githubLink, liveLink, techs }: ProjectProps) {
-	const [openLive, setOpenLive] = useState<boolean>(false);
-
+export default function Project({
+	mockupImg,
+	githubLink,
+	liveLink,
+	techs,
+	openPreview,
+	closePreview,
+	previewOpen,
+	disableLive,
+}: ProjectProps) {
 	return (
 		<div className={styles.project}>
 			<div className={styles.info}>
@@ -55,16 +67,22 @@ export default function Project({ mockupImg, githubLink, liveLink, techs }: Proj
 			</div>
 			<div className={styles.imgContainer}>
 				<img className={styles.mockupImg} src={mockupImg} alt='' />
-				<div className={styles.links}>
-					<a
-						className={styles.live}
-						// href={liveLink}
-						onClick={() => setOpenLive(true)}
-						target='_blank'
-						rel='noopener noreferrer'
-					>
-						<span>Live Link</span>
-					</a>
+				<div className={styles.links} data-live-disabled={disableLive}>
+					{!disableLive && (
+						<>
+							<a
+								className={styles.live}
+								href={liveLink}
+								target='_blank'
+								rel='noopener noreferrer'
+							>
+								<span>Live Link</span>
+							</a>
+							<button onClick={openPreview}>
+								<span>Preview</span>
+							</button>
+						</>
+					)}
 					<a
 						className={styles.github}
 						href={githubLink}
@@ -75,11 +93,9 @@ export default function Project({ mockupImg, githubLink, liveLink, techs }: Proj
 					</a>
 				</div>
 			</div>
-			{openLive && (
-				<div className={styles.iframe}>
-					<object type='text/html' data={liveLink} width='100%' height='100%'></object>
-				</div>
-			)}
+			<AnimatePresence>
+				{previewOpen && <ExternalSite link={liveLink} closePreview={closePreview} />}
+			</AnimatePresence>
 		</div>
 	);
 }

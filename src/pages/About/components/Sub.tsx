@@ -7,6 +7,7 @@ interface SubProps {
 	id: string;
 	heading: string;
 	children: React.ReactNode;
+	projects?: any;
 	reduceFont?: boolean;
 	break?: boolean;
 }
@@ -26,9 +27,11 @@ export default function Sub({ id, heading, children, reduceFont, break: breakTex
 					</span>
 					<p className={styles.mainText}>
 						{breakText
-							? heading
-									.split(' ')
-									.map((word) => <span className={styles.mainText}>{word}</span>)
+							? heading.split(' ').map((word) => (
+									<span key={word} className={styles.mainText}>
+										{word}
+									</span>
+							  ))
 							: heading}
 					</p>
 				</h3>

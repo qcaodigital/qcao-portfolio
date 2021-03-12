@@ -1,9 +1,9 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 import Landing from '../../components/common/Landing';
 import Sub from '../About/components/Sub';
 import styles from './Work.module.scss';
 import { viewportType } from './../../components/hooks/useViewport';
-import ReactImageMagnify from 'react-image-magnify';
+import { projects as projectsData, projectType } from './Work.data';
 import Project from './components/Project';
 import Next from '../../components/common/Next';
 
@@ -22,6 +22,33 @@ export default function Work({
 	setDirection,
 	viewport,
 }: WorkProps) {
+	const [projects, setProjects] = useState<projectType[]>(projectsData);
+	function openPreview(projectName: string) {
+		setProjects((curr) =>
+			curr.map((project) => ({ ...project, previewOpen: projectName === project.heading }))
+		);
+	}
+	function closePreview() {
+		setProjects((curr) => curr.map((project) => ({ ...project, previewOpen: false })));
+	}
+
+	useEffect(() => {
+		if (projects.some((project) => project.previewOpen) && sectionRef.current) {
+			sectionRef.current.style.overflow = 'hidden';
+		} else if (sectionRef.current) {
+			sectionRef.current.style.overflow = 'hidden scroll';
+		}
+	}, [projects]);
+
+	useEffect(() => {
+		function closePreviews(e: KeyboardEvent) {
+			if (e.key === 'Escape') {
+				closePreview();
+			}
+		}
+		window.addEventListener('keyup', closePreviews);
+	}, []);
+
 	return (
 		<>
 			<Landing
@@ -36,74 +63,27 @@ export default function Work({
 				<div className={styles.bannerContainer}>
 					<img src='/imgs/work_banner.jpg' alt='qcaodigital portfolio work' />
 				</div>
-				<Sub heading='Cocktail Curations' id='1' reduceFont break={viewport.rank < 2}>
-					<Project
-						mockupImg='/imgs/mockups/cc_mockup.png'
-						liveLink='https://cocktailcurations.vercel.app'
-						githubLink='https://github.com/qcaodigital/cocktail_curations'
-						techs={[
-							'reactjs',
-							'nextjs',
-							'framer',
-							'javascript',
-							'sass',
-							'css',
-							'html',
-							'prismic',
-							'mailgun',
-						]}
-					/>
-				</Sub>
-				<Sub heading='Charred Food' id='2' reduceFont>
-					<Project
-						mockupImg='/imgs/mockups/charred_mockup.png'
-						liveLink='https://charred.netlify.app/'
-						githubLink='https://github.com/qcaodigital/CharredFood'
-						techs={[
-							'reactjs',
-							'reactrouter',
-							'express',
-							'nodejs',
-							'javascript',
-							'css',
-							'html',
-						]}
-					/>
-				</Sub>
-				<Sub heading='Staxx' id='3' reduceFont>
-					<Project
-						mockupImg='/imgs/mockups/staxx_mockup.png'
-						liveLink='https://staxxz.herokuapp.com/'
-						githubLink='https://github.com/qcaodigital/staxx'
-						techs={[
-							'jquery',
-							'express',
-							'nodejs',
-							'mongodb',
-							'javascript',
-							'sass',
-							'css',
-							'html',
-						]}
-					/>
-				</Sub>
-				<Sub heading='Portfolio' id='4' reduceFont>
-					<Project
-						mockupImg='/imgs/mockups/portfolio_mockup.png'
-						liveLink='https://cocktailcurations.vercel.app'
-						githubLink='https://github.com/qcaodigital/cocktail_curations'
-						techs={[
-							'reactjs',
-							'reactrouter',
-							'framer',
-							'typescript',
-							'javascript',
-							'sass',
-							'css',
-							'html',
-						]}
-					/>
-				</Sub>
+				{projects.map((project, idx) => (
+					<Sub
+						key={project.heading}
+						heading={project.heading}
+						id={idx + 1 + ''}
+						reduceFont={project.reduceFont}
+						break={viewport.rank < (project.breakAt || Infinity)}
+					>
+						<Project
+							key={project.heading}
+							mockupImg={`/imgs/mockups/${project.imgFilename}`}
+							liveLink={project.liveLink}
+							githubLink={project.githubLink}
+							techs={project.techs}
+							previewOpen={project.previewOpen}
+							openPreview={openPreview.bind(null, project.heading)}
+							closePreview={closePreview}
+							disableLive={project.heading === 'Portfolio'}
+						/>
+					</Sub>
+				))}
 			</section>
 			<Next
 				pushTo='/contact'

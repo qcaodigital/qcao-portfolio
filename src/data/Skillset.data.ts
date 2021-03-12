@@ -69,6 +69,11 @@ export const technologies: technology[] = [
 		proficiency: 'intermediate',
 	},
 	{
+		filename: 'ejs',
+		label: 'EJS',
+		proficiency: 'expert',
+	},
+	{
 		filename: 'framer',
 		label: 'Framer Motion',
 		proficiency: 'advanced',

@@ -1,0 +1,84 @@
+.iframe {
+	--border-color: #bbbbbd;
+	--border-width: 0.1rem;
+	--border-radius: 0.5rem;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-height: 30rem;
+	height: 85vh;
+	max-height: 95vh;
+	min-width: 38rem;
+	width: 85vw;
+	max-width: 95vw;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	background-color: #f7f7f7;
+	overflow: auto;
+	resize: both;
+	border-radius: 0.5rem;
+	border: rgba(0, 0, 0, 0.5);
+	.container {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		align-items: flex-end;
+		.bar {
+			position: absolute;
+			top: 0%;
+			left: 0;
+			right: 0;
+			height: 2.5rem;
+			background-color: #eaeaec;
+			.buttons {
+				display: flex;
+				position: absolute;
+				top: 50%;
+				left: 0.5rem;
+				transform: translateY(-50%);
+				> * + * {
+					margin-left: 0.5rem;
+				}
+				button {
+					cursor: pointer;
+					display: block;
+					height: 1.25rem;
+					width: 1.25rem;
+					border-radius: 50%;
+					position: relative;
+					opacity: 0.85;
+					&:hover {
+						transition: 100ms ease;
+						opacity: 1;
+						box-shadow: 0.1rem 0.1rem 0.25rem rgba(0, 0, 0, 0.1);
+					}
+					&.close {
+						background-color: #e86560;
+						position: relative;
+					}
+					&.minimize {
+						background-color: #f1cc8f;
+					}
+
+					&.maximize {
+						background-color: #4bb366;
+					}
+				}
+			}
+		}
+		object {
+			position: relative;
+			height: calc(100% - 2.5rem);
+			width: 100%;
+		}
+	}
+}
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 50;
+}

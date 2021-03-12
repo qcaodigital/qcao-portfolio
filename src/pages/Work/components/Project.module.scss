@@ -116,7 +116,7 @@
 			@include breakpoint(lg) {
 				align-items: center;
 				position: absolute;
-				top: 33%;
+				top: 25%;
 				left: 3.5%;
 				&::before,
 				&::after {
@@ -129,6 +129,7 @@
 					--borderWidth: 0.2rem;
 					opacity: 0.75;
 				}
+				//SQUARE
 				&::before {
 					border: var(--borderWidth) solid var(--main-color);
 					border-left: none;
@@ -138,6 +139,7 @@
 					top: 50%;
 					transform: translate(0, -50%);
 				}
+				//LINE
 				&::after {
 					height: var(--borderWidth);
 					width: 9vw;
@@ -150,10 +152,24 @@
 			@include breakpoint(xl) {
 				left: 7%;
 			}
-			a + a {
+			&[data-live-disabled='true'] {
+				top: 35%;
+				a {
+					color: var(--highlight-color);
+				}
+				&::before {
+					display: none;
+				}
+				&::after {
+					left: calc(110%);
+					top: calc(50% + var(--borderWidth) + 0.05rem);
+				}
+			}
+			> * + * {
 				margin-top: 0.5rem;
 			}
-			a {
+			> * {
+				cursor: pointer;
 				&::before {
 					content: '▪';
 					font-size: $fs-xs;
@@ -183,19 +199,6 @@
 					}
 				}
 			}
-		}
-	}
-	.iframe {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		height: 90vh;
-		width: 90vw;
-		transform: translate(-50%, -50%);
-		z-index: 100;
-		background-color: #f7f7f7;
-		object {
-			border: 0.3rem solid var(--main-color);
 		}
 	}
 }
