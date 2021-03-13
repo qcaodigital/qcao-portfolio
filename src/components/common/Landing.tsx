@@ -2,7 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { transitions } from './Landing.transitions';
 import styles from './Landing.module.scss';
 import CTAContainer from './CTAContainer';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
 interface LandingProps {
 	isSubpathOpen: boolean;
@@ -11,6 +12,11 @@ interface LandingProps {
 	img: { src: string; alt: string };
 	headerText: string;
 	subheaderText: string;
+	whiteImg?: boolean;
+	ctaText?: string;
+	noBoxShadow?: boolean;
+	noScrollIndicator?: boolean;
+	children?: JSX.Element;
 }
 
 export default function Landing({
@@ -20,6 +26,11 @@ export default function Landing({
 	img,
 	headerText,
 	subheaderText,
+	whiteImg,
+	ctaText,
+	noBoxShadow,
+	noScrollIndicator,
+	children,
 }: LandingProps) {
 	if ([...subheaderText].length > 190) {
 		throw new Error(
@@ -28,11 +39,57 @@ export default function Landing({
 			}`
 		);
 	}
+
+	//=== Data handler for copying text ===//
+	const hiddenInputRef = useRef<HTMLInputElement | null>(null);
+	const [inputCopied, setInputCopied] = useState<boolean>(false);
+	useEffect(() => {
+		if (inputCopied) {
+			setTimeout(() => {
+				setInputCopied(false);
+			}, 2000);
+		}
+	}, [inputCopied]);
+	//====================================//
+
+	//=== Find substring and create a copy-click event + styles ===/
+	function copySubString(str: string, substr: string) {
+		return str.split(/(\s+)/).map((word) => {
+			return word === substr ? (
+				<React.Fragment key={word}>
+					<strong
+						onClick={() => {
+							hiddenInputRef.current?.select();
+							document.execCommand('copy');
+							setInputCopied(true);
+						}}
+					>
+						<div className={styles.popup} data-input-copied={inputCopied}>
+							{inputCopied ? 'copied to clipboard!' : 'copy to clipboard'}
+						</div>
+						{word}
+					</strong>
+					<input
+						className={styles.hidden}
+						ref={hiddenInputRef}
+						type='text'
+						value={word}
+						readOnly
+					/>
+				</React.Fragment>
+			) : (
+				word
+			);
+		});
+	}
+	//=============================================================/
+
 	return (
 		<section className={styles.landing}>
 			<motion.div
 				className={`${styles.imgContainer} ${isSubpathOpen && styles.subpathOpen}`}
 				variants={transitions.img}
+				data-no-box-shadow={noBoxShadow}
 			>
 				<motion.div
 					variants={transitions.bracket}
@@ -40,25 +97,44 @@ export default function Landing({
 					className={styles.bracket}
 				/>
 				<img src={img.src} alt={img.alt} />
-				<motion.div className={styles.bar} variants={transitions.bar} />
+				<motion.div
+					className={styles.bar}
+					variants={transitions.bar}
+					data-img-white={whiteImg}
+				/>
 				<motion.div
 					variants={transitions.bracket}
 					id={styles.bottom}
 					className={styles.bracket}
 				/>
 			</motion.div>
-			<motion.header variants={transitions.stagger}>
-				<motion.h1 variants={transitions.headerChildren}>{headerText}</motion.h1>
-				<motion.h2 variants={transitions.headerChildren}>{subheaderText}</motion.h2>
-				<CTAContainer
-					isSubpathOpen={isSubpathOpen}
-					setIsSubpathOpen={setIsSubpathOpen}
-					transitions={transitions}
-					sectionRef={sectionRef}
-				/>
-			</motion.header>
 			<AnimatePresence exitBeforeEnter>
-				{isSubpathOpen && (
+				{children && isSubpathOpen ? (
+					children
+				) : (
+					<motion.header
+						key='header'
+						animate='animate'
+						initial='initial'
+						exit='exit'
+						variants={transitions.stagger}
+					>
+						<motion.h1 variants={transitions.headerChildren}>{headerText}</motion.h1>
+						<motion.h2 variants={transitions.headerChildren}>
+							{copySubString(subheaderText, 'qcao.digital@gmail.com')}
+						</motion.h2>
+						<CTAContainer
+							isSubpathOpen={isSubpathOpen}
+							setIsSubpathOpen={setIsSubpathOpen}
+							transitions={transitions}
+							sectionRef={sectionRef}
+							ctaText={ctaText}
+						/>
+					</motion.header>
+				)}
+			</AnimatePresence>
+			<AnimatePresence exitBeforeEnter>
+				{!noScrollIndicator && isSubpathOpen && (
 					<motion.div
 						animate='animate'
 						initial='initial'

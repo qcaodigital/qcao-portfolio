@@ -1,0 +1,24 @@
+@import '../../../assets/sass/';
+
+.contactForm {
+	width: 100%;
+	form {
+		label {
+			display: block;
+			font-size: $fs-xs;
+		}
+		input {
+			&:is([type='text']) {
+				width: 75%;
+			}
+			&[type='submit'] {
+				display: block;
+				margin: 0 auto;
+			}
+		}
+		textarea {
+			width: 100%;
+			resize: none;
+		}
+	}
+}

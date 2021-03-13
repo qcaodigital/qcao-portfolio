@@ -40,11 +40,11 @@ export const transitions = {
 			x: '100%',
 		},
 		animate: {
-			x: '650%',
+			x: '750%',
 			scaleX: [0.5, 1, 2, 1.5],
 			transition: {
 				x: {
-					duration: 1.5,
+					duration: 1.75,
 					ease: [0.745, 0.015, 0.0, 1],
 				},
 			},
@@ -75,9 +75,16 @@ export const transitions = {
 	},
 	stagger: {
 		animate: {
+			opacity: 1,
 			transition: {
 				staggerChildren: 0.1,
 			},
+		},
+		initial: {
+			opacity: 0,
+		},
+		exit: {
+			opacity: 0,
 		},
 	},
 	headerChildren: {

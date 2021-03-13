@@ -6,7 +6,7 @@ const navLinksDefault: navLinksType = [
 	{ pathname: '/', label: 'home', isActive: false, desc: 'Home' },
 	{ pathname: '/about', label: 'about me', isActive: false, desc: 'About' },
 	{ pathname: '/work', label: 'my work', isActive: false, desc: 'Work' },
-	// { pathname: '/contact', label: 'contact', isActive: false, desc: 'Contact' },
+	{ pathname: '/contact', label: 'contact', isActive: false, desc: 'Contact' },
 	// { pathname: '/blog', label: 'blog', isActive: false, desc: 'Blog' },
 ];
 

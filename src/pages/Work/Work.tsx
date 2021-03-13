@@ -23,11 +23,14 @@ export default function Work({
 	viewport,
 }: WorkProps) {
 	const [projects, setProjects] = useState<projectType[]>(projectsData);
+
+	//Controls for project previews//
 	function openPreview(projectName: string) {
 		setProjects((curr) =>
 			curr.map((project) => ({ ...project, previewOpen: projectName === project.heading }))
 		);
 	}
+
 	function closePreview() {
 		setProjects((curr) => curr.map((project) => ({ ...project, previewOpen: false })));
 	}
@@ -35,10 +38,10 @@ export default function Work({
 	useEffect(() => {
 		if (projects.some((project) => project.previewOpen) && sectionRef.current) {
 			sectionRef.current.style.overflow = 'hidden';
-		} else if (sectionRef.current) {
+		} else if (sectionRef.current && isSubpathOpen) {
 			sectionRef.current.style.overflow = 'hidden scroll';
 		}
-	}, [projects]);
+	}, [projects, isSubpathOpen, sectionRef]);
 
 	useEffect(() => {
 		function closePreviews(e: KeyboardEvent) {
@@ -48,6 +51,7 @@ export default function Work({
 		}
 		window.addEventListener('keyup', closePreviews);
 	}, []);
+	//============================//
 
 	return (
 		<>

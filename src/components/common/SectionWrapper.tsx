@@ -12,7 +12,7 @@ interface SectionWrapperProps {
 }
 
 const defaultTranslate: number = window.innerHeight * 0.75;
-const defaultDuration: number = 0.75;
+const defaultDuration: number = 0.65;
 
 const transUp = {
 	top: {

@@ -11,6 +11,7 @@ import HBM from './components/Nav/components/HBM';
 import Background from './components/common/Background';
 import SectionWrapper from './components/common/SectionWrapper';
 import { useEffect } from 'react';
+import Contact from './pages/Contact/Contact';
 
 interface customCSS extends CSSProperties {
 	'--trueHeight': string;
@@ -112,6 +113,25 @@ export default function App() {
 									setIsSubpathOpen={setIsSubpathOpen}
 									setDirection={setDirection}
 									sectionRef={currentSectionRef}
+									viewport={viewport}
+								/>
+							</SectionWrapper>
+						)}
+					/>
+					<Route
+						exact
+						path='/contact'
+						render={() => (
+							<SectionWrapper
+								direction={direction}
+								isSubpathOpen={isSubpathOpen}
+								sectionRef={currentSectionRef}
+								setIsSubpathOpen={setIsSubpathOpen}
+							>
+								<Contact
+									isSubpathOpen={isSubpathOpen}
+									sectionRef={currentSectionRef}
+									setIsSubpathOpen={setIsSubpathOpen}
 									viewport={viewport}
 								/>
 							</SectionWrapper>

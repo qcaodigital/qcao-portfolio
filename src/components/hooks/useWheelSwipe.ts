@@ -28,7 +28,7 @@ export default function useWheelSwipe(
 					setCurrentPathIdx((curr: number) => curr + 1);
 				}
 				onCoolDown!.current = true;
-				setTimeout(() => (onCoolDown!.current = false), 1500);
+				setTimeout(() => (onCoolDown!.current = false), 750);
 			}
 		},
 		[navLinks, history, currentPathIdx, onCoolDown, setCurrentPathIdx, isSubpathOpen]
