@@ -25,7 +25,9 @@ p,
 li,
 a,
 span,
-div {
+div,
+input,
+textarea {
 	font-family: $sans;
 	margin: 0;
 }
@@ -59,7 +61,10 @@ a {
 }
 
 p,
-a {
+a,
+label,
+input,
+textarea {
 	line-height: 1.4;
 	letter-spacing: 0.1rem;
 }

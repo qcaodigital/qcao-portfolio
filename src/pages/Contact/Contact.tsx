@@ -19,6 +19,7 @@ export default function Contact({
 	return (
 		<>
 			<Landing
+				viewport={viewport}
 				isSubpathOpen={isSubpathOpen}
 				setIsSubpathOpen={setIsSubpathOpen}
 				sectionRef={sectionRef}
@@ -26,12 +27,20 @@ export default function Contact({
 				headerText='Reach Out'
 				subheaderText='Lets create something great together. Shoot me an email at qcao.digital@gmail.com or click the button below to submit a contact form.'
 				ctaText='Contact Me'
+				ctaAction={() =>
+					setTimeout(
+						() =>
+							sectionRef.current?.scrollBy({
+								top: window.innerHeight,
+								behavior: 'smooth',
+							}),
+						1000 //time for subpath open animation
+					)
+				}
 				whiteImg
 				noBoxShadow
-				noScrollIndicator
-			>
-				<ContactForm viewport={viewport} />
-			</Landing>
+			></Landing>
+			<ContactForm viewport={viewport} />
 		</>
 	);
 }

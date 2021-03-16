@@ -62,6 +62,7 @@ export default function Work({
 				isSubpathOpen={isSubpathOpen}
 				setIsSubpathOpen={setIsSubpathOpen}
 				sectionRef={sectionRef}
+				ctaText='see projects'
 			/>
 			<section id={styles[1]}>
 				<div className={styles.bannerContainer}>

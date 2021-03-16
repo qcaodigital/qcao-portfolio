@@ -1,24 +1,62 @@
-@import '../../../assets/sass/';
+@import '../../../assets/sass';
 
 .contactForm {
-	width: 100%;
+	margin-top: 5vh;
+	padding: 0 5% 7.5vh;
+	h1 {
+		font-size: $fs-lg;
+		font-family: $serif;
+		max-width: 10ch;
+		text-align: center;
+		margin: 0 auto;
+		line-height: 1;
+	}
 	form {
-		label {
-			display: block;
-			font-size: $fs-xs;
-		}
-		input {
-			&:is([type='text']) {
-				width: 75%;
-			}
-			&[type='submit'] {
-				display: block;
-				margin: 0 auto;
-			}
-		}
-		textarea {
+		@include flexCenterCol;
+		margin-top: 5vh;
+		fieldset {
 			width: 100%;
-			resize: none;
+			border: none;
+			padding: 0;
+			legend {
+				display: none;
+			}
+			label {
+				display: block;
+				font-size: $fs-xs;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+			input,
+			textarea {
+				width: 100%;
+				background-color: rgba(255, 255, 255, 0.15);
+				border: 0.15rem solid var(--main-color);
+				padding: 0.5rem;
+				font-size: $fs-xs;
+				&:active,
+				&:focus {
+					outline: none;
+					transition: 200ms ease;
+					// box-shadow: $text-shadow-sm;
+				}
+			}
+			input {
+				border: none;
+				border-bottom: 0.15rem solid var(--main-color);
+			}
+			textarea {
+				height: 20rem;
+				resize: none;
+			}
+		}
+		button {
+			@include button;
+			display: inline-block;
+			width: 10ch;
+		}
+		> * + * {
+			margin-top: 1.5rem;
 		}
 	}
 }

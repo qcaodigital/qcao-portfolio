@@ -69,15 +69,11 @@
 		}
 	}
 	&[data-reduce-font='true'] {
-		padding: 5vh 5% 0 5%;
+		padding: 10vh 5% 0 5%;
 		@include breakpoint(xl) {
 			padding: 10vh 10% 0 10%;
 		}
 		header {
-			padding: 0 0 3.75vh 0;
-			@include breakpoint(xl) {
-				padding: 0 0 7.5vh 0;
-			}
 			.subSectionHeader {
 				font-size: $fs-lg;
 				@include breakpoint(md) {

@@ -3,7 +3,8 @@ import { transitions } from './Landing.transitions';
 import styles from './Landing.module.scss';
 import CTAContainer from './CTAContainer';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
-import React, { useEffect } from 'react';
+import React from 'react';
+import { viewportType } from './../hooks/useViewport';
 
 interface LandingProps {
 	isSubpathOpen: boolean;
@@ -14,9 +15,9 @@ interface LandingProps {
 	subheaderText: string;
 	whiteImg?: boolean;
 	ctaText?: string;
+	ctaAction?: (...args: any[]) => any;
 	noBoxShadow?: boolean;
-	noScrollIndicator?: boolean;
-	children?: JSX.Element;
+	viewport?: viewportType;
 }
 
 export default function Landing({
@@ -28,9 +29,9 @@ export default function Landing({
 	subheaderText,
 	whiteImg,
 	ctaText,
+	ctaAction,
 	noBoxShadow,
-	noScrollIndicator,
-	children,
+	viewport,
 }: LandingProps) {
 	if ([...subheaderText].length > 190) {
 		throw new Error(
@@ -43,15 +44,7 @@ export default function Landing({
 	//=== Data handler for copying text ===//
 	const hiddenInputRef = useRef<HTMLInputElement | null>(null);
 	const [inputCopied, setInputCopied] = useState<boolean>(false);
-	useEffect(() => {
-		if (inputCopied) {
-			setTimeout(() => {
-				setInputCopied(false);
-			}, 2000);
-		}
-	}, [inputCopied]);
 	//====================================//
-
 	//=== Find substring and create a copy-click event + styles ===/
 	function copySubString(str: string, substr: string) {
 		return str.split(/(\s+)/).map((word) => {
@@ -62,6 +55,17 @@ export default function Landing({
 							hiddenInputRef.current?.select();
 							document.execCommand('copy');
 							setInputCopied(true);
+							if (viewport && viewport.rank < 2) {
+								setTimeout(() => {
+									//fallback in the case that onMouseEvent fires even above viewport.rank 2
+									if (inputCopied) {
+										setInputCopied(false);
+									}
+								}, 2000);
+							}
+						}}
+						onMouseOut={() => {
+							setInputCopied(false);
 						}}
 					>
 						<div className={styles.popup} data-input-copied={inputCopied}>
@@ -109,32 +113,29 @@ export default function Landing({
 				/>
 			</motion.div>
 			<AnimatePresence exitBeforeEnter>
-				{children && isSubpathOpen ? (
-					children
-				) : (
-					<motion.header
-						key='header'
-						animate='animate'
-						initial='initial'
-						exit='exit'
-						variants={transitions.stagger}
-					>
-						<motion.h1 variants={transitions.headerChildren}>{headerText}</motion.h1>
-						<motion.h2 variants={transitions.headerChildren}>
-							{copySubString(subheaderText, 'qcao.digital@gmail.com')}
-						</motion.h2>
-						<CTAContainer
-							isSubpathOpen={isSubpathOpen}
-							setIsSubpathOpen={setIsSubpathOpen}
-							transitions={transitions}
-							sectionRef={sectionRef}
-							ctaText={ctaText}
-						/>
-					</motion.header>
-				)}
+				<motion.header
+					key='header'
+					animate='animate'
+					initial='initial'
+					exit='exit'
+					variants={transitions.stagger}
+				>
+					<motion.h1 variants={transitions.headerChildren}>{headerText}</motion.h1>
+					<motion.h2 variants={transitions.headerChildren}>
+						{copySubString(subheaderText, 'qcao.digital@gmail.com')}
+					</motion.h2>
+					<CTAContainer
+						isSubpathOpen={isSubpathOpen}
+						setIsSubpathOpen={setIsSubpathOpen}
+						transitions={transitions}
+						sectionRef={sectionRef}
+						ctaText={ctaText}
+						ctaAction={ctaAction}
+					/>
+				</motion.header>
 			</AnimatePresence>
 			<AnimatePresence exitBeforeEnter>
-				{!noScrollIndicator && isSubpathOpen && (
+				{isSubpathOpen && (
 					<motion.div
 						animate='animate'
 						initial='initial'

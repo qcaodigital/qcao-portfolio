@@ -6,6 +6,7 @@
 	padding: 0 10%;
 	height: 100%;
 	position: relative; //for scrollCTA to anchor
+	min-height: 100%;
 	@include breakpoint(md) {
 		@include landscape {
 			display: grid;
@@ -14,11 +15,12 @@
 		}
 	}
 	--margin-top: 5.5rem;
+	--imgContainer-height: 40vh;
 	.imgContainer {
 		position: relative;
 		margin-top: var(--margin-top);
 		width: calc(100vw - 20vw); //10vw padding from each side
-		height: 45vh;
+		height: var(--imgContainer-height);
 		box-shadow: 0.5rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
 		transition: 350ms ease;
 		overflow: hidden;
@@ -58,7 +60,7 @@
 		&.subpathOpen {
 			margin-top: 0rem;
 			width: 100vw;
-			height: calc(45vh + var(--margin-top));
+			height: calc(var(--imgContainer-height) + var(--margin-top));
 		}
 		@include breakpoint(md) {
 			@include landscape {
@@ -119,12 +121,11 @@
 		@include flexCenterCol;
 		position: relative;
 		top: -2rem;
-		height: calc(65vh - var(--margin-top));
-		height: 65vh;
-		max-height: 31rem;
+		height: calc(100vh - var(--imgContainer-height) + 10vh);
+		max-height: 32rem;
 		justify-content: space-between;
 		overflow: hidden;
-		padding-bottom: 1rem;
+		// padding-bottom: 2rem;
 		@include breakpoint(md) {
 			@include landscape {
 				grid-column: 1/2;
@@ -205,32 +206,25 @@
 			}
 			strong {
 				all: unset;
-				font-weight: 600;
 				cursor: pointer;
+				font-weight: 600;
 				text-decoration: underline;
 				position: relative;
-				&:hover {
-					div {
-						transition: 250ms ease;
-						transform: translateX(-50%) scale(1);
-						opacity: 1;
-						z-index: 1;
-					}
-				}
 				div {
 					all: unset;
 					position: absolute;
-					font-size: $fs-xs;
+					z-index: -1;
 					bottom: calc(100% + 0.75rem);
 					left: 50%;
+					padding: 0.125rem 0.75rem;
+					font-size: $fs-xs;
 					white-space: nowrap;
 					color: var(--secondary-color);
 					background-color: var(--main-color);
-					padding: 0.125rem 0.75rem;
+					opacity: 0;
 					transform-origin: bottom;
 					transform: translateX(-50%) scale(0.35);
-					z-index: -1;
-					opacity: 0;
+					transition: 200ms ease;
 					&::after {
 						content: '';
 						transition: inherit;
@@ -244,7 +238,17 @@
 						border-width: 0.65rem 0.5rem 0 0.5rem;
 						border-color: var(--main-color) transparent transparent transparent;
 					}
+					@include onHoverFine {
+						div {
+							transform: translateX(-50%) scale(1);
+							opacity: 1;
+							z-index: 1;
+						}
+					}
 					&[data-input-copied='true'] {
+						transform: translateX(-50%) scale(1);
+						opacity: 1;
+						z-index: 1;
 						background-color: var(--highlight-color);
 						&::after {
 							border-color: var(--highlight-color) transparent transparent transparent;

@@ -10,6 +10,7 @@ interface CTAContainerProps {
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
 	ctaText?: string;
+	ctaAction?: (...args: any[]) => any;
 }
 
 export default function CTAContainer({
@@ -18,6 +19,7 @@ export default function CTAContainer({
 	transitions,
 	sectionRef,
 	ctaText,
+	ctaAction,
 }: CTAContainerProps) {
 	return (
 		<motion.div className={styles.ctaContainer} custom={1} variants={transitions.buttons}>
@@ -48,6 +50,9 @@ export default function CTAContainer({
 						variants={transitions.buttons}
 						onClick={() => {
 							setIsSubpathOpen(true);
+							if (ctaAction) {
+								ctaAction();
+							}
 						}}
 					>
 						<SVGBorderButton text={ctaText || 'read more'} />
