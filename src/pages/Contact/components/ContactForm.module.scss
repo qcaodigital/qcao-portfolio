@@ -26,6 +26,11 @@
 				font-size: $fs-xs;
 				font-weight: 600;
 				margin-bottom: 0.5rem;
+				text-transform: capitalize;
+				&[data-invalid='true'] {
+					transition: 350ms ease;
+					color: var(--highlight-color);
+				}
 			}
 			input,
 			textarea {
@@ -38,7 +43,11 @@
 				&:focus {
 					outline: none;
 					transition: 200ms ease;
-					// box-shadow: $text-shadow-sm;
+				}
+				&[data-invalid='true'] {
+					transition: 350ms ease;
+					border-color: var(--highlight-color);
+					color: var(--highlight-color);
 				}
 			}
 			input {

@@ -40,7 +40,7 @@ export default function Contact({
 				whiteImg
 				noBoxShadow
 			></Landing>
-			<ContactForm viewport={viewport} />
+			<ContactForm />
 		</>
 	);
 }
