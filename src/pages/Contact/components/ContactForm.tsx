@@ -1,6 +1,7 @@
 import styles from './ContactForm.module.scss';
 import { motion } from 'framer-motion';
 import Form from '../../../components/common/Form';
+import emailjs from 'emailjs-com';
 
 export default function ContactForm() {
 	return (
@@ -23,7 +24,11 @@ export default function ContactForm() {
 						as: 'textarea',
 					},
 				}}
-				onSubmit={() => alert('submitted')}
+				useEmailJS={{
+					serviceID: 'service_1jpy2lj',
+					templateID: 'template_02zr4t5',
+					userID: 'user_LZB9QYVqJjd8Iz6MZcoTm',
+				}}
 			/>
 		</motion.section>
 	);
