@@ -1,8 +1,13 @@
 @import '../../../assets/sass';
 
 .contactForm {
-	margin-top: 5vh;
+	margin: 5vh auto 0;
 	padding: 0 5% 7.5vh;
+	position: relative;
+	max-width: 150rem;
+	@include breakpoint(md) {
+		margin: 10vh auto 0;
+	}
 	h1 {
 		font-size: $fs-lg;
 		font-family: $serif;
@@ -10,14 +15,30 @@
 		text-align: center;
 		margin: 0 auto;
 		line-height: 1;
+		@include breakpoint(md) {
+			font-size: $fs-xl;
+		}
 	}
 	form {
-		@include flexCenterCol;
 		margin-top: 5vh;
+		display: grid;
+		grid-auto-columns: 1fr;
+		gap: 2rem;
+		// @include breakpoint(md) {
+		// 	grid-template-columns: 1fr 1fr;
+		// 	column-gap: 5vw;
+		// }
 		fieldset {
 			width: 100%;
 			border: none;
 			padding: 0;
+			grid-column: 1/2;
+			&[data-type='textarea'] {
+				// @include breakpoint(md) {
+				// 	grid-column: 2/3;
+				// 	grid-row: 1/4;
+				// }
+			}
 			legend {
 				display: none;
 			}
@@ -31,6 +52,10 @@
 					transition: 350ms ease;
 					color: var(--highlight-color);
 				}
+				@include breakpoint(md) {
+					font-size: $fs-sm;
+					margin-bottom: 1rem;
+				}
 			}
 			input,
 			textarea {
@@ -39,6 +64,9 @@
 				border: 0.15rem solid var(--main-color);
 				padding: 0.5rem;
 				font-size: $fs-xs;
+				@include breakpoint(md) {
+					font-size: $fs-sm;
+				}
 				&:active,
 				&:focus {
 					outline: none;
@@ -47,7 +75,6 @@
 				&[data-invalid='true'] {
 					transition: 350ms ease;
 					border-color: var(--highlight-color);
-					color: var(--highlight-color);
 				}
 			}
 			input {
@@ -55,7 +82,8 @@
 				border-bottom: 0.15rem solid var(--main-color);
 			}
 			textarea {
-				height: 20rem;
+				min-height: 20rem;
+				height: 100%;
 				resize: none;
 			}
 		}
@@ -63,9 +91,38 @@
 			@include button;
 			display: inline-block;
 			width: 10ch;
+			margin: 4rem auto 0;
+			grid-column: 1/-1;
+			@include breakpoint(md) {
+				margin: 6rem auto 0;
+			}
 		}
-		> * + * {
-			margin-top: 1.5rem;
+	}
+	.modal {
+		position: fixed;
+		bottom: 1rem;
+		left: 1rem;
+		display: flex;
+		align-items: center;
+		background-color: var(--main-color);
+		color: var(--secondary-color);
+		padding: 1rem;
+		@include breakpoint(md) {
+			bottom: 2rem;
+			left: 2rem;
+		}
+		.checkmark {
+			font-size: $fs-sm;
+			@include breakpoint(md) {
+				font-size: $fs-md;
+			}
+		}
+		p {
+			font-size: $fs-xs;
+			margin-left: 1ch;
+			@include breakpoint(md) {
+				font-size: $fs-sm;
+			}
 		}
 	}
 }

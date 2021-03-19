@@ -16,6 +16,26 @@ export default function Contact({
 	sectionRef,
 	viewport,
 }: ContactProps) {
+	function ctaAction() {
+		const timeout = setTimeout(
+			() => {
+				sectionRef.current?.scrollBy({
+					top: document.body.clientHeight,
+					behavior: 'smooth',
+				});
+
+				sectionRef.current?.removeEventListener('scroll', cancelTimeout);
+			},
+			1000 //time for subpath open animation
+		);
+
+		function cancelTimeout() {
+			if (timeout) clearTimeout(timeout);
+		}
+
+		sectionRef.current?.addEventListener('scroll', cancelTimeout);
+	}
+
 	return (
 		<>
 			<Landing
@@ -27,16 +47,7 @@ export default function Contact({
 				headerText='Reach Out'
 				subheaderText='Lets create something great together. Shoot me an email at qcao.digital@gmail.com or click the button below to submit a contact form.'
 				ctaText='Contact Me'
-				ctaAction={() =>
-					setTimeout(
-						() =>
-							sectionRef.current?.scrollBy({
-								top: window.innerHeight,
-								behavior: 'smooth',
-							}),
-						1000 //time for subpath open animation
-					)
-				}
+				ctaAction={ctaAction}
 				whiteImg
 				noBoxShadow
 			></Landing>
