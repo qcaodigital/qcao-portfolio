@@ -1,7 +1,7 @@
 import styles from './Who.module.scss';
 import { InView } from 'react-intersection-observer';
 import { useState } from 'react';
-import SymbolGen from '../../../components/animation/SymbolGen';
+import TypeWriter from '../../../components/animation/TypeWriter';
 
 export default function Who() {
 	const [contentInView, setContentInView] = useState<boolean>(false);
@@ -15,9 +15,9 @@ export default function Who() {
 			data-in-view={contentInView}
 		>
 			<div className={styles.text}>
-				<SymbolGen trigger='inView'>
+				<TypeWriter trigger='inView'>
 					<h4>Quan Cao</h4>
-				</SymbolGen>
+				</TypeWriter>
 				<p data-in-view={contentInView}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
 					sapiente, molestias vitae voluptate minus doloribus suscipit atque maiores

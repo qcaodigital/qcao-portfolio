@@ -11,6 +11,7 @@ interface FormProps {
 
 interface fieldsType {
 	as: string;
+	error: string;
 	regExp?: RegExp;
 	type?: string;
 	label?: string;
@@ -90,6 +91,7 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>(
 								data-invalid={errors.includes(key)}
 							>
 								{currentField.label || key}
+								<p>{currentField.error}</p>
 							</label>
 							{React.createElement(currentField.as, props)}
 						</fieldset>

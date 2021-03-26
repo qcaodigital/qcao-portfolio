@@ -10,6 +10,7 @@
 		height: 10rem;
 		background-color: var(--main-color);
 		position: relative;
+		transform-origin: bottomq;
 		transition: 350ms ease;
 		@include breakpoint(lg) {
 			width: 5rem;
@@ -21,11 +22,12 @@
 			font-size: $fs-sm;
 			font-family: $serif;
 			text-transform: capitalize;
-			letter-spacing: 0.2rem;
-			top: -1rem;
-			left: calc(#{$fs-sm}/ 2);
+			letter-spacing: 0.5rem;
+			top: 0.25rem;
+			left: calc(#{$fs-md}/ 2.5);
+			line-height: 0;
 			transform-origin: left;
-			transform: rotate(90deg);
+			writing-mode: vertical-rl;
 			@include breakpoint(lg) {
 				font-size: $fs-md;
 				left: calc(#{$fs-md}/ 2);

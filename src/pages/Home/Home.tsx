@@ -24,7 +24,10 @@ export default function Home({ direction, setDirection, setCurrentPathIdx }: Hom
 					<span>Quan&nbsp;</span>
 					<span>Cao</span>
 				</h1>
-				<h2>full-stack web developer</h2>
+				<h2>
+					<span>full-stack </span>
+					<span>web developer</span>
+				</h2>
 				<div className={styles.cta}>
 					<Link to='/about' callBefore={() => setDirection('down')}>
 						About Me

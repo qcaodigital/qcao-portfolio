@@ -17,6 +17,8 @@ export default function TypeWriter({
 	color = 'black',
 }: TypeWriterProps) {
 	React.Children.only(children);
+	const [animationComplete, setAnimationComplete] = useState<boolean>(false);
+	const [textArr, setTextArr] = useState<string[]>([]);
 
 	const { type, props } = children;
 	const text: string = props.children;
@@ -24,14 +26,21 @@ export default function TypeWriter({
 	const className: string = `${styles.typeWriterAnimation} ${props.className}`;
 	const { ref, inView } = useInView({ triggerOnce: true });
 	const style = { ...children.props.style, '--color': color };
-	const newProps: any = { ...props, ref, className, style };
-
-	const [textArr, setTextArr] = useState<string[]>([]);
+	const newProps: any = {
+		...props,
+		ref,
+		className,
+		style,
+		'data-animation-complete': animationComplete,
+	};
 
 	useEffect(() => {
 		function traverseText(currentArray: string[], currentIndex: number): void {
 			if (currentIndex > text.length) {
 				if (onAnimationComplete) onAnimationComplete();
+				setTimeout(() => {
+					setAnimationComplete(true);
+				}, 3000);
 				return;
 			}
 			setTextArr((textArr) => [...textArr, [...text][currentIndex]]);

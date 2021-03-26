@@ -11,7 +11,7 @@ export default function useWheelSwipe(
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>,
 	isSubpathOpen: boolean
 ): setDirectionType {
-	const [direction, setDirection] = useState<directionType>('down');
+	const [direction, setDirection] = useState<directionType>('up');
 	const onCoolDown = useRef<boolean | null>(false);
 	const history = useHistory();
 

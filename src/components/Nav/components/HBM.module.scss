@@ -50,7 +50,8 @@
 				}
 				&:hover {
 					.underline {
-						opacity: 0.25;
+						background-color: var(--highlight-color);
+						opacity: 0.75;
 						width: 100%;
 					}
 				}

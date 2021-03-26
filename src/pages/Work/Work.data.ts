@@ -64,7 +64,7 @@ export const projects: projectType[] = [
 		reduceFont: true,
 		imgFilename: 'portfolio_mockup.png',
 		liveLink: 'https://staxxz.herokuapp.com/',
-		githubLink: 'https://github.com/qcaodigital/cocktail_curations',
+		githubLink: 'https://github.com/qcaodigital/portfolio',
 		previewOpen: false,
 		techs: [
 			'reactjs',
@@ -75,6 +75,7 @@ export const projects: projectType[] = [
 			'sass',
 			'css',
 			'html',
+			'mailgun',
 		],
 	},
 ];

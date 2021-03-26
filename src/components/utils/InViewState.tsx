@@ -1,6 +1,6 @@
 import { InView } from 'react-intersection-observer';
 
-export default function InViewState(props) {
+export default function InViewState(props: any) {
 	if (!props.stateSetter) {
 		throw new Error(
 			'The prop "stateSetter" was not provided in the component InViewState and is required.'
@@ -19,7 +19,7 @@ export default function InViewState(props) {
 
 	return (
 		<InView {...elementProps()} onChange={(inView) => stateSetter(inView)}>
-			{props.children}
+			<>{props.children}</>
 		</InView>
 	);
 }

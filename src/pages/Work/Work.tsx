@@ -93,6 +93,7 @@ export default function Work({
 			<Next
 				pushTo='/contact'
 				sectionRef={sectionRef}
+				text='Like my work?'
 				buttonText="Let's Chat"
 				setDirection={setDirection}
 				setIsSubpathOpen={setIsSubpathOpen}

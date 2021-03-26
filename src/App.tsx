@@ -66,7 +66,7 @@ export default function App() {
 				setDirection={setDirection}
 				navLinks={navLinks}
 			/>
-			<AnimatePresence exitBeforeEnter initial={false}>
+			<AnimatePresence exitBeforeEnter initial={true}>
 				<Switch location={location} key={location.pathname}>
 					<Route
 						exact

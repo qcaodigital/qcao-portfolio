@@ -1,5 +1,5 @@
 import Landing from '../../components/common/Landing';
-import { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import { Dispatch, MutableRefObject, SetStateAction, useRef, useEffect } from 'react';
 import ContactForm from './components/ContactForm';
 import { viewportType } from './../../components/hooks/useViewport';
 
@@ -16,25 +16,28 @@ export default function Contact({
 	sectionRef,
 	viewport,
 }: ContactProps) {
-	function ctaAction() {
-		const timeout = setTimeout(
-			() => {
-				sectionRef.current?.scrollBy({
-					top: document.body.clientHeight,
-					behavior: 'smooth',
-				});
+	const contactFormRef = useRef<HTMLFormElement | null>(null);
+	useEffect(() => {
+		if (isSubpathOpen) {
+			const timeout = setTimeout(
+				() => {
+					sectionRef.current?.scrollBy({
+						top: contactFormRef.current?.getBoundingClientRect().top,
+						behavior: 'smooth',
+					});
 
-				sectionRef.current?.removeEventListener('scroll', cancelTimeout);
-			},
-			1000 //time for subpath open animation
-		);
+					sectionRef.current?.removeEventListener('scroll', cancelTimeout);
+				},
+				1000 //time for subpath open animation
+			);
 
-		function cancelTimeout() {
-			if (timeout) clearTimeout(timeout);
+			function cancelTimeout() {
+				if (timeout) clearTimeout(timeout);
+			}
+
+			sectionRef.current?.addEventListener('scroll', cancelTimeout);
 		}
-
-		sectionRef.current?.addEventListener('scroll', cancelTimeout);
-	}
+	}, [isSubpathOpen, sectionRef]);
 
 	return (
 		<>
@@ -47,11 +50,10 @@ export default function Contact({
 				headerText='Reach Out'
 				subheaderText='Lets create something great together. Shoot me an email at qcao.digital@gmail.com or click the button below to submit a contact form.'
 				ctaText='Contact Me'
-				ctaAction={ctaAction}
 				whiteImg
 				noBoxShadow
 			></Landing>
-			<ContactForm />
+			<ContactForm ref={contactFormRef} />
 		</>
 	);
 }

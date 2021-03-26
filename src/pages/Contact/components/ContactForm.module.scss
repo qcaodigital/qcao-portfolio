@@ -1,100 +1,193 @@
 @import '../../../assets/sass';
 
 .contactForm {
-	margin: 5vh auto 0;
-	padding: 0 5% 7.5vh;
+	margin: 0 auto;
+	padding: 5vh 5% 7.5vh;
 	position: relative;
-	max-width: 150rem;
+	max-width: 140rem;
 	@include breakpoint(md) {
-		margin: 10vh auto 0;
+		padding-top: 12.5vh;
 	}
-	h1 {
-		font-size: $fs-lg;
+	header {
 		font-family: $serif;
-		max-width: 10ch;
-		text-align: center;
 		margin: 0 auto;
-		line-height: 1;
-		@include breakpoint(md) {
-			font-size: $fs-xl;
+		text-align: center;
+		line-height: 1.25;
+		> * {
+			font-size: $fs-lg;
+			@include breakpoint(md) {
+				font-size: $fs-xl;
+			}
+			@include breakpoint(xl) {
+				font-size: $fs-xxl;
+			}
+		}
+		h2 {
+			display: none;
+			@include breakpoint(md) {
+				display: block;
+			}
+			@include breakpoint(lg) {
+				transform: translateX(-10rem);
+			}
+		}
+		h1 {
+			margin: 0 auto;
+			max-width: 10ch;
+			line-height: 1;
+			position: relative;
+			display: inline-block;
+			@include breakpoint(md) {
+				line-height: 1.25;
+				max-width: unset;
+			}
+			@include breakpoint(lg) {
+				color: var(--main-color);
+				transform: translateX(10rem);
+				opacity: 0.35;
+				&::before {
+					content: '';
+					display: block;
+					position: absolute;
+					right: calc(100% + 0.5rem);
+					top: 50%;
+					height: 0.2rem;
+					width: 3ch;
+					background-color: var(--main-color);
+					opacity: 0.5;
+				}
+			}
 		}
 	}
-	form {
-		margin-top: 5vh;
+	.formArea {
 		display: grid;
-		grid-auto-columns: 1fr;
-		gap: 2rem;
-		// @include breakpoint(md) {
-		// 	grid-template-columns: 1fr 1fr;
-		// 	column-gap: 5vw;
-		// }
-		fieldset {
-			width: 100%;
-			border: none;
-			padding: 0;
-			grid-column: 1/2;
-			&[data-type='textarea'] {
-				// @include breakpoint(md) {
-				// 	grid-column: 2/3;
-				// 	grid-row: 1/4;
-				// }
-			}
-			legend {
-				display: none;
-			}
-			label {
-				display: block;
-				font-size: $fs-xs;
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-				text-transform: capitalize;
-				&[data-invalid='true'] {
-					transition: 350ms ease;
-					color: var(--highlight-color);
-				}
-				@include breakpoint(md) {
-					font-size: $fs-sm;
-					margin-bottom: 1rem;
-				}
-			}
-			input,
-			textarea {
+		margin-top: 7.5vh;
+		@include breakpoint(md) {
+			grid-template-columns: 1fr 2fr;
+			column-gap: 5%;
+		}
+		form {
+			display: grid;
+			grid-auto-columns: 1fr;
+			gap: 2rem;
+			fieldset {
 				width: 100%;
-				background-color: rgba(255, 255, 255, 0.15);
-				border: 0.15rem solid var(--main-color);
-				padding: 0.5rem;
-				font-size: $fs-xs;
-				@include breakpoint(md) {
-					font-size: $fs-sm;
-				}
-				&:active,
-				&:focus {
-					outline: none;
-					transition: 200ms ease;
-				}
-				&[data-invalid='true'] {
-					transition: 350ms ease;
-					border-color: var(--highlight-color);
-				}
-			}
-			input {
 				border: none;
-				border-bottom: 0.15rem solid var(--main-color);
+				padding: 0;
+				grid-column: 1/2;
+				legend {
+					display: none;
+				}
+				label {
+					display: block;
+					font-size: $fs-xs;
+					font-weight: 600;
+					margin-bottom: 0.5rem;
+					text-transform: capitalize;
+					p {
+						//error
+						visibility: hidden;
+						display: inline-block;
+						opacity: 0;
+						margin-left: 0.5ch;
+						font-size: $fs-xs;
+						transition: 200ms ease;
+						&::before {
+							content: '- (';
+						}
+						&::after {
+							content: ')';
+						}
+					}
+					&[data-invalid='true'] {
+						color: var(--highlight-color);
+						p {
+							opacity: 1;
+							visibility: visible;
+						}
+					}
+					@include breakpoint(md) {
+						font-size: $fs-sm;
+						margin-bottom: 1rem;
+					}
+				}
+				input,
+				textarea {
+					width: 100%;
+					background-color: rgba(255, 255, 255, 0.15);
+					border: 0.15rem solid var(--main-color);
+					font-size: $fs-xs;
+					padding: 0 0 0.5rem 0.25rem;
+					@include breakpoint(md) {
+						font-size: $fs-sm;
+					}
+					@include breakpoint(lg) {
+						padding: 0.5rem;
+					}
+					&:active,
+					&:focus {
+						outline: none;
+						transition: 200ms ease;
+					}
+					&[data-invalid='true'] {
+						transition: 350ms ease;
+						border-color: var(--highlight-color);
+					}
+				}
+				input {
+					border: none;
+					border-bottom: 0.15rem solid var(--main-color);
+				}
+				textarea {
+					min-height: 20rem;
+					height: 100%;
+					resize: none;
+				}
 			}
-			textarea {
-				min-height: 20rem;
-				height: 100%;
-				resize: none;
+			button {
+				@include button;
+				display: inline-block;
+				width: 10ch;
+				margin: 4rem auto 0;
+				grid-column: 1/-1;
+				@include breakpoint(md) {
+					margin: 6rem auto 0;
+				}
 			}
 		}
-		button {
-			@include button;
-			display: inline-block;
-			width: 10ch;
-			margin: 4rem auto 0;
-			grid-column: 1/-1;
-			@include breakpoint(md) {
-				margin: 6rem auto 0;
+	}
+	.info {
+		display: none;
+		> * + * {
+			margin-top: 1.5rem;
+		}
+		@include breakpoint(md) {
+			display: block;
+		}
+		h3 {
+			font-size: $fs-sm;
+			@include breakpoint(lg) {
+				font-size: $fs-md;
+			}
+		}
+		p {
+			font-size: $fs-xs;
+			@include breakpoint(lg) {
+				font-size: $fs-sm;
+			}
+		}
+		.socialList {
+			> * + * {
+				margin-left: 0.65rem;
+				@include breakpoint(lg) {
+					margin-left: 1rem;
+				}
+			}
+			.icon {
+				font-size: $fs-md;
+				@include breakpoint(lg) {
+					font-size: $fs-lg;
+				}
 			}
 		}
 	}

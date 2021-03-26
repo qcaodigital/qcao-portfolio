@@ -15,7 +15,7 @@ interface LandingProps {
 	subheaderText: string;
 	whiteImg?: boolean;
 	ctaText?: string;
-	ctaAction?: (...args: any[]) => any;
+	// ctaAction?: (...args: any[]) => any;
 	noBoxShadow?: boolean;
 	viewport?: viewportType;
 }
@@ -29,7 +29,7 @@ export default function Landing({
 	subheaderText,
 	whiteImg,
 	ctaText,
-	ctaAction,
+	// ctaAction,
 	noBoxShadow,
 	viewport,
 }: LandingProps) {
@@ -130,7 +130,7 @@ export default function Landing({
 						transitions={transitions}
 						sectionRef={sectionRef}
 						ctaText={ctaText}
-						ctaAction={ctaAction}
+						// ctaAction={ctaAction}
 					/>
 				</motion.header>
 			</AnimatePresence>

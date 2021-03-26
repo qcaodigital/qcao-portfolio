@@ -40,6 +40,30 @@
 			margin: 1rem 0 1.25rem 0;
 			text-shadow: $text-shadow-sm;
 			transition: 350ms ease;
+			overflow: hidden;
+			display: inline-block;
+			span {
+				display: inline-block;
+				&:first-of-type {
+					margin-right: 0.45ch;
+					transform: translateY(100%);
+					animation: animate1 500ms forwards 750ms;
+					@keyframes animate1 {
+						100% {
+							transform: translateY(0);
+						}
+					}
+				}
+				&:nth-of-type(2) {
+					transform: translateX(100%);
+					animation: animate2 300ms cubic-bezier(0.64, 0.57, 0.67, 1.15) forwards 1250ms;
+					@keyframes animate2 {
+						100% {
+							transform: translateY(0);
+						}
+					}
+				}
+			}
 			&::before {
 				content: '//';
 				letter-spacing: 0.5rem;
@@ -55,8 +79,6 @@
 				&::before {
 					font-size: $fs-lg;
 				}
-			}
-			@include breakpoint(lg) {
 			}
 		}
 		.cta {

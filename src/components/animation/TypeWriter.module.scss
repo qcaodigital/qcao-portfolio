@@ -21,4 +21,10 @@
 			}
 		}
 	}
+	&[data-animation-complete='true'] {
+		&::after {
+			transition: 350ms ease;
+			opacity: 0;
+		}
+	}
 }

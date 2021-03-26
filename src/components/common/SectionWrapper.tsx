@@ -61,7 +61,6 @@ export default function SectionWrapper({
 				ref={sectionRef}
 				style={{
 					overflowY: isSubpathOpen ? 'scroll' : 'hidden',
-					minHeight: `${sectionRef.current?.clientHeight}px`,
 					height: 'var(--trueHeight)',
 					overflowX: 'hidden',
 					scrollbarWidth: 'none',
