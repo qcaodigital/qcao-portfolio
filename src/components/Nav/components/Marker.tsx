@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from 'react';
 interface MarkerProps {
 	currentPathIdx: number;
 	navLinks: navLinksType;
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	setDirection: Dispatch<SetStateAction<string>>;
 }
 
 export default function Marker({ currentPathIdx, navLinks, setDirection }: MarkerProps) {

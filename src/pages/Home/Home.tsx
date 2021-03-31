@@ -3,22 +3,39 @@ import ScrollCTA from './components/ScrollCTA';
 import { motion } from 'framer-motion';
 import { transitions } from './Home.transitions';
 import Link from './../../components/common/Link';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 interface HomeProps {
-	direction: 'up' | 'down';
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	direction: string;
+	setDirection: Dispatch<SetStateAction<string>>;
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
 }
 
 export default function Home({ direction, setDirection, setCurrentPathIdx }: HomeProps) {
+	let initial;
+	let exit;
+
+	switch (direction) {
+		case 'down':
+			initial = 'top';
+			exit = 'bottom';
+			break;
+		case 'up':
+			initial = 'bottom';
+			exit = 'top';
+			break;
+		case 'center':
+			initial = 'center';
+			exit = 'center';
+	}
+
+	//Default transition direction to 'center' on render
+	useEffect(() => {
+		setDirection('center');
+	}, [setDirection]);
+
 	return (
-		<motion.section
-			id={styles.Home}
-			initial={direction === 'down' ? 'top' : 'bottom'}
-			animate='animate'
-			exit={direction === 'down' ? 'bottom' : 'top'}
-		>
+		<motion.section id={styles.Home} initial={initial} animate='animate' exit={exit}>
 			<motion.header variants={transitions.headerFadeUp}>
 				<h1>
 					<span>Quan&nbsp;</span>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Form from '../../../components/common/Form';
 import emailjs from 'emailjs-com';
 import React, { useRef, useState } from 'react';
+import Notification from '../../../components/common/Notifcation';
 
 interface ContactFormProps {}
 
@@ -11,12 +12,12 @@ const ContactForm = React.forwardRef<HTMLFormElement, ContactFormProps>((props, 
 	const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
 
 	function handleSubmit() {
-		// emailjs.sendForm(
-		// 'service_1jpy2lj',
-		// 'template_02zr4t5',
-		// formRef.current!,
-		// 'user_LZB9QYVqJjd8Iz6MZcoTm'
-		// );
+		emailjs.sendForm(
+			'service_1jpy2lj',
+			'template_02zr4t5',
+			formRef.current!,
+			'user_LZB9QYVqJjd8Iz6MZcoTm'
+		);
 		setTimeout(() => {
 			setShowConfirmation(true);
 		}, 500);
@@ -83,15 +84,10 @@ const ContactForm = React.forwardRef<HTMLFormElement, ContactFormProps>((props, 
 			</div>
 			<AnimatePresence>
 				{showConfirmation && (
-					<motion.div
-						className={styles.modal}
-						initial={{ opacity: 0, y: 25 }}
-						exit={{ opacity: 0, y: 25 }}
-						animate={{ opacity: 1, y: 0 }}
-					>
-						<i className={`${styles.checkmark} fas fa-check-circle`}></i>
-						<p>Your message was sent!</p>
-					</motion.div>
+					<Notification
+						fontAwesomeIconClasses='fas fa-check-circle'
+						text='Your message was sent!'
+					/>
 				)}
 			</AnimatePresence>
 		</motion.section>

@@ -10,7 +10,7 @@ export const transitions: transitionsType = {
 		top: {
 			x: '-50%',
 			y: -1 * defaultTranslate,
-			opacity: 0.5,
+			opacity: 0,
 			transition: {
 				duration: defaultDuration,
 				ease: 'easeOut',
@@ -28,7 +28,16 @@ export const transitions: transitionsType = {
 		bottom: {
 			x: '-50%',
 			y: defaultTranslate,
-			opacity: 0.5,
+			opacity: 0,
+			transition: {
+				duration: defaultDuration,
+				ease: 'easeIn',
+			},
+		},
+		center: {
+			x: '-50%',
+			y: '-50%',
+			opacity: 0,
 			transition: {
 				duration: defaultDuration,
 				ease: 'easeIn',

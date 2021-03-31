@@ -4,7 +4,7 @@
 	margin: 0 auto;
 	padding: 5vh 5% 7.5vh;
 	position: relative;
-	max-width: 140rem;
+	max-width: 150rem;
 	@include breakpoint(md) {
 		padding-top: 12.5vh;
 	}
@@ -117,7 +117,6 @@
 					background-color: rgba(255, 255, 255, 0.15);
 					border: 0.15rem solid var(--main-color);
 					font-size: $fs-xs;
-					padding: 0 0 0.5rem 0.25rem;
 					@include breakpoint(md) {
 						font-size: $fs-sm;
 					}
@@ -137,11 +136,13 @@
 				input {
 					border: none;
 					border-bottom: 0.15rem solid var(--main-color);
+					padding: 0 0 0.5rem 0rem;
 				}
 				textarea {
 					min-height: 20rem;
 					height: 100%;
 					resize: none;
+					padding: 0.5rem;
 				}
 			}
 			button {
@@ -188,33 +189,6 @@
 				@include breakpoint(lg) {
 					font-size: $fs-lg;
 				}
-			}
-		}
-	}
-	.modal {
-		position: fixed;
-		bottom: 1rem;
-		left: 1rem;
-		display: flex;
-		align-items: center;
-		background-color: var(--main-color);
-		color: var(--secondary-color);
-		padding: 1rem;
-		@include breakpoint(md) {
-			bottom: 2rem;
-			left: 2rem;
-		}
-		.checkmark {
-			font-size: $fs-sm;
-			@include breakpoint(md) {
-				font-size: $fs-md;
-			}
-		}
-		p {
-			font-size: $fs-xs;
-			margin-left: 1ch;
-			@include breakpoint(md) {
-				font-size: $fs-sm;
 			}
 		}
 	}

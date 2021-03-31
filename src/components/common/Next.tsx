@@ -9,7 +9,7 @@ interface NextProps {
 	buttonText: string;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
 	pushTo: string;
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	setDirection: Dispatch<SetStateAction<string>>;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 }
 

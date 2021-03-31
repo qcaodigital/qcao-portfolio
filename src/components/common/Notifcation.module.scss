@@ -1,0 +1,68 @@
+@import '../../assets/sass/';
+
+.notification {
+	position: fixed;
+	bottom: 1rem;
+	left: 1.5rem;
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--main-color);
+	color: var(--secondary-color);
+	padding: 0.75rem;
+	transition: background-color 350ms ease, left 350ms ease;
+	@include breakpoint(md) {
+		left: 2rem;
+		height: 4rem;
+	}
+	&[data-has-action='true'] {
+		cursor: pointer;
+		box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.15);
+		&[data-minimized='false'] {
+			&:hover {
+				outline: 0.2rem solid var(--main-color);
+				background-color: var(--secondary-color);
+				.icon,
+				p {
+					color: var(--main-color);
+				}
+			}
+		}
+	}
+	&[data-minimized='true'] {
+		box-shadow: none;
+		left: 0;
+		padding-right: 1.5ch;
+		p {
+			display: none;
+		}
+		a {
+			display: none;
+		}
+	}
+	.icon,
+	p {
+		transition: 350ms ease;
+	}
+	.icon {
+		font-size: $fs-sm;
+		color: var(--secondary-color);
+	}
+	p {
+		font-size: $fs-xs;
+		margin-left: 1.5ch;
+		@include breakpoint(md) {
+			margin-left: 1ch;
+			font-size: $fs-sm;
+		}
+	}
+	a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+}

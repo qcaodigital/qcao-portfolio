@@ -11,8 +11,8 @@ interface state {
 	setIsHBMOpen: Dispatch<SetStateAction<boolean>>;
 	viewport: viewportType;
 	screenHeight: string | number;
-	direction: 'up' | 'down';
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	direction: string;
+	setDirection: Dispatch<SetStateAction<string>>;
 	currentPathIdx: number;
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
 	navLinks: navLinksType;

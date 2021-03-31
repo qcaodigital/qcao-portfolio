@@ -6,12 +6,14 @@ import Who from './components/Who';
 import Resume from './components/Resume';
 import Next from '../../components/common/Next';
 import Landing from './../../components/common/Landing';
+import { viewportType } from './../../components/hooks/useViewport';
 
 interface AboutProps {
 	isSubpathOpen: boolean;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	setDirection: Dispatch<SetStateAction<string>>;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
+	viewport: viewportType;
 }
 
 export default function About({
@@ -19,6 +21,7 @@ export default function About({
 	setIsSubpathOpen,
 	setDirection,
 	sectionRef,
+	viewport,
 }: AboutProps) {
 	return (
 		<>
@@ -42,7 +45,7 @@ export default function About({
 				<Skillset sectionRef={sectionRef} />
 			</Sub>
 			<Sub id='3' heading='Resume'>
-				<Resume sectionRef={sectionRef} />
+				<Resume viewport={viewport} />
 			</Sub>
 			<Next
 				className={styles.next}

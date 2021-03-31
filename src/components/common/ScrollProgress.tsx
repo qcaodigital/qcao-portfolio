@@ -1,6 +1,7 @@
 import styles from './ScrollProgress.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 interface ScrollProgressProps {
 	scrollContainerRef: React.MutableRefObject<HTMLElement | null>;
 	width?: string;
@@ -14,40 +15,100 @@ export default function ScrollProgress({
 }: ScrollProgressProps) {
 	const [maxScroll, setMaxScroll] = useState<number>(0);
 	const [currentScroll, setCurrentScroll] = useState<number>(0);
-	const ref = scrollContainerRef.current;
+	const [hoverPoint, setHoverPoint] = useState<number>(0);
+	const scrollProgressRef = useRef<HTMLDivElement | null>(null);
+	const scrollContainer = scrollContainerRef.current;
 
+	//Handle animation and paint
 	useEffect(() => {
 		function handleScroll() {
-			if (ref) {
-				setCurrentScroll(ref.scrollTop);
+			if (scrollContainer) {
+				setCurrentScroll(scrollContainer.scrollTop);
 			}
 		}
 
 		function handleResize() {
-			if (ref) {
-				setMaxScroll(ref.scrollHeight - window.innerHeight);
+			if (scrollContainer) {
+				setMaxScroll(scrollContainer.scrollHeight - window.innerHeight);
 			}
 		}
-		if (ref) {
+
+		if (scrollContainer) {
+			handleScroll();
 			handleResize();
-			ref.addEventListener('scroll', handleScroll);
+			scrollContainer.addEventListener('scroll', handleScroll);
 			window.addEventListener('resize', handleResize);
 
 			return () => {
-				ref.removeEventListener('scroll', handleScroll);
+				scrollContainer.removeEventListener('scroll', handleScroll);
 				window.removeEventListener('resize', handleResize);
 			};
 		}
-	}, [ref]);
+	}, [scrollContainer, maxScroll]);
+
+	//Handle scroll anchoring on click
+	useEffect(() => {
+		const scrollProgress = scrollProgressRef.current;
+
+		function handleClick(e: MouseEvent) {
+			scrollContainer?.scrollTo({
+				top: (e.clientY / window.innerHeight) * maxScroll,
+				behavior: 'smooth',
+			});
+		}
+
+		scrollProgress?.addEventListener('click', handleClick);
+		return () => scrollProgress?.removeEventListener('click', handleClick);
+	}, [scrollProgressRef, scrollContainer, maxScroll]);
+
+	//Handle hover effects
+	useEffect(() => {
+		const scrollProgress = scrollProgressRef.current;
+		function handleMouseOver(e: MouseEvent) {
+			setHoverPoint(e.clientY);
+		}
+
+		function handleMouseOut() {
+			setHoverPoint(0);
+		}
+
+		if (scrollProgress) {
+			scrollProgress.addEventListener('mouseover', handleMouseOver);
+			scrollProgress.addEventListener('mousemove', handleMouseOver);
+			scrollProgress.addEventListener('mouseout', handleMouseOut);
+			return () => {
+				scrollProgress.removeEventListener('mouseover', handleMouseOver);
+				scrollProgress.removeEventListener('mousemove', handleMouseOver);
+				scrollProgress.removeEventListener('mouseout', handleMouseOut);
+			};
+		}
+	}, [maxScroll]);
 
 	return (
-		<div
+		<motion.div
+			initial={{ opacity: 0 }}
+			exit={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			ref={scrollProgressRef}
 			className={styles.scrollProgress}
 			style={{
-				width: width,
-				transform: `scaleY(${(currentScroll / maxScroll) * 100}%)`,
-				backgroundColor: color,
+				width: `calc(${width} * 3)`,
 			}}
-		></div>
+		>
+			<div
+				className={styles.bar}
+				style={{
+					transform: `scaleY(${(currentScroll / maxScroll) * 100}%)`,
+					backgroundColor: color,
+				}}
+			></div>
+			<div
+				className={styles.hovered}
+				style={{
+					transform: `scaleY(${(hoverPoint / window.innerHeight) * 100}%)`,
+					backgroundColor: color,
+				}}
+			></div>
+		</motion.div>
 	);
 }

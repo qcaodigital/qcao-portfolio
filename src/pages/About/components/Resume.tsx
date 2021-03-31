@@ -1,24 +1,28 @@
 import styles from './Resume.module.scss';
-import { jobs, job, education, educationType } from '../../../data/Resume.data';
+import { jobs, education, educationType } from '../../../data/Resume.data';
 import Job from './Job';
 import TypeWriter from '../../../components/animation/TypeWriter';
+import { useInView } from 'react-intersection-observer';
+import Notification from '../../../components/common/Notifcation';
+import { AnimatePresence } from 'framer-motion';
+import { viewportType } from './../../../components/hooks/useViewport';
 
 interface ResumeProps {
-	sectionRef: React.MutableRefObject<HTMLElement | null>;
+	viewport: viewportType;
 }
 
-export default function Resume({ sectionRef }: ResumeProps) {
+export default function Resume({ viewport }: ResumeProps) {
+	const [ref, inView] = useInView({ threshold: 0.25 });
+
 	return (
-		<div id={styles.resume}>
+		<div id={styles.resume} ref={ref}>
 			<section id={styles.experience}>
 				<TypeWriter trigger='inView' color='var(--main-color)'>
 					<h5 className={styles.sectionLabel}>Work Experience</h5>
 				</TypeWriter>
-				{jobs.map(
-					(job: job, idx: number): JSX.Element => (
-						<Job key={job.id} job={job} />
-					)
-				)}
+				{jobs.map((job) => (
+					<Job key={job.id} job={job} />
+				))}
 			</section>
 			<section id={styles.education}>
 				<h5 className={styles.sectionLabel}>Education</h5>
@@ -38,6 +42,16 @@ export default function Resume({ sectionRef }: ResumeProps) {
 						)}
 				</div>
 			</section>
+			<AnimatePresence>
+				{inView && viewport.rank > 2 && (
+					<Notification
+						text='Download my resume'
+						fontAwesomeIconClasses='fas fa-download'
+						filename='QuanCaoResume.pdf'
+						direction='x'
+					/>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 }

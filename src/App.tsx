@@ -88,12 +88,15 @@ export default function App() {
 								isSubpathOpen={isSubpathOpen}
 								setIsSubpathOpen={setIsSubpathOpen}
 								sectionRef={currentSectionRef}
+								isHBMOpen={isHBMOpen}
+								setDirection={setDirection}
 							>
 								<About
 									isSubpathOpen={isSubpathOpen}
 									setIsSubpathOpen={setIsSubpathOpen}
 									setDirection={setDirection}
 									sectionRef={currentSectionRef}
+									viewport={viewport}
 								/>
 							</SectionWrapper>
 						)}
@@ -107,6 +110,8 @@ export default function App() {
 								isSubpathOpen={isSubpathOpen}
 								sectionRef={currentSectionRef}
 								setIsSubpathOpen={setIsSubpathOpen}
+								isHBMOpen={isHBMOpen}
+								setDirection={setDirection}
 							>
 								<Work
 									isSubpathOpen={isSubpathOpen}
@@ -127,6 +132,8 @@ export default function App() {
 								isSubpathOpen={isSubpathOpen}
 								sectionRef={currentSectionRef}
 								setIsSubpathOpen={setIsSubpathOpen}
+								isHBMOpen={isHBMOpen}
+								setDirection={setDirection}
 							>
 								<Contact
 									isSubpathOpen={isSubpathOpen}

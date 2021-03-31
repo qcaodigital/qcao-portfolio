@@ -40,7 +40,7 @@ export default function TypeWriter({
 				if (onAnimationComplete) onAnimationComplete();
 				setTimeout(() => {
 					setAnimationComplete(true);
-				}, 3000);
+				}, 2000);
 				return;
 			}
 			setTextArr((textArr) => [...textArr, [...text][currentIndex]]);

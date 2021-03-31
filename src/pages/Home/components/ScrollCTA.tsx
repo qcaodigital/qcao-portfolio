@@ -5,7 +5,7 @@ import Link from '../../../components/common/Link';
 import { Dispatch, SetStateAction } from 'react';
 
 interface ScrollCTAProps {
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	setDirection: Dispatch<SetStateAction<string>>;
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
 }
 

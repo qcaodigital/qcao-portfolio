@@ -2,16 +2,13 @@ import { useCallback, useEffect, useState, Dispatch, SetStateAction, useRef } fr
 import { useHistory } from 'react-router-dom';
 import { navLinksType } from '../../types';
 
-type directionType = 'down' | 'up';
-type setDirectionType = [directionType, Dispatch<SetStateAction<directionType>>];
-
 export default function useWheelSwipe(
 	navLinks: navLinksType,
 	currentPathIdx: number,
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>,
 	isSubpathOpen: boolean
-): setDirectionType {
-	const [direction, setDirection] = useState<directionType>('up');
+): [string, Dispatch<SetStateAction<string>>] {
+	const [direction, setDirection] = useState<string>('up');
 	const onCoolDown = useRef<boolean | null>(false);
 	const history = useHistory();
 
@@ -67,6 +64,17 @@ export default function useWheelSwipe(
 			window.removeEventListener('touchstart', handleSwipe);
 		};
 	}, [handleWheel, handleSwipe]);
+
+	//NOT NEEDED ANYMORE SINCE WE ARE DEFAULTING DIRECTION TO 'CENTER' ON MOUNT
+	//Change direction to center when nav is changed via back or forwards button
+	// useEffect(() => {
+	// 	function handlePopstate() {
+	// 		setDirection('center');
+	// 	}
+
+	// 	window.addEventListener('popstate', handlePopstate);
+	// 	return () => window.removeEventListener('popstate', handlePopstate);
+	// }, []);
 
 	return [direction, setDirection];
 }

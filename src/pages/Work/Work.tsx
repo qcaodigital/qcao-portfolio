@@ -11,7 +11,7 @@ interface WorkProps {
 	isSubpathOpen: boolean;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	setDirection: Dispatch<SetStateAction<string>>;
 	viewport: viewportType;
 }
 

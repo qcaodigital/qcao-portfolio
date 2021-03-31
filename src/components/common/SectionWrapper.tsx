@@ -1,14 +1,16 @@
-import { motion } from 'framer-motion';
-import { Dispatch, SetStateAction } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import ScrollProgress from './ScrollProgress';
 import ToTop from './ToTop';
 
 interface SectionWrapperProps {
 	direction: string;
+	setDirection: Dispatch<SetStateAction<string>>;
 	children: JSX.Element;
 	isSubpathOpen: boolean;
 	setIsSubpathOpen: Dispatch<SetStateAction<boolean>>;
 	sectionRef: React.MutableRefObject<HTMLElement | null>;
+	isHBMOpen: boolean;
 }
 
 const defaultTranslate: number = window.innerHeight * 0.75;
@@ -39,22 +41,49 @@ const transUp = {
 			ease: 'easeIn',
 		},
 	},
+	center: {
+		y: 0,
+		opacity: 0,
+		transition: {
+			duration: defaultDuration,
+			ease: 'easeIn',
+		},
+	},
 };
 
 export default function SectionWrapper({
 	direction,
+	setDirection,
 	isSubpathOpen,
 	setIsSubpathOpen,
 	sectionRef,
+	isHBMOpen,
 	children,
 }: SectionWrapperProps) {
+	let initial;
+	let exit;
+
+	switch (direction) {
+		case 'down':
+			initial = 'top';
+			exit = 'bottom';
+			break;
+		case 'up':
+			initial = 'bottom';
+			exit = 'top';
+			break;
+		case 'center':
+			initial = 'center';
+			exit = 'center';
+	}
+
+	//Default transition direction to 'center' on render
+	useEffect(() => {
+		setDirection('center');
+	}, [setDirection]);
+
 	return (
-		<motion.div
-			initial={direction === 'down' ? 'top' : 'bottom'}
-			animate='animate'
-			exit={direction === 'down' ? 'bottom' : 'top'}
-			variants={transUp}
-		>
+		<motion.div initial={initial} animate='animate' exit={exit} variants={transUp}>
 			<motion.section
 				animate='animate'
 				initial='initial'
@@ -67,13 +96,15 @@ export default function SectionWrapper({
 				}}
 			>
 				{children}
-				{isSubpathOpen && (
-					<ScrollProgress
-						scrollContainerRef={sectionRef}
-						color='var(--highlight-color)'
-						width='.5rem'
-					/>
-				)}
+				<AnimatePresence>
+					{isSubpathOpen && !isHBMOpen && (
+						<ScrollProgress
+							scrollContainerRef={sectionRef}
+							color='var(--highlight-color)'
+							width='.5rem'
+						/>
+					)}
+				</AnimatePresence>
 				<ToTop
 					sectionRef={sectionRef}
 					setIsSubpathOpen={setIsSubpathOpen}

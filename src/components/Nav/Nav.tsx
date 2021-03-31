@@ -12,7 +12,7 @@ interface NavProps {
 	currentPathIdx: number;
 	isSubpathOpen: boolean;
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>;
-	setDirection: Dispatch<SetStateAction<'up' | 'down'>>;
+	setDirection: Dispatch<SetStateAction<string>>;
 	navLinks: navLinksType;
 }
 
@@ -30,7 +30,7 @@ export default function Nav({
 			<nav className={styles.Nav}>
 				<Link
 					to='/'
-					callBefore={() => setDirection('up')}
+					callBefore={() => setDirection('center')}
 					callAfter={() => {
 						if (isHBMOpen) setIsHBMOpen(false);
 						setCurrentPathIdx(0);
