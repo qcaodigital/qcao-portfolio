@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 interface SVGBorderButtonProps {
 	text: string;
+	onClick?: () => void;
 	animate?: boolean;
 	strokeColor?: string;
 }
@@ -30,6 +31,7 @@ function generatePolylinePoints(width: number, height: number, diff: number): st
 
 export default function SVGBorderButton({
 	text,
+	onClick,
 	animate = true,
 	strokeColor = 'black',
 }: SVGBorderButtonProps) {
@@ -60,7 +62,12 @@ export default function SVGBorderButton({
 	}, [buttonDimensions]);
 
 	return (
-		<button key={pathLength} ref={buttonRef} className={styles.SVGBorderButton}>
+		<button
+			key={pathLength}
+			ref={buttonRef}
+			className={styles.SVGBorderButton}
+			onClick={onClick}
+		>
 			<svg
 				height={buttonDimensions.height + pathDistanceFromButton}
 				width={buttonDimensions.width + pathDistanceFromButton}

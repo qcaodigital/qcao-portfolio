@@ -19,20 +19,23 @@ export default function Who() {
 					<h4>Quan Cao</h4>
 				</TypeWriter>
 				<p data-in-view={contentInView}>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
-					sapiente, molestias vitae voluptate minus doloribus suscipit atque maiores
-					dolorem laboriosam, mollitia repellendus libero officiis cupiditate eveniet
-					quisquam. Ea blanditiis non unde molestias et. Debitis dolorum similique,
-					mollitia delectus quidem iusto ea laborum, quasi sapiente error eius? Maxime,
-					voluptate?
+					And yep. You read that correctly. A restaurant manager pivoting into coding?
+					Funny how life works right? I'll tell you how it does make sense though.
 				</p>
 				<p data-in-view={contentInView}>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eius quod
-					sapiente, molestias vitae voluptate minus doloribus suscipit atque maiores
-					dolorem laboriosam, mollitia repellendus libero officiis cupiditate eveniet
-					quisquam. Ea blanditiis non unde molestias et. Debitis dolorum similique,
-					mollitia delectus quidem iusto ea laborum, quasi sapiente error eius? Maxime,
-					voluptate?
+					I spent nine years of my life thinking that my passion and dedication for my
+					job(s) in hospitality management came from my love for food, drink, the dining
+					experience, et all. And, while I truly do have a passion for all the above, at
+					the end of those nine years I realized my endurance for the grueling nature of
+					the hospitality industry didn't come from those passions. It actually came from
+					my love for problem solving in that environment.
+				</p>
+				<p data-in-view={contentInView}>
+					Long story short, after a decision to leave the industry for good for various
+					reasons and many conversations with people from various work fields, I was led
+					to dabble in code due to this newly-realized love for problem solving. Two years
+					since that decision here I am now, a self-taught developer, and I want to show
+					you what I've become.
 				</p>
 			</div>
 			<img src='/imgs/portrait-desat.jpg' alt='' />

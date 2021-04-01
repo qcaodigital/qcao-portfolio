@@ -1,10 +1,11 @@
 import styles from './Project.module.scss';
 import { technologies } from '../../../data/Skillset.data';
 import ExternalSite from './ExternalSite';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 interface ProjectProps {
-	mockupImg: string;
+	mockupImgs: string[];
 	githubLink: string;
 	liveLink: string;
 	openPreview: () => void;
@@ -15,7 +16,7 @@ interface ProjectProps {
 }
 
 export default function Project({
-	mockupImg,
+	mockupImgs,
 	githubLink,
 	liveLink,
 	techs,
@@ -24,6 +25,21 @@ export default function Project({
 	previewOpen,
 	disableLive,
 }: ProjectProps) {
+	const [currentImg, setCurrentImg] = useState<number>(0);
+
+	useEffect(() => {
+		function intervalCb() {
+			setCurrentImg((curr) => {
+				if (mockupImgs[curr + 1]) {
+					return curr + 1;
+				} else {
+					return 0;
+				}
+			});
+		}
+		setInterval(intervalCb, 7500);
+	}, [mockupImgs]);
+
 	return (
 		<div className={styles.project}>
 			<div className={styles.info}>
@@ -66,7 +82,23 @@ export default function Project({
 				</div>
 			</div>
 			<div className={styles.imgContainer}>
-				<img className={styles.mockupImg} src={mockupImg} alt='' />
+				<img
+					className={styles.mockupImgTemplate}
+					src={`/imgs/mockups/mockup-template.png`}
+					alt={`Mock up of ${liveLink}`}
+				/>
+				<AnimatePresence>
+					<motion.img
+						key={`/imgs/mockups/${mockupImgs[currentImg]}`}
+						className={styles.mockupImg}
+						src={`/imgs/mockups/${mockupImgs[currentImg]}`}
+						alt={`Mock up of ${liveLink}`}
+						initial={{ opacity: 0 }}
+						exit={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.75 }}
+					/>
+				</AnimatePresence>
 				<div className={styles.links} data-live-disabled={disableLive}>
 					{!disableLive && (
 						<>

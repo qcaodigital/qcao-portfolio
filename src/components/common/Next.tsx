@@ -37,13 +37,9 @@ export default function Next({
 	}
 
 	return (
-		<div
-			style={{ textAlign: 'center', margin: '5vh 0' }}
-			className={className}
-			onClick={handleClick}
-		>
+		<div style={{ textAlign: 'center', margin: '5vh 0' }} className={className}>
 			<p style={{ marginBottom: '1rem', fontSize: '1.6rem', fontWeight: 500 }}>{text}</p>
-			<SVGBorderButton text={buttonText} />
+			<SVGBorderButton onClick={handleClick} text={buttonText} />
 		</div>
 	);
 }

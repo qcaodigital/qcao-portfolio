@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState, useEffect } from 'react';
+import { Dispatch, SetStateAction, useState, useEffect, useRef } from 'react';
 import Landing from '../../components/common/Landing';
 import Sub from '../About/components/Sub';
 import styles from './Work.module.scss';
@@ -6,6 +6,7 @@ import { viewportType } from './../../components/hooks/useViewport';
 import { projects as projectsData, projectType } from './Work.data';
 import Project from './components/Project';
 import Next from '../../components/common/Next';
+import Rellax from 'rellax';
 
 interface WorkProps {
 	isSubpathOpen: boolean;
@@ -50,15 +51,23 @@ export default function Work({
 			}
 		}
 		window.addEventListener('keyup', closePreviews);
+		return () => window.removeEventListener('keyup', closePreviews);
 	}, []);
 	//============================//
+
+	// const bannerRef = useRef<HTMLImageElement | null>(null);
+	// useEffect(() => {
+	// 	if (bannerRef.current && sectionRef.current) {
+	// 		new Rellax(bannerRef.current, { wrapper: sectionRef.current, center: false, speed: 4 });
+	// 	}
+	// }, []);
 
 	return (
 		<>
 			<Landing
 				img={{ src: '/imgs/work.jpg', alt: '' }}
 				headerText='My Work'
-				subheaderText='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis nihil non corrupti exercitationem debitis voluptate dolorum. Est veniam itaque vitae, consequatur animi enim quae.'
+				subheaderText={`My projects are all built with design, responsiveness, and maintainability in mind. Come check them out.`}
 				isSubpathOpen={isSubpathOpen}
 				setIsSubpathOpen={setIsSubpathOpen}
 				sectionRef={sectionRef}
@@ -66,7 +75,11 @@ export default function Work({
 			/>
 			<section id={styles[1]}>
 				<div className={styles.bannerContainer}>
-					<img src='/imgs/work_banner.jpg' alt='qcaodigital portfolio work' />
+					<img
+						// ref={bannerRef}
+						src='/imgs/work_banner.jpg'
+						alt='qcaodigital portfolio work'
+					/>
 				</div>
 				{projects.map((project, idx) => (
 					<Sub
@@ -78,7 +91,7 @@ export default function Work({
 					>
 						<Project
 							key={project.heading}
-							mockupImg={`/imgs/mockups/${project.imgFilename}`}
+							mockupImgs={project.imgFilenames}
 							liveLink={project.liveLink}
 							githubLink={project.githubLink}
 							techs={project.techs}

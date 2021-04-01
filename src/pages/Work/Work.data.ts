@@ -2,7 +2,7 @@ export interface projectType {
 	heading: string;
 	reduceFont?: boolean;
 	breakAt?: number;
-	imgFilename: string;
+	imgFilenames: string[];
 	liveLink: string;
 	githubLink: string;
 	previewOpen: boolean;
@@ -14,7 +14,7 @@ export const projects: projectType[] = [
 		heading: 'Cocktail Curations',
 		reduceFont: true,
 		breakAt: 2,
-		imgFilename: 'cc_mockup.png',
+		imgFilenames: ['cc_mockup.png', 'cc_mockup2.png'],
 		liveLink: 'https://cocktailcurations.vercel.app',
 		githubLink: 'https://github.com/qcaodigital/cocktail_curations',
 		previewOpen: false,
@@ -34,7 +34,7 @@ export const projects: projectType[] = [
 		heading: 'Charred Food',
 		reduceFont: true,
 		breakAt: 2,
-		imgFilename: 'charred_mockup.png',
+		imgFilenames: ['charred_mockup.png', 'charred_mockup2.png'],
 		liveLink: 'https://charred.netlify.app/',
 		githubLink: 'https://github.com/qcaodigital/CharredFood',
 		previewOpen: false,
@@ -43,7 +43,7 @@ export const projects: projectType[] = [
 	{
 		heading: 'Staxx',
 		reduceFont: true,
-		imgFilename: 'staxx_mockup.png',
+		imgFilenames: ['staxx_mockup.png', 'staxx_mockup2.png'],
 		liveLink: 'https://staxxz.herokuapp.com/',
 		githubLink: 'https://github.com/qcaodigital/staxx',
 		previewOpen: false,
@@ -62,7 +62,7 @@ export const projects: projectType[] = [
 	{
 		heading: 'Portfolio',
 		reduceFont: true,
-		imgFilename: 'portfolio_mockup.png',
+		imgFilenames: ['portfolio_mockup.png', 'portfolio_mockup2.png'],
 		liveLink: 'https://staxxz.herokuapp.com/',
 		githubLink: 'https://github.com/qcaodigital/portfolio',
 		previewOpen: false,

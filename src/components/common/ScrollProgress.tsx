@@ -57,8 +57,10 @@ export default function ScrollProgress({
 			});
 		}
 
-		scrollProgress?.addEventListener('click', handleClick);
-		return () => scrollProgress?.removeEventListener('click', handleClick);
+		if (scrollProgress) {
+			scrollProgress.addEventListener('click', handleClick);
+			return () => scrollProgress.removeEventListener('click', handleClick);
+		}
 	}, [scrollProgressRef, scrollContainer, maxScroll]);
 
 	//Handle hover effects

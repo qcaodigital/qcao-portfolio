@@ -30,9 +30,7 @@ export default function About({
 				setIsSubpathOpen={setIsSubpathOpen}
 				sectionRef={sectionRef}
 				headerText='About Me'
-				subheaderText='Im a full-stack web developer specializing in the MERN stack. One year ago
-                I left my career as an accomplished business manager in the hospitality
-						industry to pursue becoming a developer.'
+				subheaderText={`In 2019 I left my career as an accomplished business manager in the hospitality industry to pursue becoming a developer. In that time, I've dedicated myself to learning to become a full-stack web developer with a specializiation in the MERN stack...`}
 				img={{
 					src: '/imgs/portrait-desat.jpg',
 					alt: 'Silhouette of Quan Cao',

@@ -15,7 +15,7 @@ export const jobs: job[] = [
 		title: 'General Manager',
 		employer: 'Declaration',
 		yearStart: '2017',
-		yearEnd: '2020',
+		yearEnd: '2019',
 		location: 'Washington, DC',
 		copy:
 			'Senior leadership based position focused on launching a newly opening 134 seat restaurant. The position was initially tasked with employing and training a full front of house team as well creating standard operating procedures and systems. Once established, the position was responsible for overseeing all facets of the front of house and handling all administrative tasks necessary for the restaurant.',
@@ -30,7 +30,7 @@ export const jobs: job[] = [
 		title: 'Restaurant Manager',
 		employer: 'LINCOLN Restaurant',
 		yearStart: '2016',
-		yearEnd: '2020',
+		yearEnd: '2019',
 		location: 'Washington, DC',
 		copy:
 			'Leadership based position focused on elevating front of house standards and operations in a 235 seat restaurant with a specialty in profit/loss administration and private events.',
