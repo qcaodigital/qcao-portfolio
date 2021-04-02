@@ -16,6 +16,7 @@
 				font-weight: 500;
 				letter-spacing: 0.2rem;
 				text-shadow: $text-shadow-sm;
+				margin-bottom: 0.75rem;
 				@include breakpoint(lg) {
 					font-size: $fs-md;
 				}
@@ -28,7 +29,9 @@
 				opacity: 0.55;
 				font-size: $fs-xs;
 				max-width: 75ch;
+				line-height: 1.75;
 				@include breakpoint(lg) {
+					line-height: 1.4;
 					font-size: $fs-sm;
 					max-width: unset;
 				}
@@ -36,11 +39,12 @@
 			.icons {
 				display: flex;
 				flex-wrap: wrap;
-				margin-top: 0.25rem;
 				.tech {
 					width: 7.5%;
 					max-width: 4rem;
 					position: relative;
+					margin-right: 1rem;
+					margin-top: 0.5rem;
 					img {
 						width: 100%;
 					}
@@ -68,9 +72,6 @@
 							border-color: var(--main-color) transparent transparent transparent;
 						}
 					}
-					& + .tech {
-						margin-left: 1rem;
-					}
 					&:hover {
 						.label {
 							transition: 250ms ease;
@@ -79,14 +80,14 @@
 					}
 				}
 			}
-			&:is(#tech, #time) {
+			&:is(#tech, #notes) {
 				.text {
 					@include breakpoint(lg) {
-						max-width: 32ch;
+						max-width: 50ch;
 					}
 				}
 			}
-			&:is(#challenges, #time) {
+			&:is(#challenges, #notes) {
 				display: none;
 				@include breakpoint(lg) {
 					display: block;

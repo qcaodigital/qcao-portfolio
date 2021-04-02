@@ -55,13 +55,6 @@ export default function Work({
 	}, []);
 	//============================//
 
-	// const bannerRef = useRef<HTMLImageElement | null>(null);
-	// useEffect(() => {
-	// 	if (bannerRef.current && sectionRef.current) {
-	// 		new Rellax(bannerRef.current, { wrapper: sectionRef.current, center: false, speed: 4 });
-	// 	}
-	// }, []);
-
 	return (
 		<>
 			<Landing
@@ -75,11 +68,7 @@ export default function Work({
 			/>
 			<section id={styles[1]}>
 				<div className={styles.bannerContainer}>
-					<img
-						// ref={bannerRef}
-						src='/imgs/work_banner.jpg'
-						alt='qcaodigital portfolio work'
-					/>
+					<img src='/imgs/work_banner.jpg' alt='qcaodigital portfolio work' />
 				</div>
 				{projects.map((project, idx) => (
 					<Sub
@@ -95,6 +84,9 @@ export default function Work({
 							liveLink={project.liveLink}
 							githubLink={project.githubLink}
 							techs={project.techs}
+							conceptText={project.conceptText}
+							challengesText={project.challengesText}
+							notesText={project.notesText}
 							previewOpen={project.previewOpen}
 							openPreview={openPreview.bind(null, project.heading)}
 							closePreview={closePreview}

@@ -60,9 +60,15 @@ export default function Skillset({ sectionRef }: SkillsetProps) {
 			threshold={0.1}
 			triggerOnce={true}
 		>
-			<TypeWriter trigger='inView' color='var(--main-color)'>
-				<p className={styles.listLabel}>Technologies</p>
-			</TypeWriter>
+			<div className={styles.listLabel}>
+				<TypeWriter trigger='inView' color='var(--main-color)'>
+					<p className={styles.label}>Technologies</p>
+				</TypeWriter>
+				<p className={styles.copy}>
+					Below is an interactive list of the coding and web development related skills
+					I've acquired. <b>Click</b> on any of the technologies below to read more.
+				</p>
+			</div>
 			<AnimateSharedLayout>
 				<motion.ul
 					layout

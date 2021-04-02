@@ -20,7 +20,7 @@ export default function Who() {
 				</TypeWriter>
 				<p data-in-view={contentInView}>
 					And yep. You read that correctly. A restaurant manager pivoting into coding?
-					Funny how life works right? I'll tell you how it does make sense though.
+					Funny how life works right? Let me quickly tell you how it happened.
 				</p>
 				<p data-in-view={contentInView}>
 					I spent nine years of my life thinking that my passion and dedication for my
@@ -31,8 +31,8 @@ export default function Who() {
 					my love for problem solving in that environment.
 				</p>
 				<p data-in-view={contentInView}>
-					Long story short, after a decision to leave the industry for good for various
-					reasons and many conversations with people from various work fields, I was led
+					Long story short, after a decision to leave the industry for good, for various
+					reasons, and many conversations with people from various work fields, I was led
 					to dabble in code due to this newly-realized love for problem solving. Two years
 					since that decision here I am now, a self-taught developer, and I want to show
 					you what I've become.

@@ -12,6 +12,8 @@ interface transitionsType {
 	line: variant;
 }
 
+const speedAdjustment: number = 0.65;
+
 export const transitions: transitionsType = {
 	text: {
 		initial: {
@@ -20,13 +22,13 @@ export const transitions: transitionsType = {
 		animate: {
 			opacity: 1,
 			transition: {
-				delay: 1.5,
+				delay: 1.5 * speedAdjustment,
 			},
 		},
 		exit: {
 			opacity: 0,
 			transition: {
-				duration: 0.1,
+				duration: 0.1 * speedAdjustment,
 			},
 		},
 	},
@@ -42,7 +44,7 @@ export const transitions: transitionsType = {
 			scaleY: [0.1, 0.1, 1, 1],
 			opacity: 1,
 			transition: {
-				delay: 0.75,
+				delay: 0.75 * speedAdjustment,
 			},
 		},
 		exit: {
@@ -50,7 +52,7 @@ export const transitions: transitionsType = {
 			scaleY: [1, 1, 1, 0],
 			originY: 'bottom',
 			transition: {
-				duration: 0.1,
+				duration: 0.1 * speedAdjustment,
 			},
 		},
 	},
@@ -67,8 +69,8 @@ export const transitions: transitionsType = {
 		exit: {
 			height: 0,
 			transition: {
-				duration: 0.15,
-				delay: 0.4,
+				duration: 0.15 * speedAdjustment,
+				delay: 0.4 * speedAdjustment,
 			},
 		},
 	},
@@ -79,14 +81,14 @@ export const transitions: transitionsType = {
 		animate: {
 			opacity: 1,
 			transition: {
-				delay: 0.3,
+				delay: 0.3 * speedAdjustment,
 			},
 		},
 		exit: {
 			opacity: 0,
 			transition: {
-				duration: 0.25,
-				delay: 0.75,
+				duration: 0.25 * speedAdjustment,
+				delay: 0.75 * speedAdjustment,
 			},
 		},
 	},

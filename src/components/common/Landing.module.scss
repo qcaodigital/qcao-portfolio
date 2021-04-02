@@ -122,12 +122,12 @@
 		position: relative;
 		top: -2rem;
 		height: calc(100vh - var(--imgContainer-height) + 10vh);
-		max-height: 35rem;
+		max-height: 32rem;
 		justify-content: space-between;
-		overflow: hidden;
 		// padding-bottom: 2rem;
 		@include breakpoint(md) {
 			@include landscape {
+				overflow: hidden;
 				grid-column: 1/2;
 				grid-row: 1/2;
 				top: unset;

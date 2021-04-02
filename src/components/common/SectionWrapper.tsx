@@ -13,13 +13,13 @@ interface SectionWrapperProps {
 	isHBMOpen: boolean;
 }
 
-const defaultTranslate: number = window.innerHeight * 0.75;
-const defaultDuration: number = 0.65;
+const defaultTranslate: number = window.innerHeight * 0.65;
+const defaultDuration: number = 0.6;
 
 const transUp = {
 	top: {
 		y: defaultTranslate,
-		opacity: 0,
+		opacity: 0.1,
 		transition: {
 			duration: defaultDuration,
 			ease: 'easeIn',
@@ -35,7 +35,7 @@ const transUp = {
 	},
 	bottom: {
 		y: defaultTranslate * -1,
-		opacity: 0,
+		opacity: 0.1,
 		transition: {
 			duration: defaultDuration,
 			ease: 'easeIn',

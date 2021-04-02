@@ -8,6 +8,9 @@ interface ProjectProps {
 	mockupImgs: string[];
 	githubLink: string;
 	liveLink: string;
+	challengesText: string;
+	conceptText: string;
+	notesText: string;
 	openPreview: () => void;
 	closePreview: () => void;
 	previewOpen: boolean;
@@ -20,6 +23,9 @@ export default function Project({
 	githubLink,
 	liveLink,
 	techs,
+	challengesText,
+	conceptText,
+	notesText,
 	openPreview,
 	closePreview,
 	previewOpen,
@@ -40,17 +46,28 @@ export default function Project({
 		setInterval(intervalCb, 7500);
 	}, [mockupImgs]);
 
+	const framerVariants: { [key: string]: any } = {
+		initial: { opacity: 0 },
+		animate: {
+			opacity: 1,
+			transition: {
+				duration: 0.75,
+			},
+		},
+		exit: {
+			opacity: 0,
+			transition: {
+				duration: 1.5,
+			},
+		},
+	};
+
 	return (
 		<div className={styles.project}>
 			<div className={styles.info}>
 				<div className={styles.group} id={styles.concept}>
 					<p className={styles.label}>Concept:</p>
-					<p className={styles.text}>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ducimus qui
-						aspernatur voluptatem odio molestiae, praesentium vitae cupiditate libero
-						animi hic delectus dignissimos autem, corporis cumque architecto doloribus
-						voluptatum nostrum?
-					</p>
+					<p className={styles.text}>{conceptText}</p>
 				</div>
 				<div className={styles.group} id={styles.tech}>
 					<p className={styles.label}>Technologies Used:</p>
@@ -65,20 +82,15 @@ export default function Project({
 						))}
 					</ul>
 				</div>
-				<div className={styles.group} id={styles.time}>
-					<p className={styles.label}>Time To Complete:</p>
-					<p className={styles.text}>Lorem ipsum dolor sit amet.</p>
-				</div>
+				{notesText.length > 0 && (
+					<div className={styles.group} id={styles.notes}>
+						<p className={styles.label}>Other Notes:</p>
+						<p className={styles.text}>{notesText}</p>
+					</div>
+				)}
 				<div className={styles.group} id={styles.challenges}>
 					<p className={styles.label}>Challenges:</p>
-					<p className={styles.text}>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet magni
-						voluptas porro molestiae sapiente aperiam, officia quibusdam voluptatum
-						libero, sequi quaerat saepe dicta? Delectus, quibusdam dolores? Ad magnam
-						voluptas quibusdam, pariatur laboriosam vero in, ullam dolores aut ea
-						molestias. Facere repellat accusantium cumque minus asperiores corrupti,
-						fuga ea debitis dolorem.
-					</p>
+					<p className={styles.text}>{challengesText}</p>
 				</div>
 			</div>
 			<div className={styles.imgContainer}>
@@ -93,10 +105,9 @@ export default function Project({
 						className={styles.mockupImg}
 						src={`/imgs/mockups/${mockupImgs[currentImg]}`}
 						alt={`Mock up of ${liveLink}`}
-						initial={{ opacity: 0 }}
-						exit={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.75 }}
+						initial={framerVariants.initial}
+						exit={framerVariants.exit}
+						animate={framerVariants.animate}
 					/>
 				</AnimatePresence>
 				<div className={styles.links} data-live-disabled={disableLive}>

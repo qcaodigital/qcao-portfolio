@@ -28,7 +28,7 @@ export default function Contact({
 
 					sectionRef.current?.removeEventListener('scroll', cancelTimeout);
 				},
-				1000 //time for subpath open animation
+				1500 //time for subpath open animation
 			);
 
 			function cancelTimeout() {

@@ -42,9 +42,9 @@
 				max-width: unset;
 			}
 			@include breakpoint(lg) {
-				color: var(--main-color);
+				color: var(--highlight-color);
 				transform: translateX(10rem);
-				opacity: 0.35;
+				opacity: 0.9;
 				&::before {
 					content: '';
 					display: block;

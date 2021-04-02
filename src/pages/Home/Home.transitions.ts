@@ -1,5 +1,5 @@
-const defaultDuration: number = 0.75;
-const defaultTranslate: number = window.innerHeight * -1;
+const defaultDuration: number = 0.65;
+const defaultTranslate: number = window.innerHeight * -0.75;
 
 interface transitionsType {
 	[key: string]: {};
