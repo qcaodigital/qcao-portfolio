@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState, useEffect, useRef } from 'react';
+import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 import Landing from '../../components/common/Landing';
 import Sub from '../About/components/Sub';
 import styles from './Work.module.scss';
@@ -6,7 +6,6 @@ import { viewportType } from './../../components/hooks/useViewport';
 import { projects as projectsData, projectType } from './Work.data';
 import Project from './components/Project';
 import Next from '../../components/common/Next';
-import Rellax from 'rellax';
 
 interface WorkProps {
 	isSubpathOpen: boolean;

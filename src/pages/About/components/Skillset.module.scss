@@ -18,13 +18,10 @@
 		.copy {
 			max-width: 75ch;
 			letter-spacing: 0.1rem;
-			font-size: $fs-xs;
+			font-size: $fs-sm;
 			font-family: $sans;
-			font-weight: 400;
+			font-weight: 300;
 			margin-top: 1rem;
-			@include breakpoint(md) {
-				font-size: $fs-sm;
-			}
 		}
 	}
 	.technologies {
@@ -54,10 +51,17 @@
 				border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 			}
 			@include breakpoint(md) {
+				grid-template-columns: min-content 1fr 2fr;
 				&:last-of-type {
 					border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 					padding-bottom: 1.5rem;
 				}
+			}
+			@include breakpoint(xl) {
+				grid-template-columns: min-content 1fr 1.5fr;
+			}
+			@include breakpoint(xxl) {
+				grid-template-columns: min-content 1fr 1.25fr;
 			}
 			img {
 				min-width: 4rem;
@@ -70,7 +74,7 @@
 			}
 			> .info {
 				margin-left: 5vw;
-				width: 100%;
+				// width: 100%;
 				@include breakpoint(md) {
 					margin-left: clamp(1rem, 3vw, 5rem);
 				}
@@ -123,26 +127,59 @@
 			.additionalInfo {
 				grid-row: 2/3;
 				grid-column: 1/-1;
-				padding-right: 10%;
+				// padding-right: 10%;
 				cursor: text;
+				@include breakpoint(md) {
+					grid-row: 1/-1;
+					grid-column: 3/4;
+					margin: 2rem;
+				}
 				.label {
-					font-size: $fs-sm;
-					font-weight: 500;
-					text-decoration: underline;
 					margin: 1.5rem 0;
 					@include breakpoint(md) {
-						margin: 2rem 0;
+						margin: 0 0 1.5rem;
+					}
+					p {
+						text-decoration: underline;
+						font-weight: 500;
+						font-size: $fs-sm;
+					}
+					em {
+						display: block;
+						font-weight: 300;
+						font-size: $fs-xs;
 					}
 				}
-				.info {
+				.infoList {
 					margin-top: 0.5rem;
-					font-size: $fs-xs;
-					line-height: 1.5;
-					font-weight: 400;
-					@include breakpoint(md) {
-						max-width: 70ch;
-						font-size: $fs-sm;
-						font-weight: 300;
+					list-style: square;
+					list-style-position: inside;
+					@include breakpoint(xl) {
+						//less than 5 bullets
+						&[data-small='false'] {
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							column-gap: 2rem;
+						}
+					}
+					.info {
+						line-height: 1.5;
+						font-size: $fs-xs;
+						font-weight: 400;
+						@include breakpoint(md) {
+							font-size: $fs-sm;
+							font-weight: 300;
+						}
+						@include breakpoint(xl) {
+							white-space: nowrap;
+						}
+						&:first-letter {
+							text-transform: capitalize;
+						}
+						&[data-is-long='true'] {
+							grid-column: 1/-1;
+							order: 1;
+						}
 					}
 				}
 			}
@@ -175,6 +212,7 @@
 					}
 				}
 			}
+			//.tech//
 			&[data-is-active='true'] {
 				grid-row: span 2;
 				border-bottom: 0.1rem solid rgba(0, 0, 0, 1);
@@ -193,6 +231,12 @@
 				.name:hover::before {
 					transform: scaleX(1);
 				}
+				img {
+					@include breakpoint(md) {
+						max-width: 7rem;
+						max-height: 7rem;
+					}
+				}
 			}
 			&[data-is-active='false'] {
 				border-top: 0.1rem solid transparent;
@@ -208,6 +252,7 @@
 					opacity: 1 !important;
 				}
 			}
+			//====//
 		}
 	}
 }

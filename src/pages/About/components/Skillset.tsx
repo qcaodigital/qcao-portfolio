@@ -66,7 +66,8 @@ export default function Skillset({ sectionRef }: SkillsetProps) {
 				</TypeWriter>
 				<p className={styles.copy}>
 					Below is an interactive list of the coding and web development related skills
-					I've acquired. <b>Click</b> on any of the technologies below to read more.
+					I've acquired. <b>Click</b> on any of the technologies below to see a few
+					highlights.
 				</p>
 			</div>
 			<AnimateSharedLayout>
@@ -130,17 +131,24 @@ export default function Skillset({ sectionRef }: SkillsetProps) {
 													x: { duration: 0.5 },
 												}}
 											>
-												<motion.p className={styles.label}>
-													Knowledge & Practice:
-												</motion.p>
-												<motion.p className={styles.info}>
-													Lorem ipsum dolor sit amet consectetur
-													adipisicing elit. Ullam laboriosam illum minima
-													dolore reprehenderit eveniet quas quos odit
-													maiores ducimus. Harum labore sint fuga
-													consequatur consequuntur dolore, laboriosam
-													animi repudiandae?
-												</motion.p>
+												<motion.div className={styles.label}>
+													<p>Knowledge & Practice Include:</p>
+													<em>(but not limited to)</em>
+												</motion.div>
+												<motion.ul
+													className={styles.infoList}
+													data-small={tech.info.length < 5}
+												>
+													{tech.info.map((info: string) => (
+														<li
+															key={info}
+															className={styles.info}
+															data-is-long={info.length > 41}
+														>
+															{info}
+														</li>
+													))}
+												</motion.ul>
 											</motion.div>
 										) : null}
 									</AnimateSharedLayout>

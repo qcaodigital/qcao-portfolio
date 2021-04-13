@@ -19,7 +19,7 @@ const defaultDuration: number = 0.6;
 const transUp = {
 	top: {
 		y: defaultTranslate,
-		opacity: 0.1,
+		opacity: 0,
 		transition: {
 			duration: defaultDuration,
 			ease: 'easeIn',
@@ -35,7 +35,7 @@ const transUp = {
 	},
 	bottom: {
 		y: defaultTranslate * -1,
-		opacity: 0.1,
+		opacity: 0,
 		transition: {
 			duration: defaultDuration,
 			ease: 'easeIn',

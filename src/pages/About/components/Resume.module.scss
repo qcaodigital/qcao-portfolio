@@ -2,14 +2,24 @@
 
 #resume {
 	section {
-		.sectionLabel {
-			font-size: $fs-lg;
-			font-family: $serif;
+		.header {
 			margin-bottom: 5vh;
-			text-decoration: underline;
-			text-shadow: $text-shadow-sm;
 			@include breakpoint(md) {
 				margin-bottom: 7.5vh;
+			}
+			.sectionLabel {
+				font-size: $fs-lg;
+				font-family: $serif;
+				text-decoration: underline;
+				text-shadow: $text-shadow-sm;
+			}
+			.copy {
+				max-width: 75ch;
+				letter-spacing: 0.1rem;
+				font-size: $fs-sm;
+				font-family: $sans;
+				font-weight: 300;
+				margin-top: 1rem;
 			}
 		}
 		&#education {

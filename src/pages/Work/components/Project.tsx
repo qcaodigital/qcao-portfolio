@@ -43,7 +43,10 @@ export default function Project({
 				}
 			});
 		}
-		setInterval(intervalCb, 7500);
+		const interval = setInterval(intervalCb, 7500);
+		return () => {
+			clearInterval(interval);
+		};
 	}, [mockupImgs]);
 
 	const framerVariants: { [key: string]: any } = {

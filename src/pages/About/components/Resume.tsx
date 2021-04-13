@@ -17,9 +17,16 @@ export default function Resume({ viewport }: ResumeProps) {
 	return (
 		<div id={styles.resume} ref={ref}>
 			<section id={styles.experience}>
-				<TypeWriter trigger='inView' color='var(--main-color)'>
-					<h5 className={styles.sectionLabel}>Work Experience</h5>
-				</TypeWriter>
+				<div className={styles.header}>
+					<TypeWriter trigger='inView' color='var(--main-color)'>
+						<h5 className={styles.sectionLabel}>Work Experience</h5>
+					</TypeWriter>
+					<p className={styles.copy}>
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum laboriosam
+						nulla maiores soluta tenetur voluptatibus minima perspiciatis temporibus,
+						dolorem similique consectetur enim. Eaque, voluptatum corrupti!
+					</p>
+				</div>
 				{jobs.map((job) => (
 					<Job key={job.id} job={job} />
 				))}
