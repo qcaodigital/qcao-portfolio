@@ -22,9 +22,14 @@ export default function Resume({ viewport }: ResumeProps) {
 						<h5 className={styles.sectionLabel}>Work Experience</h5>
 					</TypeWriter>
 					<p className={styles.copy}>
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum laboriosam
-						nulla maiores soluta tenetur voluptatibus minima perspiciatis temporibus,
-						dolorem similique consectetur enim. Eaque, voluptatum corrupti!
+						While my resume mostly reflects my career in the hospitality industry, the
+						<strong> soft skills</strong> and <strong>problem-solving abilities</strong>{' '}
+						I have acquired and refined during that time I find would be valuable assets
+						to any company.
+					</p>
+					<p className={styles.copy}>
+						Please take some time to read through a few of my accomplishments through
+						the course of my work history.
 					</p>
 				</div>
 				{jobs.map((job) => (
@@ -32,7 +37,9 @@ export default function Resume({ viewport }: ResumeProps) {
 				))}
 			</section>
 			<section id={styles.education}>
-				<h5 className={styles.sectionLabel}>Education</h5>
+				<div className={styles.header}>
+					<h5 className={styles.sectionLabel}>Education</h5>
+				</div>
 				<div className={styles.itemContainer}>
 					{education
 						.sort((a, b) => +a.yearCompleted - +b.yearCompleted)

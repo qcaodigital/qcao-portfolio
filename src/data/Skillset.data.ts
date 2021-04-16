@@ -2,10 +2,8 @@ export interface technology {
 	filename: string;
 	label: string;
 	proficiency: string;
-	// [P in 'filename' | 'label' | 'proficiency']: string;
 	info: string[];
 }
-// 	'Javascript has been the bread and butter of my journey into learning to write code and is easily what I find most enjoyable to work with. My experience with Javascript includes, but is not limited to, ES6 standards, object-oriented programming, functional programming, asynchronous request handling, and advanced data structures.',
 
 export const technologies: technology[] = [
 	{

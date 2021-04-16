@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import useViewport, { viewportType } from './useViewport';
 import useNavState from './useNavState';
 import { useGetVisibleScreenHeight } from './useGetVisibleScreenHeight';
-import useWheelSwipe from './useWheelSwipe';
+import useWheelSwipe from './useNavigate';
 import { navLinksType } from '../../types';
 
 interface state {

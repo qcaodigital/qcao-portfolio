@@ -22,6 +22,47 @@
 			font-family: $sans;
 			font-weight: 300;
 			margin-top: 1rem;
+			strong {
+				font-weight: 500;
+				@include breakpoint(md) {
+					font-weight: 700;
+				}
+			}
+		}
+		.sortContainer {
+			display: flex;
+			align-items: center;
+			margin-top: 5vh;
+			@include breakpoint(md) {
+				margin-top: 6.5vh;
+			}
+			.sortSelector {
+				// margin: 0 auto;
+				display: inline-grid;
+				grid-template-columns: min-content min-content min-content;
+				li {
+					--border: 0.1rem solid var(--main-color);
+					cursor: pointer;
+					font-size: $fs-xs;
+					padding: 0.25rem 0.75rem;
+					border: var(--border);
+					border-right: none;
+					white-space: nowrap;
+					text-transform: capitalize;
+					transition: 150ms ease;
+					@include breakpoint(lg) {
+						font-size: $fs-sm;
+					}
+					&:last-of-type {
+						border-right: var(--border);
+					}
+					&[data-selected='true'] {
+						color: var(--secondary-color);
+						background-color: var(--main-color);
+						pointer-events: none;
+					}
+				}
+			}
 		}
 	}
 	.technologies {
@@ -38,221 +79,6 @@
 		@include breakpoint(xl) {
 			column-gap: 8rem;
 			row-gap: 2rem;
-		}
-		.tech {
-			cursor: pointer;
-			position: relative;
-			display: grid;
-			grid-template-columns: min-content 1fr;
-			align-items: center;
-			padding-bottom: 1.5rem;
-			transition: border-bottom 200ms ease;
-			&:not(:last-of-type) {
-				border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-			}
-			@include breakpoint(md) {
-				grid-template-columns: min-content 1fr 2fr;
-				&:last-of-type {
-					border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-					padding-bottom: 1.5rem;
-				}
-			}
-			@include breakpoint(xl) {
-				grid-template-columns: min-content 1fr 1.5fr;
-			}
-			@include breakpoint(xxl) {
-				grid-template-columns: min-content 1fr 1.25fr;
-			}
-			img {
-				min-width: 4rem;
-				min-height: 4rem;
-				width: 10vw;
-				height: 10vw;
-				max-width: 5rem;
-				max-height: 5rem;
-				object-fit: contain;
-			}
-			> .info {
-				margin-left: 5vw;
-				// width: 100%;
-				@include breakpoint(md) {
-					margin-left: clamp(1rem, 3vw, 5rem);
-				}
-				@include breakpoint(xl) {
-					font-size: $fs-md;
-				}
-				.name {
-					font-family: $sans;
-					font-size: $fs-sm;
-					letter-spacing: 0.2rem;
-					font-weight: 500;
-					white-space: nowrap;
-					position: relative;
-					display: inline-block;
-					margin-right: 100%;
-					&::before {
-						content: '';
-						display: block;
-						position: absolute;
-						height: 0.2rem;
-						background-color: var(--main-color);
-						width: 100%;
-						top: calc(100% - 0.25ch);
-						transition: 150ms ease;
-						transform-origin: left;
-						transform: scaleX(0);
-						@include breakpoint(xl) {
-							top: 100%;
-						}
-					}
-				}
-				.proficiency {
-					font-size: $fs-xs;
-					opacity: 0.75;
-					letter-spacing: 0.1rem;
-					white-space: nowrap;
-					font-weight: 300;
-					display: inline-block;
-					@include breakpoint(xl) {
-						font-size: $fs-sm;
-					}
-					span {
-						display: inline-block;
-						margin-left: 0.5ch;
-						text-transform: capitalize;
-						font-style: italic;
-					}
-				}
-			}
-			.additionalInfo {
-				grid-row: 2/3;
-				grid-column: 1/-1;
-				// padding-right: 10%;
-				cursor: text;
-				@include breakpoint(md) {
-					grid-row: 1/-1;
-					grid-column: 3/4;
-					margin: 2rem;
-				}
-				.label {
-					margin: 1.5rem 0;
-					@include breakpoint(md) {
-						margin: 0 0 1.5rem;
-					}
-					p {
-						text-decoration: underline;
-						font-weight: 500;
-						font-size: $fs-sm;
-					}
-					em {
-						display: block;
-						font-weight: 300;
-						font-size: $fs-xs;
-					}
-				}
-				.infoList {
-					margin-top: 0.5rem;
-					list-style: square;
-					list-style-position: inside;
-					@include breakpoint(xl) {
-						//less than 5 bullets
-						&[data-small='false'] {
-							display: grid;
-							grid-template-columns: 1fr 1fr;
-							column-gap: 2rem;
-						}
-					}
-					.info {
-						line-height: 1.5;
-						font-size: $fs-xs;
-						font-weight: 400;
-						@include breakpoint(md) {
-							font-size: $fs-sm;
-							font-weight: 300;
-						}
-						@include breakpoint(xl) {
-							white-space: nowrap;
-						}
-						&:first-letter {
-							text-transform: capitalize;
-						}
-						&[data-is-long='true'] {
-							grid-column: 1/-1;
-							order: 1;
-						}
-					}
-				}
-			}
-			.icon {
-				position: absolute;
-				right: 0;
-				cursor: pointer;
-				height: 100%;
-				padding-bottom: 1rem;
-				i {
-					font-size: $fs-sm;
-				}
-			}
-			@include onHoverFine {
-				&[data-is-active='false'] {
-					.info {
-						.name::before {
-							transition: 350ms ease;
-							transform: scaleX(1);
-						}
-					}
-					.icon {
-						animation: pulseRight 500ms ease infinite alternate;
-						color: var(--highlight-color);
-						@keyframes pulseRight {
-							100% {
-								transform: translateX(0.5rem);
-							}
-						}
-					}
-				}
-			}
-			//.tech//
-			&[data-is-active='true'] {
-				grid-row: span 2;
-				border-bottom: 0.1rem solid rgba(0, 0, 0, 1);
-				@include breakpoint(md) {
-					box-shadow: 0rem -0.1rem 0rem black, 0rem 0.1rem 0rem black;
-					border-top: 0.1rem solid rgba(0, 0, 0, 1);
-					padding: 2rem 0;
-					grid-column: span 2;
-					align-items: center;
-					.info {
-						.name {
-							font-size: $fs-md;
-						}
-					}
-				}
-				.name:hover::before {
-					transform: scaleX(1);
-				}
-				img {
-					@include breakpoint(md) {
-						max-width: 7rem;
-						max-height: 7rem;
-					}
-				}
-			}
-			&[data-is-active='false'] {
-				border-top: 0.1rem solid transparent;
-			}
-			&[data-faded='true'] {
-				opacity: 0.5 !important;
-				@include breakpoint(md) {
-					border-bottom: 0.1rem solid transparent;
-					opacity: 0.25;
-				}
-				&:hover {
-					transition: 350ms ease;
-					opacity: 1 !important;
-				}
-			}
-			//====//
 		}
 	}
 }

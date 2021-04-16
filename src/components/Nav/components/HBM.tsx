@@ -3,6 +3,7 @@ import { navLinksType, navLinkType } from '../../../types';
 import styles from './HBM.module.scss';
 import { transitions } from './HBM.transitions';
 import Link from './../../common/Link';
+import { useEffect } from 'react';
 
 interface HBMProps {
 	navLinks: navLinksType;
@@ -10,6 +11,14 @@ interface HBMProps {
 }
 
 export default function HBM({ navLinks, closeHBM }: HBMProps) {
+	useEffect(() => {
+		const handleEsc = (e: KeyboardEvent): void | null =>
+			e.key === 'Escape' ? closeHBM() : null;
+
+		window.addEventListener('keyup', handleEsc);
+		return () => window.removeEventListener('keyup', handleEsc);
+	}, [closeHBM]);
+
 	return (
 		<motion.div className={styles.HBM} initial='initial' animate='animate' exit='exit'>
 			<motion.div

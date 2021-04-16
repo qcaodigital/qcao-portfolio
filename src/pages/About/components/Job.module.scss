@@ -40,6 +40,7 @@
 			margin: 2.5vh 0;
 			font-size: $fs-sm;
 			line-height: 1.25;
+			font-weight: 400;
 		}
 	}
 	.infoList {
@@ -67,7 +68,7 @@
 			+ .info {
 				margin-top: 1rem;
 			}
-			font-size: $fs-xs;
+			font-size: $fs-sm;
 			line-height: 1.25;
 			letter-spacing: 0.1rem;
 			font-weight: 300;

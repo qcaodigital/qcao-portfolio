@@ -1,3 +1,5 @@
+//video/gif is 1412x993 @ 50% zoom on firefox
+
 import styles from './Project.module.scss';
 import { technologies } from '../../../data/Skillset.data';
 import ExternalSite from './ExternalSite';
@@ -98,6 +100,11 @@ export default function Project({
 			</div>
 			<div className={styles.imgContainer}>
 				<img
+					className={styles.gif}
+					src='/imgs/project_gifs/cc.gif'
+					alt={`gif reel of ${liveLink}`}
+				/>
+				{/* <img
 					className={styles.mockupImgTemplate}
 					src={`/imgs/mockups/mockup-template.png`}
 					alt={`Mock up of ${liveLink}`}
@@ -112,7 +119,7 @@ export default function Project({
 						exit={framerVariants.exit}
 						animate={framerVariants.animate}
 					/>
-				</AnimatePresence>
+				</AnimatePresence> */}
 				<div className={styles.links} data-live-disabled={disableLive}>
 					{!disableLive && (
 						<>

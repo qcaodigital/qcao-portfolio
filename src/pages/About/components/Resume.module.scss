@@ -20,13 +20,16 @@
 				font-family: $sans;
 				font-weight: 300;
 				margin-top: 1rem;
+				strong {
+					font-weight: 500;
+					@include breakpoint(md) {
+						font-weight: 700;
+					}
+				}
 			}
 		}
 		&#education {
 			margin-top: 5vh;
-			h5.sectionLabel {
-				margin-bottom: 5vh;
-			}
 			.itemContainer {
 				display: grid;
 				row-gap: 1.5rem;

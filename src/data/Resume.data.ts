@@ -11,6 +11,20 @@ export interface job {
 
 export const jobs: job[] = [
 	{
+		id: 'cc',
+		title: 'Webmaster/Photographer',
+		employer: 'Cocktail Curations',
+		yearStart: '2020',
+		yearEnd: 'Present',
+		location: 'Alexandria, VA',
+		copy:
+			"Position based on bringing photographic and web development expertise to bolster a growing small business. The position requires the ability to manage a Shopify storefront and understand the workflow of managing a business' online presence.",
+		info: [
+			"Created the company's Shopify e-commerce website and have successfully assisted in driving over $12,000 in online sales and nearly 5,000 website hits in the course of 6 months.",
+			'Implemented SEO for both the pre-existing Squarespace website and newly created Shopify website resulting in first-page positions when querying the company name.',
+		],
+	},
+	{
 		id: 'dec',
 		title: 'General Manager',
 		employer: 'Declaration',
@@ -37,7 +51,7 @@ export const jobs: job[] = [
 		info: [
 			'Reduced overall labor costs by 2.5% within eight months without compromising service or efficiency in the front of house by redistributing areas of responsibility and creating a culture focused on teamwork.',
 			'Established and maintained a culture within the management team centered around hands-on leadership in the dining room, improving the overall morale and motivation of the front of house team leading to a 27% turnover rate against the previous year’s 55% turnover rate.',
-			'Led and operated a growing private events program generating ~$850,000 in 2016 (21% of total revenue) and ~$975,000 in 2017 (24% of total revenue) in 2017.  ',
+			'In 2018, promoted to senior manager and becoming responsible for assisting in managing all four restaurants in the restaurant group.',
 		],
 	},
 	{
