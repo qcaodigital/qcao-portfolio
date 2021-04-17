@@ -1,12 +1,12 @@
 @import '../../../assets/sass/';
 
 .Sub {
-	padding: 10vh 5% 0 5%;
+	padding: 12.5vh 5% 0 5%;
 	@include breakpoint(xl) {
 		padding: 10vh 10% 0 10%;
 	}
 	header {
-		padding: 0 0 7.5vh 0;
+		padding: 0 0 9.375vh 0;
 		color: var(--main-color);
 		position: relative;
 		text-align: center;

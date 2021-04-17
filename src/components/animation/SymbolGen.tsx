@@ -10,15 +10,15 @@ interface SymbolGenProps {
 export default function SymbolGen({ trigger, onAnimationComplete, children }: SymbolGenProps) {
 	React.Children.only(children);
 
-	const { props, type } = children;
-	const speed = 7;
-	const symbols = '&*-¤=+.#%~';
-	const text = props.children;
+	const { props, type }: any = children;
+	const speed: number = 7;
+	const symbols: string = '&*-¤=+.#%~';
+	const text: string = props.children;
 	const [textArr, setTextArr] = useState<string[]>([...text]);
 	const [count, setCount] = useState<number>(-1);
 
 	const [ref, inView] = useInView();
-	const newProps = {
+	const newProps: any = {
 		ref,
 		...props,
 	};

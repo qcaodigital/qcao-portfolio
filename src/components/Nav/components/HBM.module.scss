@@ -30,6 +30,9 @@
 				pointer-events: none;
 				span {
 					opacity: 0.5 !important;
+					.underline {
+						background-color: var(--highlight-color);
+					}
 				}
 			}
 			span {

@@ -33,13 +33,13 @@ export default function Landing({
 	noBoxShadow,
 	viewport,
 }: LandingProps) {
-	// if ([...subheaderText].length > 190) {
-	// 	throw new Error(
-	// 		`Prop subheaderText has too many characters. Max allotted characters is 190. Current character amount is ${
-	// 			[...subheaderText].length
-	// 		}`
-	// 	);
-	// }
+	if ([...subheaderText].length > 250) {
+		throw new Error(
+			`Prop subheaderText has too many characters. Max allotted characters is 190. Current character amount is ${
+				[...subheaderText].length
+			}`
+		);
+	}
 
 	//=== Data handler for copying text ===//
 	const hiddenInputRef = useRef<HTMLInputElement | null>(null);

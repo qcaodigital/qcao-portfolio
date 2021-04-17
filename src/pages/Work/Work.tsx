@@ -74,22 +74,15 @@ export default function Work({
 						key={project.heading}
 						heading={project.heading}
 						id={idx + 1 + ''}
-						reduceFont={project.reduceFont}
+						// reduceFont={project.reduceFont}
 						break={viewport.rank < (project.breakAt || Infinity)}
 					>
 						<Project
 							key={project.heading}
-							mockupImgs={project.imgFilenames}
-							liveLink={project.liveLink}
-							githubLink={project.githubLink}
-							techs={project.techs}
-							conceptText={project.conceptText}
-							challengesText={project.challengesText}
-							notesText={project.notesText}
-							previewOpen={project.previewOpen}
+							projectData={project}
+							disableLive={project.heading === 'Portfolio'}
 							openPreview={openPreview.bind(null, project.heading)}
 							closePreview={closePreview}
-							disableLive={project.heading === 'Portfolio'}
 						/>
 					</Sub>
 				))}

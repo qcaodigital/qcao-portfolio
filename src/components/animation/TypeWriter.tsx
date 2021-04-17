@@ -20,12 +20,12 @@ export default function TypeWriter({
 	const [animationComplete, setAnimationComplete] = useState<boolean>(false);
 	const [textArr, setTextArr] = useState<string[]>([]);
 
-	const { type, props } = children;
+	const { type, props }: any = children;
 	const text: string = props.children;
 
 	const className: string = `${styles.typeWriterAnimation} ${props.className}`;
 	const { ref, inView } = useInView({ triggerOnce: true });
-	const style = { ...children.props.style, '--color': color };
+	const style: { [key: string]: any } = { ...children.props.style, '--color': color };
 	const newProps: any = {
 		...props,
 		ref,

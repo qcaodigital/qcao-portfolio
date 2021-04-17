@@ -17,19 +17,19 @@ export default function SlideUp({ trigger, onAnimationComplete, children }: Slid
 	}
 
 	const [ref, inView] = useInView({ triggerOnce: true });
-	const style = {
+	const style: any = {
 		...children.props.style,
 		...{ overflowY: 'hidden' },
 	};
-	const newContainerProps = {
+	const newContainerProps: any = {
 		...children.props,
 		style,
 		ref,
 	};
 
-	const animationTime = 750;
+	const animationTime: number = 750;
 
-	const spanTextNode = (
+	const spanTextNode: JSX.Element = (
 		<span
 			style={{
 				display: 'inline-block',

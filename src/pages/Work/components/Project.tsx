@@ -5,51 +5,62 @@ import { technologies } from '../../../data/Skillset.data';
 import ExternalSite from './ExternalSite';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import MinText from './../../../components/animation/MinText';
+import { projectType } from './../Work.data';
 
 interface ProjectProps {
-	mockupImgs: string[];
-	githubLink: string;
-	liveLink: string;
-	challengesText: string;
-	conceptText: string;
-	notesText: string;
+	projectData: projectType;
 	openPreview: () => void;
 	closePreview: () => void;
-	previewOpen: boolean;
 	disableLive: boolean;
-	techs?: string[];
+}
+
+interface IprojectData {
+	imgFilenames: string[];
+	gifFilename: string;
+	liveLink: string;
+	githubLink: string;
+	conceptText: string;
+	notesText: string;
+	challengesText: string;
+	previewOpen: boolean;
+	techs: string[];
 }
 
 export default function Project({
-	mockupImgs,
-	githubLink,
-	liveLink,
-	techs,
-	challengesText,
-	conceptText,
-	notesText,
+	projectData,
 	openPreview,
 	closePreview,
-	previewOpen,
 	disableLive,
 }: ProjectProps) {
+	const {
+		imgFilenames,
+		gifFilename,
+		liveLink,
+		githubLink,
+		conceptText,
+		notesText,
+		challengesText,
+		previewOpen,
+		techs,
+	}: IprojectData = projectData;
 	const [currentImg, setCurrentImg] = useState<number>(0);
 
 	useEffect(() => {
 		function intervalCb() {
 			setCurrentImg((curr) => {
-				if (mockupImgs[curr + 1]) {
+				if (imgFilenames[curr + 1]) {
 					return curr + 1;
 				} else {
 					return 0;
 				}
 			});
 		}
-		const interval = setInterval(intervalCb, 7500);
+		const interval = setInterval(intervalCb, 5000);
 		return () => {
 			clearInterval(interval);
 		};
-	}, [mockupImgs]);
+	}, [imgFilenames]);
 
 	const framerVariants: { [key: string]: any } = {
 		initial: { opacity: 0 },
@@ -69,57 +80,32 @@ export default function Project({
 
 	return (
 		<div className={styles.project}>
-			<div className={styles.info}>
-				<div className={styles.group} id={styles.concept}>
-					<p className={styles.label}>Concept:</p>
-					<p className={styles.text}>{conceptText}</p>
-				</div>
-				<div className={styles.group} id={styles.tech}>
-					<p className={styles.label}>Technologies Used:</p>
-					<ul className={styles.icons}>
-						{techs?.map((tech) => (
-							<li key={tech} className={styles.tech}>
-								<img src={`/imgs/tech_logos/${tech}.png`} alt={`${tech} icon`} />
-								<p className={styles.label}>
-									{technologies.filter((j) => j.filename === tech)[0].label}
-								</p>
-							</li>
-						))}
-					</ul>
-				</div>
-				{notesText.length > 0 && (
-					<div className={styles.group} id={styles.notes}>
-						<p className={styles.label}>Other Notes:</p>
-						<p className={styles.text}>{notesText}</p>
-					</div>
-				)}
-				<div className={styles.group} id={styles.challenges}>
-					<p className={styles.label}>Challenges:</p>
-					<p className={styles.text}>{challengesText}</p>
-				</div>
-			</div>
 			<div className={styles.imgContainer}>
-				<img
-					className={styles.gif}
-					src='/imgs/project_gifs/cc.gif'
-					alt={`gif reel of ${liveLink}`}
-				/>
-				{/* <img
-					className={styles.mockupImgTemplate}
-					src={`/imgs/mockups/mockup-template.png`}
-					alt={`Mock up of ${liveLink}`}
-				/>
-				<AnimatePresence>
-					<motion.img
-						key={`/imgs/mockups/${mockupImgs[currentImg]}`}
-						className={styles.mockupImg}
-						src={`/imgs/mockups/${mockupImgs[currentImg]}`}
-						alt={`Mock up of ${liveLink}`}
-						initial={framerVariants.initial}
-						exit={framerVariants.exit}
-						animate={framerVariants.animate}
+				<div className={styles.gifContainer}>
+					<img
+						className={styles.gif}
+						src={`/imgs/project_gifs/${gifFilename}`}
+						alt={`gif reel of ${liveLink}`}
 					/>
-				</AnimatePresence> */}
+				</div>
+				<div className={styles.mockupContainer}>
+					<img
+						className={styles.mockupImgTemplate}
+						src={`/imgs/mockups/mockup-template.png`}
+						alt={`Mock up of `}
+					/>
+					<AnimatePresence>
+						<motion.img
+							key={`/imgs/mockups/${imgFilenames[currentImg]}`}
+							className={styles.mockupImg}
+							src={`/imgs/mockups/${imgFilenames[currentImg]}`}
+							alt={`Mock up of `}
+							initial={framerVariants.initial}
+							exit={framerVariants.exit}
+							animate={framerVariants.animate}
+						/>
+					</AnimatePresence>
+				</div>
 				<div className={styles.links} data-live-disabled={disableLive}>
 					{!disableLive && (
 						<>
@@ -146,6 +132,40 @@ export default function Project({
 					</a>
 				</div>
 			</div>
+			<div className={styles.info}>
+				<div className={styles.group} id={styles.concept}>
+					<p className={styles.label}>Concept:</p>
+					<MinText threshold={0.5} buttonClassName={styles.readMoreBtn}>
+						<p className={styles.text}>{conceptText}</p>
+					</MinText>
+				</div>
+				<div className={styles.group} id={styles.tech}>
+					<p className={styles.label}>Technologies Used:</p>
+					<ul className={styles.icons}>
+						{techs?.map((tech) => (
+							<li key={tech} className={styles.tech}>
+								<img src={`/imgs/tech_logos/${tech}.png`} alt={`${tech} icon`} />
+								<p className={styles.label}>
+									{technologies.filter((j) => j.filename === tech)[0].label}
+								</p>
+							</li>
+						))}
+					</ul>
+				</div>
+				{notesText.length > 0 && (
+					<div className={styles.group} id={styles.notes}>
+						<p className={styles.label}>Other Notes:</p>
+						<p className={styles.text}>{notesText}</p>
+					</div>
+				)}
+				<div className={styles.group} id={styles.challenges}>
+					<p className={styles.label}>Challenges:</p>
+					<MinText threshold={0.5} buttonClassName={styles.readMoreBtn}>
+						<p className={styles.text}>{challengesText}</p>
+					</MinText>
+				</div>
+			</div>
+
 			<AnimatePresence>
 				{previewOpen && <ExternalSite link={liveLink} closePreview={closePreview} />}
 			</AnimatePresence>
