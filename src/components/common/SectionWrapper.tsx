@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import ScrollProgress from './ScrollProgress';
 import ToTop from './ToTop';
+import styles from './SectionWrapper.module.scss';
 
 interface SectionWrapperProps {
 	direction: string;
@@ -83,7 +84,13 @@ export default function SectionWrapper({
 	}, [setDirection]);
 
 	return (
-		<motion.div initial={initial} animate='animate' exit={exit} variants={transUp}>
+		<motion.div
+			className={styles.sectionWrapper}
+			initial={initial}
+			animate='animate'
+			exit={exit}
+			variants={transUp}
+		>
 			<motion.section
 				animate='animate'
 				initial='initial'

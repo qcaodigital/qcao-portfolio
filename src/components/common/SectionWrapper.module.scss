@@ -1,0 +1,9 @@
+.sectionWrapper {
+	height: var(--trueHeight);
+	overflow-x: hidden;
+	scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}

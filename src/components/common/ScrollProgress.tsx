@@ -86,6 +86,8 @@ export default function ScrollProgress({
 		}
 	}, [maxScroll]);
 
+	console.log(currentScroll, maxScroll, hoverPoint, window.innerHeight);
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -100,14 +102,14 @@ export default function ScrollProgress({
 			<div
 				className={styles.bar}
 				style={{
-					transform: `scaleY(${(currentScroll / maxScroll) * 100}%)`,
+					transform: `scaleY(${currentScroll / maxScroll})`,
 					backgroundColor: color,
 				}}
 			></div>
 			<div
 				className={styles.hovered}
 				style={{
-					transform: `scaleY(${(hoverPoint / window.innerHeight) * 100}%)`,
+					transform: `scaleY(${hoverPoint / window.innerHeight})`,
 					backgroundColor: color,
 				}}
 			></div>
