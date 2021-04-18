@@ -30,8 +30,8 @@ export default function MinText({ buttonClassName, threshold = 0.5, children }: 
 	};
 
 	const displayText: JSX.Element[] = [
-		<span>{textFirstHalf + (showFullText ? '' : '...')}</span>,
-		<AnimatePresence>
+		<span key={1}>{textFirstHalf + (showFullText ? '' : '...')}</span>,
+		<AnimatePresence key={2}>
 			{showFullText && (
 				<motion.span {...secondHalfVariants}>{' ' + textSecondHalf}</motion.span>
 			)}
