@@ -28,23 +28,10 @@ export default function Skillset({ sectionRef }: SkillsetProps) {
 	];
 
 	function closeActiveTech(tech: technology) {
-		if (activeTech?.label === tech.label) {
-			setActiveTech(null);
-		}
+		if (activeTech?.label === tech.label) setActiveTech(null);
 	}
 
 	useEffect(() => {
-		function handleScroll() {
-			//Close if user scrolls +/- 350px past the point where a tech was opened
-			if (
-				sectionRef.current &&
-				activeTech &&
-				Math.abs(activeTech?.scrollAtClick - sectionRef.current.scrollTop) > 350
-			) {
-				setActiveTech(null);
-			}
-		}
-
 		function handleKeypress(e: KeyboardEvent) {
 			if (['Enter', 'Escape'].includes(e.key)) {
 				setActiveTech(null);
@@ -53,12 +40,8 @@ export default function Skillset({ sectionRef }: SkillsetProps) {
 
 		const ref = sectionRef.current;
 		if (ref) {
-			ref.addEventListener('scroll', handleScroll);
 			window.addEventListener('keyup', handleKeypress);
-			return () => {
-				window.removeEventListener('keyup', handleKeypress);
-				ref.removeEventListener('scroll', handleScroll);
-			};
+			return () => window.removeEventListener('keyup', handleKeypress);
 		}
 	}, [sectionRef, activeTech]);
 

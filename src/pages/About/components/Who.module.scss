@@ -57,14 +57,24 @@
 			}
 		}
 	}
-	img {
-		width: 100%;
-		object-fit: cover;
-		box-shadow: 0.5rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
-		@include breakpoint(lg) {
-			grid-column: 2/3;
-			height: 100%;
+	.imgContainer {
+		overflow: hidden;
+		img {
+			width: 100%;
 			object-fit: cover;
+			box-shadow: 0.5rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
+			transition: 4s ease;
+			@include breakpoint(lg) {
+				grid-column: 2/3;
+				height: 100%;
+				object-fit: cover;
+			}
+			&[data-in-view='false'] {
+				transform: scale(1.2);
+			}
+			&[data-in-view='true'] {
+				transform: scale(1);
+			}
 		}
 	}
 }

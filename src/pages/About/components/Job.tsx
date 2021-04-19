@@ -12,12 +12,15 @@ export default function Job({ job }: JobProps) {
 	return (
 		<div ref={ref} id={job.id} className={styles.job} data-in-view={inView}>
 			<div className={styles.basicInfo}>
-				<p className={styles.timeframe}>
-					{job.yearStart} - {job.yearEnd}
-				</p>
-				<p className={styles.employer}>{job.employer}</p>
-				<h6 className={styles.title}>{job.title}</h6>
-				<p className={styles.location}>{job.location}</p>
+				<img src={`/imgs/job_logos/${job.iconFilename}`} alt='' />
+				<div className={styles.label}>
+					<p className={styles.employer}>{job.employer}</p>
+					<h6 className={styles.title}>{job.title}</h6>
+					<p className={styles.timeframe}>
+						{job.yearStart} - {job.yearEnd}
+					</p>
+					<p className={styles.location}>{job.location}</p>
+				</div>
 				<p className={styles.copy}>{job.copy}</p>
 			</div>
 			<ul className={styles.infoList}>

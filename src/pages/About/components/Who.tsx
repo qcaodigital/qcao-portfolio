@@ -38,7 +38,13 @@ export default function Who() {
 					you what I've become.
 				</p>
 			</div>
-			<img src='/imgs/portrait-desat.jpg' alt='' />
+			<div className={styles.imgContainer}>
+				<img
+					data-in-view={contentInView}
+					src='/imgs/about-main.jpg'
+					alt='Quan Cao walking in the streets of Toronto'
+				/>
+			</div>
 		</InView>
 	);
 }

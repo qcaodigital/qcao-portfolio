@@ -1,10 +1,10 @@
 @import '../../../assets/sass/';
 .job {
-	+ .job {
-		margin-top: 5vh;
-		@include breakpoint(lg) {
-			margin-top: 7.5vh;
-		}
+	margin-top: 10vh;
+	@include breakpoint(lg) {
+		margin-top: 7.5vh;
+		//Margin-left offsets the absolutely-positioned bracket divider
+		margin-left: 1.5rem;
 	}
 	@include breakpoint(lg) {
 		display: grid;
@@ -15,32 +15,58 @@
 		column-gap: 5%;
 	}
 	.basicInfo {
-		.timeframe {
-			font-size: $fs-xs;
-			opacity: 0.5;
+		img {
+			--size: 6.5rem;
+			height: var(--size);
+			width: var(--size);
+			display: inline-block;
+			margin-bottom: 0.5rem;
+			@include breakpoint(xl) {
+				--size: 7rem;
+			}
 		}
-		.employer {
-			font-family: $serif;
-			font-weight: 700;
-			line-height: 1.1;
-			font-size: $fs-md;
-		}
-		.title {
-			font-family: $serif;
-			font-weight: 500;
-			letter-spacing: 0.1rem;
-			font-size: $fs-md;
-		}
-		.location {
-			font-size: $fs-xs;
-			font-style: italic;
-			opacity: 0.5;
+		.label {
+			display: inline-block;
+			margin-left: 1.5rem;
+			.timeframe {
+				display: inline-block;
+				font-size: $fs-xs;
+				font-weight: 500;
+				&::after {
+					content: '|';
+					margin: 0 0.5ch;
+					font-size: $fs-sm;
+					line-height: 1;
+				}
+			}
+			.employer {
+				font-family: $serif;
+				font-weight: 700;
+				line-height: 1.1;
+				font-size: $fs-md;
+				@include breakpoint(xl) {
+					font-size: $fs-lg;
+				}
+			}
+			.title {
+				font-family: $serif;
+				font-weight: 500;
+				letter-spacing: 0.1rem;
+				font-size: $fs-md;
+			}
+			.location {
+				display: inline-block;
+				font-size: $fs-xs;
+				font-style: italic;
+				opacity: 0.5;
+			}
 		}
 		.copy {
 			margin: 2.5vh 0;
 			font-size: $fs-sm;
-			line-height: 1.25;
+			line-height: 1.4;
 			font-weight: 400;
+			max-width: 65ch;
 		}
 	}
 	.infoList {
@@ -92,17 +118,17 @@
 		content: '';
 		display: block;
 		height: 0.2rem;
-		width: 12ch;
+		width: 30ch;
 		background-color: var(--main-color);
 		position: relative;
-		top: -0.25rem;
+		top: -2rem;
 		opacity: 0.75;
 		@include breakpoint(lg) {
 			background-color: transparent;
-			height: 3rem;
-			width: 3rem;
-			border-top: 0.4rem solid var(--main-color);
-			border-left: 0.4rem solid var(--main-color);
+			height: 2rem;
+			width: 2rem;
+			border-top: 0.3rem solid var(--main-color);
+			border-left: 0.3rem solid var(--main-color);
 			position: absolute;
 			top: -1.5rem;
 			left: -1.5rem;
