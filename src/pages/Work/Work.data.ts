@@ -46,7 +46,7 @@ export const projects: projectType[] = [
 		breakAt: 2,
 		imgFilenames: ['charred_mockup.png', 'charred_mockup2.png'],
 		gifFilename: 'charred.gif',
-		liveLink: 'https://charred.netlify.app/',
+		liveLink: 'http://www.charred-food.com',
 		githubLink: 'https://github.com/qcaodigital/CharredFood',
 		previewOpen: false,
 		techs: ['reactjs', 'reactrouter', 'express', 'nodejs', 'javascript', 'css', 'html'],
@@ -60,7 +60,7 @@ export const projects: projectType[] = [
 		reduceFont: true,
 		imgFilenames: ['staxx_mockup.png', 'staxx_mockup2.png'],
 		gifFilename: 'staxx.gif',
-		liveLink: 'https://staxxz.herokuapp.com/',
+		liveLink: 'http://www.staxxthegame.com',
 		githubLink: 'https://github.com/qcaodigital/staxx',
 		previewOpen: false,
 		techs: [
@@ -84,7 +84,7 @@ export const projects: projectType[] = [
 		reduceFont: true,
 		imgFilenames: ['portfolio_mockup.png', 'portfolio_mockup2.png'],
 		gifFilename: 'portfolio.gif',
-		liveLink: 'https://staxxz.herokuapp.com/',
+		liveLink: 'www.qcao.dev',
 		githubLink: 'https://github.com/qcaodigital/portfolio',
 		previewOpen: false,
 		techs: [
