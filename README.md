@@ -16,4 +16,18 @@
 
 ### Demo: [Live Link](https://www.qcao.dev)
 
-<img alt="Demo of qcao.dev" align='center' width='400px' src='./public/imgs/project_gifs/portfolio.gif'>
+<img alt="Demo of qcao.dev" align='center' width='400px' src='./public/imgs/project_gifs/portfolio.gif'/><br/>
+
+# Author
+
+## 👤 **Quan Cao**
+
+-   Website: [www.qcao.dev](https://www.qcao.dev)
+-   Github: [@qcaodigital](https://github.com/qcaodigital)
+-   Twitter: [@qcao_dev](https://twitter.com/qcao_dev)
+
+# Show your support
+
+Feel free to clone this repo if you're interested in seeing how it works!
+
+---
