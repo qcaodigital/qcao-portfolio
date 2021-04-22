@@ -1,13 +1,19 @@
-<h1 align="center">Welcome to Cats Yumi e Nox Site👋</h1>
+<h1 align="center">Welcome My Portfolio</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/Thaiane/flexblog#readme" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-Yes-brightgreen.svg" />
   </a>
   <a href="https://github.com/Thaiane/flexblog/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-Yes-green.svg" />
   </a>
-  <a href="https://twitter.com/ThaiiBraga" target="_blank">
-    <img alt="Twitter: ThaiiBraga" src="https://img.shields.io/twitter/follow/ThaiiBraga.svg?style=social" />
+  <a href="https://twitter.com/qcao_dev" target="_blank">
+    <img alt="Twitter: Qcao_dev" src="https://img.shields.io/twitter/follow/qcao_dev.svg?style=social" />
   </a>
 </p>
+
+> A responsive frontend built with React.js and typescript used to display all of my major projects.
+
+### Demo: [Live Link](https://www.qcao.dev)
+
+![Gif of www.qcao.dev](https://media0.giphy.com/media/JiIsAvQ8nmLeTnJVXf/giphy.gif)
