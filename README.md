@@ -16,4 +16,4 @@
 
 ### Demo: [Live Link](https://www.qcao.dev)
 
-<img alt="Demo of qcao.dev" align='center' width='400px' src='https://media0.giphy.com/media/JiIsAvQ8nmLeTnJVXf/giphy.gif'>
+<img alt="Demo of qcao.dev" align='center' width='400px' src='./public/imgs/project_gifs/portfolio.gif'>
