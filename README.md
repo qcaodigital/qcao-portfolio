@@ -22,9 +22,7 @@
 -   SASS/SCSS
 -   Framer Motion
 
-## Demo:
-
-[Live](https://www.qcao.dev)
+## Demo: [Live](https://www.qcao.dev)
 
 <img alt="Demo of qcao.dev" align='center' width='400px' src='./public/imgs/project_gifs/portfolio.gif'/><br/>
 
