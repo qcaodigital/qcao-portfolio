@@ -115,7 +115,10 @@ export default function Project({
 								target='_blank'
 								rel='noopener noreferrer'
 							>
-								<span>Live Link</span>
+								<span>
+									Live Link
+									<i className={`${styles.icon} fas fa-external-link-alt`}></i>
+								</span>
 							</a>
 							<button onClick={openPreview}>
 								<span>Preview</span>
@@ -128,7 +131,10 @@ export default function Project({
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						<span>GitHub Repository</span>
+						<span>
+							GitHub Repository
+							<i className={`${styles.icon} fas fa-external-link-alt`}></i>
+						</span>
 					</a>
 				</div>
 			</div>

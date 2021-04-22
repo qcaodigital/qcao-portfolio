@@ -122,7 +122,7 @@ export default function Landing({
 				>
 					<motion.h1 variants={transitions.headerChildren}>{headerText}</motion.h1>
 					<motion.h2 variants={transitions.headerChildren}>
-						{copySubString(subheaderText, 'qcao.digital@gmail.com')}
+						{copySubString(subheaderText, 'quan@qcao.dev')}
 					</motion.h2>
 					<CTAContainer
 						isSubpathOpen={isSubpathOpen}

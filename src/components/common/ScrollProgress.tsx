@@ -86,8 +86,6 @@ export default function ScrollProgress({
 		}
 	}, [maxScroll]);
 
-	console.log(currentScroll, maxScroll, hoverPoint, window.innerHeight);
-
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}

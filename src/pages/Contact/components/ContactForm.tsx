@@ -53,7 +53,7 @@ const ContactForm = React.forwardRef<HTMLFormElement, ContactFormProps>((props, 
 						>
 							<i className='fab fa-github'></i>
 						</a>
-						<a href='mailto: qcao.digital@gmail.com' className={styles.icon}>
+						<a href='mailto: quan@qcao.dev' className={styles.icon}>
 							<i className='fas fa-at'></i>
 						</a>
 					</div>

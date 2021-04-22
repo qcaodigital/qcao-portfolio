@@ -240,9 +240,21 @@
 						letter-spacing: -0.1rem;
 						font-size: $fs-md;
 					}
+					.icon {
+						margin-left: 0.5rem;
+						text-decoration: none;
+						position: relative;
+						bottom: 0.125rem;
+						font-size: $fs-xs;
+						@include breakpoint(lg) {
+							font-size: $fs-sm;
+							margin-left: 0.75rem;
+						}
+					}
 				}
 				&.live {
 					color: var(--highlight-color);
+
 					&::before {
 						color: inherit;
 					}
