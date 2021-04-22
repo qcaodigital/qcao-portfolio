@@ -14,7 +14,7 @@
 
 > A responsive frontend built with React.js and typescript used to display all of my major projects.
 
-## Built With
+### Built With
 
 ---
 
