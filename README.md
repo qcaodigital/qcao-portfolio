@@ -14,9 +14,7 @@
 
 > A responsive frontend built with React.js and typescript used to display all of my major projects.
 
-### Built With
-
----
+## Built With
 
 -   React.js
 -   React Router
@@ -30,8 +28,6 @@
 
 ## Author
 
----
-
 ### 👤 **Quan Cao**
 
 -   Website: [www.qcao.dev](https://www.qcao.dev)
@@ -39,7 +35,5 @@
 -   Twitter: [@qcao_dev](https://twitter.com/qcao_dev)
 
 ## Show Your Support
-
----
 
 Feel free to clone this repo if you're interested in seeing how it works or give it a ⭐️ if you like it!
