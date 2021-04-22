@@ -28,6 +28,6 @@
 
 # Show your support
 
-Feel free to clone this repo if you're interested in seeing how it works!
+Feel free to clone this repo if you're interested in seeing how it works or give it a ⭐️ if you like it!
 
 ---
