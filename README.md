@@ -14,11 +14,23 @@
 
 > A responsive frontend built with React.js and typescript used to display all of my major projects.
 
+## Built With
+
+---
+
+-   React.js
+-   React Router
+-   Typescript
+-   SASS/SCSS
+-   Framer Motion
+
 ### Demo: [Live Link](https://www.qcao.dev)
 
 <img alt="Demo of qcao.dev" align='center' width='400px' src='./public/imgs/project_gifs/portfolio.gif'/><br/>
 
-# Author
+## Author
+
+---
 
 ### 👤 **Quan Cao**
 
@@ -26,8 +38,8 @@
 -   Github: [@qcaodigital](https://github.com/qcaodigital)
 -   Twitter: [@qcao_dev](https://twitter.com/qcao_dev)
 
-# Show your support
-
-Feel free to clone this repo if you're interested in seeing how it works or give it a ⭐️ if you like it!
+## Show Your Support
 
 ---
+
+Feel free to clone this repo if you're interested in seeing how it works or give it a ⭐️ if you like it!
