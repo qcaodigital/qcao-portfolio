@@ -20,7 +20,7 @@
 
 # Author
 
-## 👤 **Quan Cao**
+### 👤 **Quan Cao**
 
 -   Website: [www.qcao.dev](https://www.qcao.dev)
 -   Github: [@qcaodigital](https://github.com/qcaodigital)
