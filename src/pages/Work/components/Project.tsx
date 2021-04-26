@@ -171,7 +171,6 @@ export default function Project({
 					</MinText>
 				</div>
 			</div>
-
 			<AnimatePresence>
 				{previewOpen && <ExternalSite link={liveLink} closePreview={closePreview} />}
 			</AnimatePresence>

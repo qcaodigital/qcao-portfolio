@@ -101,12 +101,16 @@ export const technologies: technology[] = [
 			'Utilizing Mongoose for object modeling',
 		],
 	},
-	// {
-	// 	filename: 'jasmine',
-	// 	label: 'Jasmine',
-	// 	proficiency: 'intermediate',
-	// 	info: [''],
-	// },
+	{
+		filename: 'mongoose',
+		label: 'MongooseJS',
+		proficiency: 'intermediate',
+		info: [
+			'Connection in a NodeJS/Express environment',
+			'Creation of local databases and cloud-based clusters using AtlasDB',
+			'Usage of CRUD operations',
+		],
+	},
 	{
 		filename: 'css',
 		label: 'CSS',

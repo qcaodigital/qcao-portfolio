@@ -86,7 +86,7 @@ export const education: educationType[] = [
 		title: 'Associates of Arts: STEM Core',
 		school: 'Montgomery College',
 		location: 'Rockville, MD',
-		yearCompleted: 2012,
+		yearCompleted: 2011,
 	},
 	{
 		title: 'Javascript Algorithms and Data Structures Masterclass',

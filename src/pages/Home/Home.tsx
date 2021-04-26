@@ -64,6 +64,22 @@ export default function Home({ direction, setDirection, setCurrentPathIdx }: Hom
 				>
 					<i className='fab fa-github'></i>
 				</a>
+				<a
+					href='https://www.linkedin.com/in/quan-cao-757974210/'
+					target='_blank'
+					rel='noopener noreferrer'
+					className={styles.icon}
+				>
+					<i className='fab fa-linkedin'></i>
+				</a>
+				<a
+					href='https://twitter.com/qcao_dev'
+					target='_blank'
+					rel='noopener noreferrer'
+					className={styles.icon}
+				>
+					<i className='fab fa-twitter'></i>
+				</a>
 				<a href='mailto: quan@qcao.dev' className={styles.icon}>
 					<i className='fas fa-at'></i>
 				</a>
