@@ -38,11 +38,9 @@ const ContactForm = React.forwardRef<HTMLFormElement, ContactFormProps>((props, 
 				<div className={styles.info}>
 					<h3>Other ways to get in touch.</h3>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere tempora
-						deserunt quidem molestias a. Aspernatur sint impedit dignissimos eos ab
-						mollitia aperiam maxime sit expedita tempora ad, vero dolorem? Amet ea
-						dolorem, ipsam minus, ab optio magni adipisci labore a in quos ut.
-						Recusandae tenetur deserunt placeat laudantium dicta perferendis!
+						I'm always open to chat so feel free to reach out to me via Github,
+						LinkedIn, or Twitter. If you'd simply like to reach me by voice, please fill
+						out my contact form and let me know. I'll get back to you immediately!
 					</p>
 					<div className={styles.socialList}>
 						<a
@@ -68,9 +66,6 @@ const ContactForm = React.forwardRef<HTMLFormElement, ContactFormProps>((props, 
 							className={styles.icon}
 						>
 							<i className='fab fa-twitter'></i>
-						</a>
-						<a href='mailto: quan@qcao.dev' className={styles.icon}>
-							<i className='fas fa-at'></i>
 						</a>
 					</div>
 				</div>
