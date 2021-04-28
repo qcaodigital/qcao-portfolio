@@ -20,7 +20,7 @@ export const projects: projectType[] = [
 		breakAt: 2,
 		imgFilenames: ['cc_mockup.png', 'cc_mockup2.png'],
 		gifFilename: 'cc.gif',
-		liveLink: 'https://cocktailcurations.vercel.app',
+		liveLink: 'https://cocktail-curations.com',
 		githubLink: 'https://github.com/qcaodigital/cocktail_curations',
 		previewOpen: false,
 		techs: [
