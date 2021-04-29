@@ -151,7 +151,7 @@ export const technologies: technology[] = [
 		info: [
 			'Use and knowledge of jQuery selectors',
 			'Usage of jQuery methods for DOM manipulation and tree traversal',
-			'basic DOM element animation',
+			'DOM element animation',
 		],
 	},
 	{

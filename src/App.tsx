@@ -13,13 +13,16 @@ import SectionWrapper from './components/common/SectionWrapper';
 import { useEffect } from 'react';
 import Contact from './pages/Contact/Contact';
 
+//Assign true height so mobile doesn't get messed up with 100vh (mobile browsers dont consider their address bars when calculating 100vh)
 interface customCSS extends CSSProperties {
 	'--trueHeight': string;
 }
 
 export default function App() {
+	//This section ref will refer to whatever page is currently open to allow for scroll anchoring/scrolling since it won't be the "window" object
 	const currentSectionRef = useRef<HTMLElement | null>(null);
 	const location = useLocation();
+	//The useManageState hook simply is a container for all of our common states the entire application uses
 	const {
 		isHBMOpen,
 		setIsHBMOpen,
@@ -34,7 +37,9 @@ export default function App() {
 		navLinks,
 	} = useManageState();
 
-	//disable touch screen zooming on non-subpath pages
+	//Disable touch screen zooming on non-subpath pages
+	//A subpath page is defined by a page in this template that does not have a button that unhides overflow content or the it does but overflow is hidden
+	//Currently the homepage is the only page that is a non-subpath page
 	useEffect(() => {
 		if (isSubpathOpen) {
 			document.body.style.touchAction = 'unset';
@@ -48,6 +53,7 @@ export default function App() {
 			className={styles.App}
 			style={
 				{
+					//Get the "real" 100vh by detecting client.innerHeight and setting it as state
 					'--trueHeight': `${screenHeight}px`,
 				} as customCSS
 			}

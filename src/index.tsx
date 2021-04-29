@@ -1,17 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-import "./index.scss";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+//Index.scss contains all css resets
+import './index.scss';
+import App from './App';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById("root")
+	<React.StrictMode>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</React.StrictMode>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

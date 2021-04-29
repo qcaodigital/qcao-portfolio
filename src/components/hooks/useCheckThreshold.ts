@@ -1,5 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 
+//**Not in use **//
+//Receives a scroll target and vertical thresholds
+//If the target is scroll passed the threshold numbers then this function returns true, vice versa
+//Useful for fading in/out content if its too low/high on the screen
 export default function useCheckThreshold(
 	scrollTarget: any,
 	ref: any,

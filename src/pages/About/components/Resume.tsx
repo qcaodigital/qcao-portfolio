@@ -61,8 +61,8 @@ export default function Resume({ viewport }: ResumeProps) {
 					<Notification
 						text='Download my resume'
 						fontAwesomeIconClasses='fas fa-download'
-						filename='quan_cao_resume.pdf'
-						direction='x'
+						animationDirection='x'
+						link='/files/quan_cao_resume.pdf'
 					/>
 				)}
 			</AnimatePresence>

@@ -5,33 +5,37 @@ import { useState, useEffect } from 'react';
 interface NotifcationProps {
 	fontAwesomeIconClasses: string;
 	text: string;
-	filename?: string;
-	direction?: string;
+	onClick?(): any;
+	animationDirection?: string;
+	link?: string;
 }
 export default function Notification({
 	fontAwesomeIconClasses,
 	text,
-	filename,
-	direction,
+	link,
+	animationDirection,
+	onClick,
 }: NotifcationProps) {
-	const initial = direction === 'x' ? { opacity: 0, x: '-100%' } : { opacity: 0, y: '150%' };
+	const initial =
+		animationDirection === 'x' ? { opacity: 0, x: '-100%' } : { opacity: 0, y: '150%' };
 	const exit = { ...initial };
 
 	const [minimized, setMinimized] = useState<boolean>(false);
 	const [isHovered, setIsHovered] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (filename && !minimized && !isHovered) {
+		if (!minimized && !isHovered) {
 			setTimeout(() => {
 				setMinimized(true);
 			}, 5000);
 		}
-	}, [filename, isHovered, minimized]);
+	}, [isHovered, minimized]);
 
 	return (
-		<motion.div
+		<motion.button
+			onClick={onClick}
 			className={styles.notification}
-			data-has-action={filename ? true : false}
+			data-has-action={link ? true : false}
 			data-minimized={minimized}
 			initial={initial}
 			exit={exit}
@@ -47,9 +51,11 @@ export default function Notification({
 		>
 			<i className={`${styles.icon} ${fontAwesomeIconClasses}`}></i>
 			<p>{text}</p>
-			<a href={`/files/${filename}`} download aria-label={text}>
-				{text}
-			</a>
-		</motion.div>
+			{link && (
+				<a href={link} download aria-label={text}>
+					{text}
+				</a>
+			)}
+		</motion.button>
 	);
 }

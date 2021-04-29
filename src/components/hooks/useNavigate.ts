@@ -2,7 +2,10 @@ import { useCallback, useEffect, useState, Dispatch, SetStateAction, useRef } fr
 import { useHistory } from 'react-router-dom';
 import { navLinksType } from '../../types';
 
-export default function useWheelSwipe(
+//This hook is the bread and butter of the entire website and it's unique navigation system
+//The hook returns state and a statesetter that determines what direction to animate elements in based on numerous factors
+//The direction can be determined by calculating the next page to navigate to's index being higher or lower than the current page (determined by an array of paths that determine order)
+export default function useNavigate(
 	navLinks: navLinksType,
 	currentPathIdx: number,
 	setCurrentPathIdx: Dispatch<SetStateAction<number>>,
@@ -12,7 +15,7 @@ export default function useWheelSwipe(
 	const onCoolDown = useRef<boolean | null>(false);
 	const history = useHistory();
 
-	//Handle website navigation on touch swipe or mouse scroll
+	//Handle navigation on touch swipe or mouse scroll
 	const setDirAndPush = useCallback(
 		//Delta determines the direction to scroll
 		(delta: number): void => {
@@ -26,6 +29,7 @@ export default function useWheelSwipe(
 					history.push(navLinks[currentPathIdx + 1].pathname);
 					setCurrentPathIdx((curr: number) => curr + 1);
 				}
+				//onCoolDown bottlenecks a scroll wheel from being able to fire multiple times in the same scroll
 				onCoolDown!.current = true;
 				setTimeout(() => (onCoolDown!.current = false), 750);
 			}

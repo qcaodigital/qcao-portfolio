@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import useViewport, { viewportType } from './useViewport';
 import useNavState from './useNavState';
 import { useGetVisibleScreenHeight } from './useGetVisibleScreenHeight';
-import useWheelSwipe from './useNavigate';
+import useNavigate from './useNavigate';
 import { navLinksType } from '../../types';
 
 interface state {
@@ -30,9 +30,9 @@ export function useManageState(): state {
 		[navLinks]
 	);
 	const [currentPathIdx, setCurrentPathIdx] = useState<number>(indexOfCurrentPath);
-	const [screenHeight] = useGetVisibleScreenHeight();
+	const screenHeight = useGetVisibleScreenHeight();
 	const [isSubpathOpen, setIsSubpathOpen] = useState<boolean>(false);
-	const [direction, setDirection] = useWheelSwipe(
+	const [direction, setDirection] = useNavigate(
 		navLinks,
 		currentPathIdx,
 		setCurrentPathIdx,

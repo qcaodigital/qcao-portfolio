@@ -56,6 +56,8 @@ export const allViewports: allViewportsType = {
 	},
 };
 
+//Returns one of the objects above as state to determine the size of the viewport
+//Watches on screen resize
 export default function useViewport(): viewportType {
 	let initialViewportSize: viewportType =
 		window.innerWidth < allViewports.xs.maxWidth

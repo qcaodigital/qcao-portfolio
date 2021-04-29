@@ -10,12 +10,14 @@ const navLinksDefault: navLinksType = [
 	// { pathname: '/blog', label: 'blog', isActive: false, desc: 'Blog' },
 ];
 
+//Controls the order of the website via the above variable's index order
+//It's primary function is to watch which page is being viewed and manage the active property
 export default function useNavState() {
 	const [navLinks, setNavLinks] = useState<navLinksType>(navLinksDefault);
 	const location = useLocation();
 
 	useEffect(() => {
-		const navLinksCopy = navLinks;
+		const navLinksCopy: navLinksType = navLinks;
 		navLinksCopy.forEach((link: navLinkType): void => {
 			if (link.pathname === location.pathname) {
 				link.isActive = true;

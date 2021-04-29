@@ -1,20 +1,16 @@
-import { useState, useEffect, Dispatch, SetStateAction, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
-export const useGetVisibleScreenHeight = (): [
-	number | string,
-	Dispatch<SetStateAction<number | string>>
-] => {
-	const [screenHeight, setScreenHeight] = useState<number | string>(window.innerHeight);
-	const handleResize = useCallback((): void => {
-		if (screenHeight !== '100%') {
-			setScreenHeight(window.innerHeight);
-		}
-	}, [screenHeight]);
+//Hook that detects the screen's true height and updates a returned state that retains that value in pixels
+//To need this is a non-issue in desktop/laptop browsing but is a must for mobile web-browsing
+//In mobile browsers, the address bar usually is not calculated into "100vh" and thus causes undesired behavior
+export const useGetVisibleScreenHeight = (): number => {
+	const [screenHeight, setScreenHeight] = useState<number>(window.innerHeight);
 
 	useEffect(() => {
+		const handleResize = () => setScreenHeight(window.innerHeight);
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
-	}, [handleResize]);
+	}, []);
 
-	return [screenHeight, setScreenHeight];
+	return screenHeight;
 };
