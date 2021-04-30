@@ -48,7 +48,7 @@ export default function Contact({
 				sectionRef={sectionRef}
 				img={{ src: '/imgs/contact.jpg', alt: '' }}
 				headerText='Reach Out'
-				subheaderText='Lets create something great together. Shoot me an email at quan@qcao.dev or click the button below to submit a contact form.'
+				subheaderText='Lets create something great together. Shoot me an email at qcao.digital@gmail.com or click the button below to submit a contact form.'
 				ctaText='Contact Me'
 				whiteImg
 				noBoxShadow

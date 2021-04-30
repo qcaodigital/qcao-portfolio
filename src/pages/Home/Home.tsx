@@ -80,7 +80,7 @@ export default function Home({ direction, setDirection, setCurrentPathIdx }: Hom
 				>
 					<i className='fab fa-twitter'></i>
 				</a>
-				<a href='mailto: quan@qcao.dev' className={styles.icon}>
+				<a href='mailto: qcao.digital@gmail.com' className={styles.icon}>
 					<i className='fas fa-at'></i>
 				</a>
 			</motion.div>
