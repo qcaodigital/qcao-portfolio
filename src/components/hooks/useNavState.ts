@@ -19,11 +19,8 @@ export default function useNavState() {
 	useEffect(() => {
 		const navLinksCopy: navLinksType = navLinks;
 		navLinksCopy.forEach((link: navLinkType): void => {
-			if (link.pathname === location.pathname) {
-				link.isActive = true;
-			} else {
-				link.isActive = false;
-			}
+			//Simple check to see if the location hook pathname matches the links name then set to active
+			link.isActive = link.pathname === location.pathname;
 		});
 
 		setNavLinks(navLinksCopy);
