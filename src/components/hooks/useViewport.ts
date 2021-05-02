@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export interface viewportType {
 	label: string;
@@ -8,12 +8,6 @@ export interface viewportType {
 }
 
 export interface allViewportsType {
-	xs: viewportType;
-	sm: viewportType;
-	md: viewportType;
-	lg: viewportType;
-	xl: viewportType;
-	xxl: viewportType;
 	[key: string]: viewportType;
 }
 
@@ -59,35 +53,31 @@ export const allViewports: allViewportsType = {
 //Returns one of the objects above as state to determine the size of the viewport
 //Watches on screen resize
 export default function useViewport(): viewportType {
-	let initialViewportSize: viewportType =
-		window.innerWidth < allViewports.xs.maxWidth
-			? allViewports.xs
-			: window.innerWidth < allViewports.sm.maxWidth
-			? allViewports.sm
-			: window.innerWidth < allViewports.md.maxWidth
-			? allViewports.md
-			: window.innerWidth < allViewports.lg.maxWidth
-			? allViewports.lg
-			: window.innerWidth < allViewports.xl.maxWidth
-			? allViewports.xl
-			: allViewports.xxl;
-	var [viewport, setViewport] = useState<viewportType>(initialViewportSize);
+	//Match the current innerWidth to all viewport sizes and returns the object containing the viewport size
+	function getViewportSize(): viewportType {
+		const viewportWidth: number = window.innerWidth;
+		let viewportSize: string = '';
 
-	function handleResize(): void {
-		Object.keys(allViewports).forEach((size: string): void => {
-			if (
-				allViewports[size].minWidth < window.innerWidth &&
-				window.innerWidth < allViewports[size].maxWidth
-			) {
-				setViewport(allViewports[size]);
+		for (const key in allViewports) {
+			if (viewportWidth < allViewports[key].minWidth) {
+				viewportSize = key;
+				break;
 			}
-		});
+		}
+
+		return allViewports[viewportSize];
 	}
+
+	var [viewport, setViewport] = useState<viewportType>(getViewportSize());
+
+	const handleResize = useCallback((): void => {
+		setViewport(getViewportSize());
+	}, []);
 
 	useEffect(() => {
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
-	}, []);
+	}, [handleResize]);
 
 	return viewport;
 }
