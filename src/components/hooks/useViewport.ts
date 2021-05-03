@@ -65,8 +65,7 @@ export default function useViewport(): viewportType {
 			}
 		}
 
-		console.log(viewportSize);
-		return allViewports[viewportSize];
+		return allViewports[viewportSize] || allViewports.xl;
 	}
 
 	var [viewport, setViewport] = useState<viewportType>(getViewportSize());
