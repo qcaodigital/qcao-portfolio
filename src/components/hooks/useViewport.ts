@@ -65,6 +65,7 @@ export default function useViewport(): viewportType {
 			}
 		}
 
+		console.log(viewportSize);
 		return allViewports[viewportSize];
 	}
 
