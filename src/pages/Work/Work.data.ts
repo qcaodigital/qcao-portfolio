@@ -46,7 +46,7 @@ export const projects: projectType[] = [
 		breakAt: 2,
 		imgFilenames: ['charred_mockup.png', 'charred_mockup2.png'],
 		gifFilename: 'charred.gif',
-		liveLink: 'http://www.charred-food.com',
+		liveLink: 'https://www.charred-food.com',
 		githubLink: 'https://github.com/qcaodigital/CharredFood',
 		previewOpen: false,
 		techs: ['reactjs', 'reactrouter', 'express', 'nodejs', 'javascript', 'css', 'html'],
